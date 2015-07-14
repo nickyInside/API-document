@@ -1,0 +1,2757 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "The uDo REST API lets you interact with uDo platform from frontend to backend via sending an HTTP request.\n\nuDo is a cloud-based app platform. Its purpose is to connect local service providers        (both contents, and APIs) to the end users through the smart end devices, such as kiosk,      ipad, smart phones, game consoles, smart tv, and smart watch, etc.\n",
+        "version": "0.1.11.7",
+        "title": "uDo Platform API",
+        "termsOfService": "http://machool.com/terms/",
+        "contact": {
+            "name": "info@machool.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "45.55.86.229:9000",
+    "paths": {
+        "/uman/usernameCheck": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Check username",
+                "description": "",
+                "operationId": "usernameCheck",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Username that needs to be checked in uDo database",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/login": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Access to the application services",
+                "description": "",
+                "operationId": "login",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Username and Password that needs to check in uDo database, and token",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Login"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/forgetPassword": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Send email to reset password",
+                "description": "",
+                "operationId": "forgetpassword",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Provide username to get password",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/signup": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Create a new account",
+                "description": "",
+                "operationId": "signup",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Signup",
+                        "description": "Require user information that needs to create an account",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Signup"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/accountDetails": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Account Details",
+                "description": "",
+                "operationId": "accountDetails",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get signup information (Account, Contact, Company)",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Signup"
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/costCenterAdd": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Add cost center",
+                "description": "",
+                "operationId": "costCenterAdd",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Add new cost center",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CostCenter"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/costCenterSave": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Save cost center",
+                "description": "",
+                "operationId": "costCenterSave",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Allows to change all cost centers but not key",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CostCenter"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/costCenterDelete": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Delete cost center",
+                "description": "",
+                "operationId": "costCenterDelete",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Delete cost centers (need id to delete)",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CostCenter"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/getCostCentersCompany": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Get company cost center",
+                "description": "",
+                "operationId": "getCostCenterCompany",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Triggers company cost center action",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/serviceProviderAdd": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Add service provider",
+                "description": "",
+                "operationId": "serviceProviderAdd",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Triggers company cost center action",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ServiceProvider"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/serviceProviderSave": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Save service provider",
+                "description": "",
+                "operationId": "serviceProviderSave",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Store service provider information",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ServiceProvider"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/serviceProviderDelete": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Delete service provider",
+                "description": "",
+                "operationId": "serviceProviderDelete",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Delete service provider information",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ServiceProvider"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/getServiceProvidersCompanyService": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Get service provider",
+                "description": "",
+                "operationId": "getServiceProvidersCompanyService",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get service providers account cost centers",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UsernameServiceName"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/subAccountAdd": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "add sub account",
+                "description": "",
+                "operationId": "subAccountAdd",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Add administrator and user account",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SubAccount"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/subAccountSave": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Save sub account",
+                "description": "",
+                "operationId": "subAccountSave",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Store administrator and user account information",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SubAccount"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/subAccountDelete": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Delete sub account",
+                "description": "",
+                "operationId": "subAccountDelete",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Delete administrator and user account information",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SubAccount"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/getCompanyAccounts": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Get company accounts",
+                "description": "",
+                "operationId": "getCompanyAccounts",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get all the company's account information",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success (returns all account details)",
+                        "schema": {
+                            "$ref": "#/definitions/CompanyAccounts"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not fonund"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/getCompanyServices": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Get comapny services",
+                "description": "",
+                "operationId": "getCompanyServices",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get all the company's services",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/getAppRoles": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Get app roles",
+                "description": "",
+                "operationId": "getAppRoles",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Accont token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get all the roles that uDo appliction has (root, administrator, and user)",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/RolesArray"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/savePersonInfo": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Save service info",
+                "description": "",
+                "operationId": "savePerson",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Triggers saving person informaiton action",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Person"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/senderCheck": {
+            "post": {
+                "tags": [
+                    "uShip"
+                ],
+                "summary": "Check sender",
+                "description": "",
+                "operationId": "senderCheck",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Check sender information (username and sender email address)",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SenderCheck"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/senderAdd": {
+            "post": {
+                "tags": [
+                    "uShip"
+                ],
+                "summary": "Add sender information",
+                "description": "",
+                "operationId": "senderAdd",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Add sender information",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Sender"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/senderDetails": {
+            "post": {
+                "tags": [
+                    "uShip"
+                ],
+                "summary": "Get sender information",
+                "description": "",
+                "operationId": "senderDetails",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get sender information (in this case, username is sender email address)",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/shippingAdd": {
+            "post": {
+                "tags": [
+                    "uShip"
+                ],
+                "summary": "Add a new shipment",
+                "description": "",
+                "operationId": "shippingAdd",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Make a new shipment",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ShippingAdd"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/shipmentLabel": {
+            "post": {
+                "tags": [
+                    "uShip"
+                ],
+                "summary": "Get shipping information",
+                "description": "",
+                "operationId": "shipemntLabel",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get Canada Post shipment information",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ShipmentId"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/shipmentTransmit": {
+            "post": {
+                "tags": [
+                    "uShip"
+                ],
+                "summary": "Transmit shipment",
+                "description": "",
+                "operationId": "shipmentTransmit",
+                "consumes": [
+                    "applition/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Transmit shipment by providing GroupIds",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ShipmentTransmit"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/CanadaPostServices": {
+            "post": {
+                "tags": [
+                    "uShip"
+                ],
+                "summary": "Get Canada Post services",
+                "description": "",
+                "operationId": "CanadaPostServices",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get Canada Post service information",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CPService"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/CanadaPostRates": {
+            "post": {
+                "tags": [
+                    "uShip"
+                ],
+                "summary": "Get Canada Post rates",
+                "description": "",
+                "operationId": "CanadaPostRates",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get Canada Post rates of charge per parcel based on shipment information",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CPRateParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/shipmentComplete": {
+            "post": {
+                "tags": [
+                    "uShip"
+                ],
+                "summary": "Shipment complete action",
+                "description": "",
+                "operationId": "shipmentComplete",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "create shipment, transmit shipment, create label, get label, create manifest, get manifest, and send email",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ShipmentComplete"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/shipmentManifest": {
+            "post": {
+                "tags": [
+                    "uShip"
+                ],
+                "summary": "get a shipment manifest action",
+                "description": "",
+                "operationId": "shipementManifest",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Create shipment manifest which contains one or more reciepts of shipment.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/FiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/CanadaPostAllowedServices": {
+            "post": {
+                "tags": [
+                    "uShip"
+                ],
+                "summary": "Get Canada Post services",
+                "description": "",
+                "operationId": "CanadaPostAllowedServices",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Services provided by Canada Post based on conditions such as size and weight.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CPRateParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/ulog/logger": {
+            "post": {
+                "tags": [
+                    "uLog"
+                ],
+                "summary": "logs all errors",
+                "description": "",
+                "operationId": "logger",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Receive all logs from fronted (uShip application)",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/LogBody"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uanalyze/getKPITotals": {
+            "post": {
+                "tags": [
+                    "uAnalyze"
+                ],
+                "summary": "Get KPI(Key Performance Indicator)",
+                "description": "",
+                "operationId": "getKPITotals",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get total number of shipments / total cost between 2 periods of time(by month).",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/KPITotal"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uanalyze/getKPITimeSeries": {
+            "post": {
+                "tags": [
+                    "uAnalyze"
+                ],
+                "summary": "Get KPI by day",
+                "description": "",
+                "operationId": "getKPITimeSeries",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get total number of shipments / cost between 2 periods of time(by day).",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/KPITotal"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uanalyze/getKPITotalByService": {
+            "post": {
+                "tags": [
+                    "uAnalyze"
+                ],
+                "summary": "Get KPI by services",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get total number of shipments / cost by service type (Domestic, international, US, regular, expedited, priority, express etc).",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/KPITotal"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uanalyze/getKPITotalByCostCenter": {
+            "post": {
+                "tags": [
+                    "uAnalyze"
+                ],
+                "summary": "Get KPI by department",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account toekn",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get total number of shipment / cost by cost center (shipping, management, HR, engineer etc).",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/KPITotal"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Username": {
+            "properties": {
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "Login": {
+            "properties": {
+                "username": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "Signup": {
+            "properties": {
+                "Accont": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Account"
+                    }
+                },
+                "Person": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Person"
+                    }
+                },
+                "Company": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Company"
+                    }
+                }
+            }
+        },
+        "Account": {
+            "properties": {
+                "username": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Role"
+                    }
+                },
+                "services": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Service"
+                    }
+                }
+            }
+        },
+        "Person": {
+            "properties": {
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "age": {
+                    "type": "string"
+                },
+                "sex": {
+                    "type": "string"
+                },
+                "tel": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "costCenterCode": {
+                    "type": "string"
+                }
+            }
+        },
+        "Role": {
+            "properties": {
+                "roleId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "role": {
+                    "type": "string"
+                }
+            }
+        },
+        "Service": {
+            "properties": {
+                "serviceId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "setting": {
+                    "type": "string"
+                }
+            }
+        },
+        "Company": {
+            "properties": {
+                "companyId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "no_employees": {
+                    "type": "string"
+                },
+                "tel": {
+                    "type": "string"
+                },
+                "fax": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                }
+            }
+        },
+        "CostCenter": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "companyName": {
+                    "type": "string"
+                }
+            }
+        },
+        "ServiceProvider": {
+            "properties": {
+                "serviceId": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "contractId": {
+                    "type": "string"
+                },
+                "serviceName": {
+                    "type": "string"
+                },
+                "user": {
+                    "type": "string"
+                }
+            }
+        },
+        "UsernameServiceName": {
+            "properties": {
+                "username": {
+                    "type": "string"
+                },
+                "serviceName": {
+                    "type": "string"
+                }
+            }
+        },
+        "SubAccount": {
+            "properties": {
+                "Account": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Account"
+                    }
+                },
+                "Username": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Username"
+                    }
+                }
+            }
+        },
+        "CompanyAccounts": {
+            "properties": {
+                "AccountDetails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Signup"
+                    }
+                }
+            }
+        },
+        "RolesArray": {
+            "properties": {
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Role"
+                    }
+                }
+            }
+        },
+        "SenderCheck": {
+            "properties": {
+                "username": {
+                    "type": "string"
+                },
+                "senderEmail": {
+                    "type": "string"
+                }
+            }
+        },
+        "Sender": {
+            "properties": {
+                "username": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "age": {
+                    "type": "string"
+                },
+                "sex": {
+                    "type": "string"
+                },
+                "tel": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string",
+                    "items": {
+                        "$ref": "#/definitions/StatusCode"
+                    }
+                },
+                "company": {
+                    "type": "string"
+                },
+                "costCenterCode": {
+                    "type": "string"
+                }
+            }
+        },
+        "StatusCode": {
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "cause": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "stacktrace": {
+                    "type": "string"
+                }
+            }
+        },
+        "ShippingAdd": {
+            "properties": {
+                "sender": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Person"
+                    }
+                },
+                "shipment": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Shipment"
+                    }
+                },
+                "status": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/StatusCode"
+                    }
+                }
+            }
+        },
+        "Shipment": {
+            "properties": {
+                "recipientName": {
+                    "type": "string"
+                },
+                "recipientCompany": {
+                    "type": "string"
+                },
+                "GroupIdOrTransmitShipment": {
+                    "type": "string"
+                },
+                "RequestedShippingPoint": {
+                    "type": "string"
+                },
+                "CpcPickupIndicator": {
+                    "type": "string"
+                },
+                "ExpectedMailingDate": {
+                    "type": "string"
+                },
+                "destinationAddress": {
+                    "type": "string"
+                },
+                "destinationCity": {
+                    "type": "string"
+                },
+                "destinationProvState": {
+                    "type": "string"
+                },
+                "destinationCountry": {
+                    "type": "string"
+                },
+                "destinationPostalZipCode": {
+                    "type": "string"
+                },
+                "destinationName": {
+                    "type": "string"
+                },
+                "destinationCompany": {
+                    "type": "string"
+                },
+                "destinationClientVoiceNumber": {
+                    "type": "string"
+                },
+                "OptionCode": {
+                    "type": "string"
+                },
+                "OptionAmount": {
+                    "type": "string"
+                },
+                "OptionQualifier1": {
+                    "type": "string"
+                },
+                "OptionQualifier2": {
+                    "type": "string"
+                },
+                "OptionCode1": {
+                    "type": "string"
+                },
+                "customsReasonForExport": {
+                    "type": "string"
+                },
+                "customsCurrency": {
+                    "type": "string"
+                },
+                "skuTypeCustomsNumberOfUnits": {
+                    "type": "string"
+                },
+                "skuTypeCustomsDescription": {
+                    "type": "string"
+                },
+                "skuTypeUnitWeight": {
+                    "type": "string"
+                },
+                "skuTypeCustomsValuePerUnit": {
+                    "type": "string"
+                },
+                "parcelHeight": {
+                    "type": "string"
+                },
+                "parcelWidth": {
+                    "type": "string"
+                },
+                "parcelDepth": {
+                    "type": "string"
+                },
+                "parcelWeight": {
+                    "type": "string"
+                },
+                "notificationEmail": {
+                    "type": "string"
+                },
+                "notificationOnDelibery": {
+                    "type": "string"
+                },
+                "notificationOnException": {
+                    "type": "string"
+                },
+                "notificationOnShipment": {
+                    "type": "string"
+                },
+                "printPreferences": {
+                    "type": "string"
+                },
+                "ShowInsuredValue": {
+                    "type": "string"
+                },
+                "ShowPackingInstructions": {
+                    "type": "string"
+                },
+                "ShowPostageRate": {
+                    "type": "string"
+                },
+                "CostCenter": {
+                    "type": "string"
+                },
+                "CustomerRef1": {
+                    "type": "string"
+                },
+                "CustomerRef2": {
+                    "type": "string"
+                },
+                "ContractId": {
+                    "type": "string"
+                },
+                "IntendedMethodOfPayment": {
+                    "type": "string"
+                },
+                "ServiceCode": {
+                    "type": "string"
+                },
+                "senderEmail": {
+                    "type": "string"
+                },
+                "shippingId": {
+                    "type": "string"
+                }
+            }
+        },
+        "ShipmentId": {
+            "properties": {
+                "shipmentId": {
+                    "type": "string"
+                }
+            }
+        },
+        "ShipmentTransmit": {
+            "properties": {
+                "groupIds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/GroupId"
+                    }
+                },
+                "groupIdCSV": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "GroupId": {
+            "properties": {
+                "groupId": {
+                    "type": "string"
+                }
+            }
+        },
+        "CPService": {
+            "properties": {
+                "serviceCode": {
+                    "type": "string"
+                },
+                "href": {
+                    "type": "string"
+                },
+                "serviceName": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "string"
+                },
+                "expectedTransitTime": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "expectedDeliveryTime": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "expectedDelivery": {
+                    "type": "string"
+                },
+                "options": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Options"
+                    }
+                }
+            }
+        },
+        "Options": {
+            "properties": {
+                "options": {
+                    "type": "string"
+                }
+            }
+        },
+        "CPRateParam": {
+            "properties": {
+                "length": {
+                    "type": "string"
+                },
+                "width": {
+                    "type": "string"
+                },
+                "height": {
+                    "type": "string"
+                },
+                "weight": {
+                    "type": "string"
+                },
+                "mailingTo": {
+                    "type": "string"
+                },
+                "originPostalCode": {
+                    "type": "string"
+                },
+                "destinationCode": {
+                    "type": "string"
+                },
+                "countryCode": {
+                    "type": "string"
+                }
+            }
+        },
+        "ShipmentComplete": {
+            "properties": {
+                "sender": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Person"
+                    }
+                },
+                "shipment": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Shipment"
+                    }
+                },
+                "status": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/StatusCode"
+                    }
+                }
+            }
+        },
+        "FiveVariables": {
+            "properties": {
+                "var1": {
+                    "type": "string"
+                },
+                "var2": {
+                    "type": "string"
+                },
+                "var3": {
+                    "type": "string"
+                },
+                "var4": {
+                    "type": "string"
+                },
+                "var5": {
+                    "type": "string"
+                }
+            }
+        },
+        "LogBody": {
+            "properties": {
+                "source": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "logType": {
+                    "type": "string"
+                },
+                "account": {
+                    "type": "string"
+                },
+                "stackTrace": {
+                    "type": "string"
+                },
+                "cause": {
+                    "type": "string"
+                }
+            }
+        },
+        "KPITotal": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "kpiType": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "companyName": {
+                    "type": "string"
+                },
+                "accountUsername": {
+                    "type": "string"
+                },
+                "costCenterCode": {
+                    "type": "string"
+                },
+                "yyyyMMddBegin01": {
+                    "type": "string"
+                },
+                "yyyyMMddEnd01": {
+                    "type": "string"
+                },
+                "yyyyMMddBegin02": {
+                    "type": "string"
+                },
+                "yyyyMMddEnd02": {
+                    "type": "string"
+                },
+                "serveceType": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
