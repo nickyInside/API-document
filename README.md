@@ -18,15 +18,17 @@ To use Swagger editor locally:
 1. open terminal
  
 
-2. type this codes
+2. type these codes
 
 
 git clone https://github.com/swagger-api/swagger-editor.git
-
 cd swagger-editor
-
 npm start
 
 
 It build automatically and opens browser window.
 
+Aug 4th - Updates
+uDo API documentation is now on server so you can access the document without setting up locally!
+URL: http://uservice.machool.com:3000/
+If the browser does not display our API documentation, download JSON or yaml file from our repository and import either one of them. 
