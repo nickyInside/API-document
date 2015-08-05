@@ -30,6 +30,8 @@ It build automatically and opens browser window.
 
 Aug 4th - Updates
 
+Added APIs for Machool service plans, billing information
+
 uDo API documentation is now on server so you can access the document without setting up locally!
 
 URL: http://uservice.machool.com:3000/

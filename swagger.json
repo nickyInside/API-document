@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "The uDo REST API lets you interact with uDo platform from frontend to backend via sending an HTTP request.\n\nuDo is a cloud-based app platform. Its purpose is to connect local service providers        (both contents, and APIs) to the end users through the smart end devices, such as kiosk,      ipad, smart phones, game consoles, smart tv, and smart watch, etc.\n",
+        "description": "The uDo REST API lets you interact with uDo platform from frontend to backend via sending an HTTP request.\n\n\nuDo is a cloud-based app platform. Its purpose is to connect local service providers        (both contents, and APIs) to the end users through the smart end devices, such as kiosk,      ipad, smart phones, game consoles, smart tv, and smart watch, etc.\n",
         "version": "0.1.11.7",
         "title": "uDo Platform API",
         "termsOfService": "http://machool.com/terms/",
@@ -2341,6 +2341,366 @@
                     }
                 }
             }
+        },
+        "/uPay/addPlanService": {
+            "post": {
+                "tags": [
+                    "uPay"
+                ],
+                "summary": "Add Machool Plan Service",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "add plan service including company name, service name, ID, description, status, started date, and plans.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PlanService"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uPay/editPlanService": {
+            "post": {
+                "tags": [
+                    "uPay"
+                ],
+                "summary": "Edit Machool Plan Service",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Edit plan service including company name, service name, ID, description, status, started date, and plans.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PlanService"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uPay/deletePlanService": {
+            "post": {
+                "tags": [
+                    "uPay"
+                ],
+                "summary": "Delete Machool Plan Service",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Delete plan service including company name, service name, ID, description, status, started date, and plans.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PlanService"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/upay/addBillingInfo": {
+            "post": {
+                "tags": [
+                    "uPay"
+                ],
+                "summary": "Add billing information",
+                "description": "",
+                "consumes": [
+                    "appllication/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Add billing information including first, last name, company name, email, reciept, telephones, address, etc.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/BillingInfo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/upay/editBillingInfo": {
+            "post": {
+                "tags": [
+                    "uPay"
+                ],
+                "summary": "Edit billing information",
+                "description": "",
+                "consumes": [
+                    "appllication/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Edit billing information including first, last name, company name, email, reciept, telephones, address, etc.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/BillingInfo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/upay/deleteBillingInfo": {
+            "post": {
+                "tags": [
+                    "uPay"
+                ],
+                "summary": "Delete billing information",
+                "description": "",
+                "consumes": [
+                    "appllication/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Delete billing information.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/BillingInfo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -3063,6 +3423,90 @@
                     "items": {
                         "$ref": "#/definitions/Plan"
                     }
+                }
+            }
+        },
+        "PlanService": {
+            "properties": {
+                "companyName": {
+                    "type": "string"
+                },
+                "serviceName": {
+                    "type": "string"
+                },
+                "customId": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "startedDate": {
+                    "type": "string"
+                },
+                "plans": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PlansArrayItem"
+                    }
+                }
+            }
+        },
+        "PlansArrayItem": {
+            "properties": {
+                "planserviceItem": {
+                    "type": "string"
+                }
+            }
+        },
+        "BillingInfo": {
+            "properties": {
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "companyName": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "BCCReceiptsTo": {
+                    "type": "string"
+                },
+                "startedDate": {
+                    "type": "string"
+                },
+                "telephone": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "customId": {
+                    "type": "string"
+                },
+                "address1": {
+                    "type": "string"
+                },
+                "address2": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "province": {
+                    "type": "string"
+                },
+                "postcode": {
+                    "type": "string"
+                },
+                "countryCode": {
+                    "type": "string"
                 }
             }
         }
