@@ -1526,7 +1526,10 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Success"
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/CPServiceArray"
+                        }
                     },
                     "400": {
                         "description": "Bad request"
@@ -1587,7 +1590,10 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Success"
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/CPRatesArray"
+                        }
                     },
                     "400": {
                         "description": "Bad request"
@@ -2074,6 +2080,249 @@
                 "responses": {
                     "200": {
                         "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uPay/addPlan": {
+            "post": {
+                "tags": [
+                    "uPay"
+                ],
+                "summary": "Add Machool payment plan",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account toekn",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Add payment plan including plan type, billing frequency, number of payment, currency etc.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Plan"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uPay/editPlan": {
+            "post": {
+                "tags": [
+                    "uPay"
+                ],
+                "summary": "Edit Machool payment plan",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account toekn",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Edit payment plan including plan type, billing frequency, number of payment, currency etc.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Plan"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uPay/deletePlan": {
+            "post": {
+                "tags": [
+                    "uPay"
+                ],
+                "summary": "delete Machool payment plan",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account toekn",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "delete all payment plan",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Plan"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uPay/findPlansByType": {
+            "post": {
+                "tags": [
+                    "uPay"
+                ],
+                "summary": "delete Machool payment plan",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account toekn",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "delete all payment plan",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Plan"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/PlansArray"
+                        }
                     },
                     "400": {
                         "description": "Bad request"
@@ -2585,6 +2834,26 @@
                 }
             }
         },
+        "CPServiceArray": {
+            "properties": {
+                "CPServiceItem": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CPService"
+                    }
+                }
+            }
+        },
+        "CPRatesArray": {
+            "properties": {
+                "CPRatesItem": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CPService"
+                    }
+                }
+            }
+        },
         "CPService": {
             "properties": {
                 "serviceCode": {
@@ -2750,6 +3019,50 @@
                 },
                 "serveceType": {
                     "type": "string"
+                }
+            }
+        },
+        "Plan": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "planType": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "billingFrequency": {
+                    "type": "string"
+                },
+                "numberOfPayments": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "amountPerPayment": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "sendReceipt": {
+                    "type": "string"
+                },
+                "percentageInvoice": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "PlansArray": {
+            "properties": {
+                "addPlan": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Plan"
+                    }
                 }
             }
         }

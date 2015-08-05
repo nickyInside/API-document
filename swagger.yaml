@@ -1,28 +1,31 @@
-swagger: "2.0"
+swagger: '2.0'
 info:
-  description: |
-    The uDo REST API lets you interact with uDo platform from frontend to backend via sending an HTTP request.
-    
-    uDo is a cloud-based app platform. Its purpose is to connect local service providers        (both contents, and APIs) to the end users through the smart end devices, such as kiosk,      ipad, smart phones, game consoles, smart tv, and smart watch, etc.
-    
-  version: "0.1.11.7"
+  description: >
+    The uDo REST API lets you interact with uDo platform from frontend to backend
+    via sending an HTTP request.
+
+
+
+    uDo is a cloud-based app platform. Its purpose is to connect local service
+    providers        (both contents, and APIs) to the end users through the smart
+    end devices, such as kiosk,      ipad, smart phones, game consoles, smart tv,
+    and smart watch, etc.
+  version: 0.1.11.7
   title: uDo Platform API
-  termsOfService: http://machool.com/terms/
+  termsOfService: 'http://machool.com/terms/'
   contact:
     name: info@machool.com
   license:
     name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
-host: 45.55.86.229:9000
-
-
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: '45.55.86.229:9000'
 paths:
   /uman/usernameCheck:
     post:
       tags:
         - uMan
       summary: Check username
-      description: ""
+      description: ''
       operationId: usernameCheck
       consumes:
         - application/json
@@ -34,21 +37,20 @@ paths:
           description: Username that needs to be checked in uDo database
           required: true
           schema:
-            $ref: "#/definitions/Username"
+            $ref: '#/definitions/Username'
       responses:
-        "200":
+        '200':
           description: Success
-        "404":
+        '404':
           description: Not found
-        "500":
+        '500':
           description: Internal server error
-          
   /uman/login:
     post:
       tags:
         - uMan
       summary: Access to the application services
-      description: ""
+      description: ''
       operationId: login
       consumes:
         - application/json
@@ -57,28 +59,27 @@ paths:
       parameters:
         - in: body
           name: body
-          description: Username and Password that needs to check in uDo database, and token
+          description: 'Username and Password that needs to check in uDo database, and token'
           required: true
           schema:
-            $ref: "#/definitions/Login"
+            $ref: '#/definitions/Login'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "500":
+        '500':
           description: Internal server error
-          
   /uman/forgetPassword:
     post:
       tags:
         - uMan
       summary: Send email to reset password
-      description: ""
+      description: ''
       operationId: forgetpassword
       consumes:
         - application/json
@@ -90,25 +91,24 @@ paths:
           description: Provide username to get password
           required: true
           schema:
-            $ref: "#/definitions/Username"
+            $ref: '#/definitions/Username'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "500":
+        '500':
           description: Internal server error
-
   /uman/signup:
     post:
       tags:
         - uMan
       summary: Create a new account
-      description: ""
+      description: ''
       operationId: signup
       consumes:
         - application/json
@@ -117,28 +117,27 @@ paths:
       parameters:
         - in: body
           name: Signup
-          description:  Require user information that needs to create an account
+          description: Require user information that needs to create an account
           required: true
           schema:
-            $ref: "#/definitions/Signup"
+            $ref: '#/definitions/Signup'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "500":
+        '500':
           description: Internal server error
-
   /uman/accountDetails:
     post:
       tags:
         - uMan
       summary: Account Details
-      description: ""
+      description: ''
       operationId: accountDetails
       consumes:
         - application/json
@@ -147,7 +146,7 @@ paths:
       parameters:
         - in: header
           name: username
-          description: Account username 
+          description: Account username
           required: true
           type: string
         - in: header
@@ -157,26 +156,25 @@ paths:
           type: string
         - in: body
           name: body
-          description: Get signup information (Account, Contact, Company)
+          description: 'Get signup information (Account, Contact, Company)'
           required: true
           schema:
-            $ref: "#/definitions/Username"
+            $ref: '#/definitions/Username'
       responses:
-        "200":
+        '200':
           description: successful operation
           schema:
-            $ref: "#/definitions/Signup"
-        "404":
+            $ref: '#/definitions/Signup'
+        '404':
           description: Not found
-        "500":
+        '500':
           description: Internal server error
-
   /uman/costCenterAdd:
     post:
       tags:
         - uMan
       summary: Add cost center
-      description: ""
+      description: ''
       operationId: costCenterAdd
       consumes:
         - application/json
@@ -185,7 +183,7 @@ paths:
       parameters:
         - in: header
           name: username
-          description: Account username 
+          description: Account username
           required: true
           type: string
         - in: header
@@ -198,25 +196,24 @@ paths:
           description: Add new cost center
           required: true
           schema:
-            $ref: "#/definitions/CostCenter"
+            $ref: '#/definitions/CostCenter'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "500":
+        '500':
           description: Internal server error
-
   /uman/costCenterSave:
     post:
       tags:
         - uMan
       summary: Save cost center
-      description: ""
+      description: ''
       operationId: costCenterSave
       consumes:
         - application/json
@@ -225,7 +222,7 @@ paths:
       parameters:
         - in: header
           name: username
-          description: Account username 
+          description: Account username
           required: true
           type: string
         - in: header
@@ -238,25 +235,24 @@ paths:
           description: Allows to change all cost centers but not key
           required: true
           schema:
-            $ref: "#/definitions/CostCenter"
+            $ref: '#/definitions/CostCenter'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "500":
+        '500':
           description: Internal server error
-
   /uman/costCenterDelete:
     post:
       tags:
         - uMan
       summary: Delete cost center
-      description: ""
+      description: ''
       operationId: costCenterDelete
       consumes:
         - application/json
@@ -265,7 +261,7 @@ paths:
       parameters:
         - in: header
           name: username
-          description: Account username 
+          description: Account username
           required: true
           type: string
         - in: header
@@ -278,25 +274,24 @@ paths:
           description: Delete cost centers (need id to delete)
           required: true
           schema:
-            $ref: "#/definitions/CostCenter"
+            $ref: '#/definitions/CostCenter'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "500":
+        '500':
           description: Internal server error
-          
   /uman/getCostCentersCompany:
     post:
       tags:
         - uMan
       summary: Get company cost center
-      description: ""
+      description: ''
       operationId: getCostCenterCompany
       consumes:
         - application/json
@@ -305,7 +300,7 @@ paths:
       parameters:
         - in: header
           name: username
-          description: Account username 
+          description: Account username
           required: true
           type: string
         - in: header
@@ -318,25 +313,24 @@ paths:
           description: Triggers company cost center action
           required: true
           schema:
-            $ref: "#/definitions/Username"
+            $ref: '#/definitions/Username'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "500":
+        '500':
           description: Internal server error
-          
   /uman/serviceProviderAdd:
     post:
       tags:
         - uMan
       summary: Add service provider
-      description: ""
+      description: ''
       operationId: serviceProviderAdd
       consumes:
         - application/json
@@ -345,7 +339,7 @@ paths:
       parameters:
         - in: header
           name: username
-          description: Account username 
+          description: Account username
           required: true
           type: string
         - in: header
@@ -358,25 +352,24 @@ paths:
           description: Triggers company cost center action
           required: true
           schema:
-            $ref: "#/definitions/ServiceProvider"
+            $ref: '#/definitions/ServiceProvider'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "500":
+        '500':
           description: Internal server error
-          
   /uman/serviceProviderSave:
     post:
       tags:
         - uMan
       summary: Save service provider
-      description: ""
+      description: ''
       operationId: serviceProviderSave
       consumes:
         - application/json
@@ -385,7 +378,7 @@ paths:
       parameters:
         - in: header
           name: username
-          description: Account username 
+          description: Account username
           required: true
           type: string
         - in: header
@@ -398,25 +391,24 @@ paths:
           description: Store service provider information
           required: true
           schema:
-            $ref: "#/definitions/ServiceProvider"
+            $ref: '#/definitions/ServiceProvider'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "500":
+        '500':
           description: Internal server error
-          
   /uman/serviceProviderDelete:
     post:
       tags:
         - uMan
       summary: Delete service provider
-      description: ""
+      description: ''
       operationId: serviceProviderDelete
       consumes:
         - application/json
@@ -425,7 +417,7 @@ paths:
       parameters:
         - in: header
           name: username
-          description: Account username 
+          description: Account username
           required: true
           type: string
         - in: header
@@ -438,25 +430,24 @@ paths:
           description: Delete service provider information
           required: true
           schema:
-            $ref: "#/definitions/ServiceProvider"
+            $ref: '#/definitions/ServiceProvider'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "500":
+        '500':
           description: Internal server error
-          
   /uman/getServiceProvidersCompanyService:
     post:
       tags:
         - uMan
       summary: Get service provider
-      description: ""
+      description: ''
       operationId: getServiceProvidersCompanyService
       consumes:
         - application/json
@@ -465,7 +456,7 @@ paths:
       parameters:
         - in: header
           name: username
-          description: Account username 
+          description: Account username
           required: true
           type: string
         - in: header
@@ -478,25 +469,24 @@ paths:
           description: Get service providers account cost centers
           required: true
           schema:
-            $ref: "#/definitions/UsernameServiceName"
+            $ref: '#/definitions/UsernameServiceName'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "500":
+        '500':
           description: Internal server error
-          
   /uman/subAccountAdd:
     post:
       tags:
         - uMan
       summary: add sub account
-      description: ""
+      description: ''
       operationId: subAccountAdd
       consumes:
         - application/json
@@ -505,7 +495,7 @@ paths:
       parameters:
         - in: header
           name: username
-          description: Account username 
+          description: Account username
           required: true
           type: string
         - in: header
@@ -518,25 +508,24 @@ paths:
           description: Add administrator and user account
           required: true
           schema:
-            $ref: "#/definitions/SubAccount"
+            $ref: '#/definitions/SubAccount'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "500":
+        '500':
           description: Internal server error
-          
   /uman/subAccountSave:
     post:
       tags:
         - uMan
       summary: Save sub account
-      description: ""
+      description: ''
       operationId: subAccountSave
       consumes:
         - application/json
@@ -545,7 +534,7 @@ paths:
       parameters:
         - in: header
           name: username
-          description: Account username 
+          description: Account username
           required: true
           type: string
         - in: header
@@ -558,25 +547,24 @@ paths:
           description: Store administrator and user account information
           required: true
           schema:
-            $ref: "#/definitions/SubAccount"
+            $ref: '#/definitions/SubAccount'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "500":
+        '500':
           description: Internal server error
-          
   /uman/subAccountDelete:
     post:
       tags:
         - uMan
       summary: Delete sub account
-      description: ""
+      description: ''
       operationId: subAccountDelete
       consumes:
         - application/json
@@ -585,7 +573,7 @@ paths:
       parameters:
         - in: header
           name: username
-          description: Account username 
+          description: Account username
           required: true
           type: string
         - in: header
@@ -598,25 +586,24 @@ paths:
           description: Delete administrator and user account information
           required: true
           schema:
-            $ref: "#/definitions/SubAccount"
+            $ref: '#/definitions/SubAccount'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "500":
+        '500':
           description: Internal server error
-          
   /uman/getCompanyAccounts:
     post:
       tags:
         - uMan
       summary: Get company accounts
-      description: ""
+      description: ''
       operationId: getCompanyAccounts
       consumes:
         - application/json
@@ -635,30 +622,29 @@ paths:
           type: string
         - in: body
           name: body
-          description: Get all the company's account information
+          description: "Get all the company's account information"
           required: true
           schema:
-            $ref: "#/definitions/Username"
+            $ref: '#/definitions/Username'
       responses:
-        "200":
+        '200':
           description: Success (returns all account details)
           schema:
-            $ref: "#/definitions/CompanyAccounts"
-        "400":
+            $ref: '#/definitions/CompanyAccounts'
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not fonund
-        "500":
+        '500':
           description: Internal server error
-          
   /uman/getCompanyServices:
     post:
       tags:
         - uMan
       summary: Get comapny services
-      description: ""
+      description: ''
       operationId: getCompanyServices
       consumes:
         - application/json
@@ -677,28 +663,27 @@ paths:
           type: string
         - in: body
           name: body
-          description: Get all the company's services
+          description: "Get all the company's services"
           required: true
           schema:
-            $ref: "#/definitions/Username"
+            $ref: '#/definitions/Username'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "500":
+        '500':
           description: Internal server error
-          
   /uman/getAppRoles:
     post:
       tags:
-       - uMan
+        - uMan
       summary: Get app roles
-      description: ""
+      description: ''
       operationId: getAppRoles
       consumes:
         - application/json
@@ -717,30 +702,29 @@ paths:
           type: string
         - in: body
           name: body
-          description: Get all the roles that uDo appliction has (root, administrator, and user)
+          description: 'Get all the roles that uDo appliction has (root, administrator, and user)'
           required: true
           schema:
-            $ref: "#/definitions/Username"
+            $ref: '#/definitions/Username'
       responses:
-        "200":
+        '200':
           description: Success
           schema:
-            $ref: "#/definitions/RolesArray"
-        "400":
+            $ref: '#/definitions/RolesArray'
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "500":
+        '500':
           description: Internal server error
-        
   /uman/savePersonInfo:
     post:
       tags:
         - uMan
       summary: Save service info
-      description: ""
+      description: ''
       operationId: savePerson
       consumes:
         - application/json
@@ -762,27 +746,26 @@ paths:
           description: Triggers saving person informaiton action
           required: true
           schema:
-            $ref: "#/definitions/Person"
+            $ref: '#/definitions/Person'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "409":
+        '409':
           description: Conflict
-        "500":
+        '500':
           description: Internal server error
-          
   /uship/senderCheck:
     post:
       tags:
         - uShip
       summary: Check sender
-      description: ""
+      description: ''
       operationId: senderCheck
       consumes:
         - application/json
@@ -804,27 +787,26 @@ paths:
           description: Check sender information (username and sender email address)
           required: true
           schema:
-            $ref: "#/definitions/SenderCheck"
+            $ref: '#/definitions/SenderCheck'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "409":
+        '409':
           description: Conflict
-        "500":
+        '500':
           description: Internal server error
-          
   /uship/senderAdd:
     post:
       tags:
         - uShip
       summary: Add sender information
-      description: ""
+      description: ''
       operationId: senderAdd
       consumes:
         - application/json
@@ -846,27 +828,26 @@ paths:
           description: Add sender information
           required: true
           schema:
-            $ref: "#/definitions/Sender"
+            $ref: '#/definitions/Sender'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "409":
+        '409':
           description: Conflict
-        "500":
+        '500':
           description: Internal server error
-          
   /uship/senderDetails:
     post:
       tags:
         - uShip
       summary: Get sender information
-      description: ""
+      description: ''
       operationId: senderDetails
       consumes:
         - application/json
@@ -885,32 +866,31 @@ paths:
           type: string
         - in: body
           name: body
-          description: Get sender information (in this case, username is sender email address)
+          description: 'Get sender information (in this case, username is sender email address)'
           required: true
           schema:
-            $ref: "#/definitions/Username"
+            $ref: '#/definitions/Username'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "409":
+        '409':
           description: Conflict
-        "500":
+        '500':
           description: Internal server error
-          
   /uship/shippingAdd:
     post:
       tags:
         - uShip
       summary: Add a new shipment
-      description: ""
+      description: ''
       operationId: shippingAdd
-      consumes: 
+      consumes:
         - application/json
       produces:
         - application/json
@@ -930,27 +910,26 @@ paths:
           description: Make a new shipment
           required: true
           schema:
-            $ref: "#/definitions/ShippingAdd"
+            $ref: '#/definitions/ShippingAdd'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "409":
+        '409':
           description: Conflict
-        "500":
+        '500':
           description: Internal server error
-          
   /uship/shipmentLabel:
     post:
       tags:
         - uShip
       summary: Get shipping information
-      description: ""
+      description: ''
       operationId: shipemntLabel
       consumes:
         - application/json
@@ -972,27 +951,26 @@ paths:
           description: Get Canada Post shipment information
           required: true
           schema:
-            $ref: "#/definitions/ShipmentId"
+            $ref: '#/definitions/ShipmentId'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "409":
+        '409':
           description: Conflict
-        "500":
+        '500':
           description: Internal server error
-          
   /uship/shipmentTransmit:
     post:
       tags:
         - uShip
       summary: Transmit shipment
-      description: ""
+      description: ''
       operationId: shipmentTransmit
       consumes:
         - applition/json
@@ -1014,27 +992,26 @@ paths:
           description: Transmit shipment by providing GroupIds
           required: true
           schema:
-            $ref: "#/definitions/ShipmentTransmit"
+            $ref: '#/definitions/ShipmentTransmit'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "409":
+        '409':
           description: Conflict
-        "500":
+        '500':
           description: Internal server error
-          
   /uship/CanadaPostServices:
     post:
       tags:
         - uShip
       summary: Get Canada Post services
-      description: ""
+      description: ''
       operationId: CanadaPostServices
       consumes:
         - application/json
@@ -1056,27 +1033,28 @@ paths:
           description: Get Canada Post service information
           required: true
           schema:
-            $ref: "#/definitions/CPService"
+            $ref: '#/definitions/CPService'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+          schema:
+            $ref: '#/definitions/CPServiceArray'
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "409":
+        '409':
           description: Conflict
-        "500":
+        '500':
           description: Internal server error
-          
   /uship/CanadaPostRates:
     post:
       tags:
         - uShip
       summary: Get Canada Post rates
-      description: ""
+      description: ''
       operationId: CanadaPostRates
       consumes:
         - application/json
@@ -1098,27 +1076,28 @@ paths:
           description: Get Canada Post rates of charge per parcel based on shipment information
           required: true
           schema:
-            $ref: "#/definitions/CPRateParam"
+            $ref: '#/definitions/CPRateParam'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+          schema:
+            $ref: '#/definitions/CPRatesArray'
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "409":
+        '409':
           description: Conflict
-        "500":
+        '500':
           description: Internal server error
-  
   /uship/shipmentComplete:
     post:
       tags:
         - uShip
       summary: Shipment complete action
-      description: ""
+      description: ''
       operationId: shipmentComplete
       consumes:
         - application/json
@@ -1137,30 +1116,29 @@ paths:
           type: string
         - in: body
           name: body
-          description: create shipment, transmit shipment, create label, get label, create manifest, get manifest, and send email
+          description: 'create shipment, transmit shipment, create label, get label, create manifest, get manifest, and send email'
           required: true
           schema:
-            $ref: "#/definitions/ShipmentComplete"
+            $ref: '#/definitions/ShipmentComplete'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "409":
+        '409':
           description: Conflict
-        "500":
+        '500':
           description: Internal server error
-          
   /uship/shipmentManifest:
     post:
       tags:
         - uShip
       summary: get a shipment manifest action
-      description: ""
+      description: ''
       operationId: shipementManifest
       consumes:
         - application/json
@@ -1174,37 +1152,36 @@ paths:
           type: string
         - in: header
           name: token
-          description: Account token 
+          description: Account token
           required: true
           type: string
         - in: body
           name: body
           description: Create shipment manifest which contains one or more reciepts of shipment.
-          required: true 
-          schema: 
-            $ref: "#/definitions/FiveVariables"
+          required: true
+          schema:
+            $ref: '#/definitions/FiveVariables'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "409":
+        '409':
           description: Conflict
-        "500":
+        '500':
           description: Internal server error
-          
   /uship/CanadaPostAllowedServices:
     post:
       tags:
         - uShip
       summary: Get Canada Post services
-      description: ""
+      description: ''
       operationId: CanadaPostAllowedServices
-      consumes: 
+      consumes:
         - application/json
       produces:
         - application/json
@@ -1224,27 +1201,26 @@ paths:
           description: Services provided by Canada Post based on conditions such as size and weight.
           required: true
           schema:
-            $ref: "#/definitions/CPRateParam"
+            $ref: '#/definitions/CPRateParam'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "409":
+        '409':
           description: Conflict
-        "500":
+        '500':
           description: Internal server error
-          
   /ulog/logger:
     post:
       tags:
         - uLog
       summary: logs all errors
-      description: ""
+      description: ''
       operationId: logger
       consumes:
         - application/json
@@ -1266,27 +1242,26 @@ paths:
           description: Receive all logs from fronted (uShip application)
           required: true
           schema:
-            $ref: "#/definitions/LogBody"
+            $ref: '#/definitions/LogBody'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "409":
+        '409':
           description: Conflict
-        "500":
-          description: Internal server error     
-          
+        '500':
+          description: Internal server error
   /uanalyze/getKPITotals:
     post:
       tags:
         - uAnalyze
-      summary: Get KPI(Key Performance Indicator) 
-      description: ""
+      summary: Get KPI(Key Performance Indicator)
+      description: ''
       operationId: getKPITotals
       consumes:
         - application/json
@@ -1308,27 +1283,26 @@ paths:
           description: Get total number of shipments / total cost between 2 periods of time(by month).
           required: true
           schema:
-            $ref: "#/definitions/KPITotal"
+            $ref: '#/definitions/KPITotal'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "409":
+        '409':
           description: Conflict
-        "500":
+        '500':
           description: Internal server error
-          
   /uanalyze/getKPITimeSeries:
     post:
       tags:
         - uAnalyze
       summary: Get KPI by day
-      description: ""
+      description: ''
       operationId: getKPITimeSeries
       consumes:
         - application/json
@@ -1350,27 +1324,26 @@ paths:
           description: Get total number of shipments / cost between 2 periods of time(by day).
           required: true
           schema:
-            $ref: "#/definitions/KPITotal"
+            $ref: '#/definitions/KPITotal'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "409":
+        '409':
           description: Conflict
-        "500":
+        '500':
           description: Internal server error
-          
   /uanalyze/getKPITotalByService:
     post:
       tags:
         - uAnalyze
       summary: Get KPI by services
-      description: ""
+      description: ''
       consumes:
         - application/json
       produces:
@@ -1388,30 +1361,29 @@ paths:
           type: string
         - in: body
           name: body
-          description: Get total number of shipments / cost by service type (Domestic, international, US, regular, expedited, priority, express etc).
+          description: 'Get total number of shipments / cost by service type (Domestic, international, US, regular, expedited, priority, express etc).'
           required: true
           schema:
-            $ref: "#/definitions/KPITotal"
+            $ref: '#/definitions/KPITotal'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "409":
+        '409':
           description: Conflict
-        "500":
+        '500':
           description: Internal server error
-  
   /uanalyze/getKPITotalByCostCenter:
     post:
       tags:
         - uAnalyze
       summary: Get KPI by department
-      description: ""
+      description: ''
       consumes:
         - application/json
       produces:
@@ -1429,24 +1401,185 @@ paths:
           type: string
         - in: body
           name: body
-          description: Get total number of shipment / cost by cost center (shipping, management, HR, engineer etc).
+          description: 'Get total number of shipment / cost by cost center (shipping, management, HR, engineer etc).'
           required: true
           schema:
-            $ref: "#/definitions/KPITotal"
+            $ref: '#/definitions/KPITotal'
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Bad request
-        "403":
+        '403':
           description: Forbidden
-        "404":
+        '404':
           description: Not found
-        "409":
+        '409':
           description: Conflict
-        "500":
+        '500':
           description: Internal server error
-          
+  /uPay/addPlan:
+    post:
+      tags:
+        - uPay
+      summary: Add Machool payment plan
+      description: ''
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account toekn
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: 'Add payment plan including plan type, billing frequency, number of payment, currency etc.'
+          required: true
+          schema:
+            $ref: '#/definitions/Plan'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /uPay/editPlan:
+    post:
+      tags:
+        - uPay
+      summary: Edit Machool payment plan
+      description: ''
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account toekn
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: 'Edit payment plan including plan type, billing frequency, number of payment, currency etc.'
+          required: true
+          schema:
+            $ref: '#/definitions/Plan'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /uPay/deletePlan:
+    post:
+      tags:
+        - uPay
+      summary: delete Machool payment plan
+      description: ''
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account toekn
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: delete all payment plan
+          required: true
+          schema:
+            $ref: '#/definitions/Plan'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  /uPay/findPlansByType:
+    post:
+      tags:
+        - uPay
+      summary: delete Machool payment plan
+      description: ''
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account toekn
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: delete all payment plan
+          required: true
+          schema:
+            $ref: '#/definitions/Plan'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/PlansArray'
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
 definitions:
   Username:
     properties:
@@ -1463,15 +1596,15 @@ definitions:
       Accont:
         type: array
         items:
-          $ref: "#/definitions/Account"
+          $ref: '#/definitions/Account'
       Person:
         type: array
         items:
-          $ref: "#/definitions/Person"
+          $ref: '#/definitions/Person'
       Company:
         type: array
         items:
-          $ref: "#/definitions/Company"
+          $ref: '#/definitions/Company'
   Account:
     properties:
       username:
@@ -1481,26 +1614,26 @@ definitions:
       roles:
         type: array
         items:
-          $ref: "#/definitions/Role"
+          $ref: '#/definitions/Role'
       services:
         type: array
         items:
-          $ref: "#/definitions/Service"
+          $ref: '#/definitions/Service'
   Person:
     properties:
-     firstName: 
+      firstName:
         type: string
-     lastName:
+      lastName:
         type: string
-     age: 
+      age:
         type: string
-     sex: 
+      sex:
         type: string
-     tel:
+      tel:
         type: string
-     email:
+      email:
         type: string
-     costCenterCode:
+      costCenterCode:
         type: string
   Role:
     properties:
@@ -1514,7 +1647,7 @@ definitions:
       serviceId:
         type: integer
         format: int64
-      name: 
+      name:
         type: string
       description:
         type: string
@@ -1524,7 +1657,7 @@ definitions:
         type: string
   Company:
     properties:
-      companyId: 
+      companyId:
         type: integer
         format: int64
       name:
@@ -1542,7 +1675,7 @@ definitions:
   CostCenter:
     properties:
       code:
-       type: string
+        type: string
       name:
         type: string
       description:
@@ -1553,7 +1686,7 @@ definitions:
     properties:
       serviceId:
         type: string
-      name: 
+      name:
         type: string
       description:
         type: string
@@ -1580,23 +1713,23 @@ definitions:
       Account:
         type: array
         items:
-          $ref: "#/definitions/Account"
+          $ref: '#/definitions/Account'
       Username:
         type: array
         items:
-          $ref: "#/definitions/Username"
+          $ref: '#/definitions/Username'
   CompanyAccounts:
     properties:
       AccountDetails:
         type: array
         items:
-          $ref: "#/definitions/Signup"
+          $ref: '#/definitions/Signup'
   RolesArray:
     properties:
       roles:
         type: array
         items:
-          $ref: "#/definitions/Role"
+          $ref: '#/definitions/Role'
   SenderCheck:
     properties:
       username:
@@ -1605,9 +1738,9 @@ definitions:
         type: string
   Sender:
     properties:
-      username: 
+      username:
         type: string
-      firstName: 
+      firstName:
         type: string
       lastName:
         type: string
@@ -1615,16 +1748,15 @@ definitions:
         type: string
       sex:
         type: string
-      tel: 
+      tel:
         type: string
       email:
         type: string
       status:
-        type: array
-        items:
-          $ref: "#/definitions/StatusCode"
         type: string
-      company: 
+        items:
+          $ref: '#/definitions/StatusCode'
+      company:
         type: string
       costCenterCode:
         type: string
@@ -1643,15 +1775,15 @@ definitions:
       sender:
         type: array
         items:
-          $ref: "#/definitions/Person"
+          $ref: '#/definitions/Person'
       shipment:
         type: array
         items:
-          $ref: "#/definitions/Shipment"
+          $ref: '#/definitions/Shipment'
       status:
         type: array
-        items: 
-          $ref: "#/definitions/StatusCode"
+        items:
+          $ref: '#/definitions/StatusCode'
   Shipment:
     properties:
       recipientName:
@@ -1752,8 +1884,8 @@ definitions:
     properties:
       groupIds:
         type: array
-        items: 
-          $ref: "#/definitions/GroupId"
+        items:
+          $ref: '#/definitions/GroupId'
       groupIdCSV:
         type: string
       username:
@@ -1762,13 +1894,25 @@ definitions:
     properties:
       groupId:
         type: string
+  CPServiceArray:
+    properties:
+      CPServiceItem:
+        type: array
+        items:
+          $ref: '#/definitions/CPService'
+  CPRatesArray:
+    properties:
+      CPRatesItem:
+        type: array
+        items:
+          $ref: '#/definitions/CPService'
   CPService:
     properties:
       serviceCode:
         type: string
       href:
         type: string
-      serviceName: 
+      serviceName:
         type: string
       price:
         type: string
@@ -1783,7 +1927,7 @@ definitions:
       options:
         type: array
         items:
-          $ref: "#/definitions/Options"
+          $ref: '#/definitions/Options'
   Options:
     properties:
       options:
@@ -1811,15 +1955,15 @@ definitions:
       sender:
         type: array
         items:
-          $ref: "#/definitions/Person"
+          $ref: '#/definitions/Person'
       shipment:
         type: array
         items:
-          $ref: "#/definitions/Shipment"
+          $ref: '#/definitions/Shipment'
       status:
         type: array
-        items: 
-          $ref: "#/definitions/StatusCode"
+        items:
+          $ref: '#/definitions/StatusCode'
   FiveVariables:
     properties:
       var1:
@@ -1840,7 +1984,7 @@ definitions:
         type: string
       logType:
         type: string
-      account: 
+      account:
         type: string
       stackTrace:
         type: string
@@ -1870,3 +2014,32 @@ definitions:
         type: string
       serveceType:
         type: string
+  Plan:
+    properties:
+      name:
+        type: string
+      planType:
+        type: string
+      description:
+        type: string
+      billingFrequency:
+        type: string
+      numberOfPayments:
+        type: integer
+        format: int32
+      amountPerPayment:
+        type: number
+        format: double
+      currency:
+        type: string
+      sendReceipt:
+        type: string
+      percentageInvoice:
+        type: integer
+        format: int32
+  PlansArray:
+    properties:
+      addPlan:
+        type: array
+        items:
+          $ref: '#/definitions/Plan'
