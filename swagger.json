@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "The uDo REST API lets you interact with uDo platform from frontend to backend via sending an HTTP request.\n\n\nuDo is a cloud-based app platform. Its purpose is to connect local service providers        (both contents, and APIs) to the end users through the smart end devices, such as kiosk,      ipad, smart phones, game consoles, smart tv, and smart watch, etc.\n",
+        "description": "The uDo REST API lets you interact with uDo platform from frontend to backend via sending an HTTP request.\n\n\n\n\nuDo is a cloud-based app platform. Its purpose is to connect local service providers (both contents, and APIs) to the end users through the smart end devices, such as kiosk, ipad, smart phones, game consoles, smart tv, and smart watch, etc.\n\nUsername refers to comapny name in uVisit (addVisitor, editVisitor, deleteVisitor), in uMan (findLocationCompany, findPersonWorkForCompany),\nrefers to email address (checkVisitorEmail, findLastFourVisitRecords, findVisitorByEmail, findLastForPersonVisit), \nrefers to date (findCheckInVisitorsToday)\n\nfiveVariables is generic objects for checkin and checkout which are\nSMS and email actions variables\n\n var1 -  senderEmail (unique) \n \n var2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)\n \n var3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)\n \n var4 -  visitorName \n \n var5 -  visitRecordId (visitorEmail + checkinTime)\n",
         "version": "0.1.11.7",
         "title": "uDo Platform API",
         "termsOfService": "http://machool.com/terms/",
@@ -1058,6 +1058,63 @@
                 }
             }
         },
+        "/uman/getCompanyAccountRoles": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Get account roles of the company",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Accont token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get all roles company has (root, admin, and user)",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
         "/uman/savePersonInfo": {
             "post": {
                 "tags": [
@@ -1094,6 +1151,486 @@
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/Person"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/addCostCenterBatch": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Add the batch of costcenters",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Add a set of company costcenters.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CostCenterBatch"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/findLocationCompany": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Find company location",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Find all locations comapny has",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/addPerson": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Add new person information",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Add person who works fot the company",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Person"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/addPersonBatch": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Add a set of person information",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Add a set of people information",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PersonBatch"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/findPersonWorkForCompany": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Find all persons who work for a company",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Find all people who work for a company",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/addLocation": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Add a comapny location",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Add a company location",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Location"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/updateLocation": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Add a company location",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Update (add) comapny location",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Location"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uman/deleteLocation": {
+            "post": {
+                "tags": [
+                    "uMan"
+                ],
+                "summary": "Delete a company location",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Delete (remove) comapny location",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Location"
                         }
                     }
                 ],
@@ -2701,6 +3238,783 @@
                     }
                 }
             }
+        },
+        "/uvisit/addVisitor": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Add new visitor",
+                "description": "",
+                "consumes": [
+                    "applicaiton/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Add a person who is newly visit the company",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Visitor"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uvisit/editVisitor": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Edit visitor",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Edit a person who is newly visit the company",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Visitor"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uvisit/deleteVisitor": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Delete visitor",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "spplication/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Delete a person who is newly visit the company",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Visitor"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uvisit/findVisitorsCompany": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Find all the visitors in a particular locatioin of the comapny",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "applicaiton/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Find all visitors in a particular location of a company",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/findVisitorsCompany"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "succeess"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uvisit/addVisitorRecord": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Add visitor record",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "applicatioin/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Add visitor record which includes check in time, check out time, and visitor information to the company",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/VisitorRecord"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uvisit/checkVisitorEmail": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Check visitor's email address",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "To find the email if the email is in the database",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uvisit/findLastFourVisitRecords": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Find last four hosts record",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Find last four hosts visitor has met in the company",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uvisit/findCheckedInVisitorsToday": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Find the visitors who checked in today",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Find all the visitors who checked in the company (but not checked out)",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uvisit/findVisitorByEmail": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Find visitors who go to the company location",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Find visitors who go to the company location by email",
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uvisit/findLastFourPersonVisit": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Find last four persons who visited the company in a day",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "applicaiton/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Find last four persons who visited the company in a day",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uvisit/sendCheckinMessages": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Send checkin message",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "send email when visitor checked in",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uvisit/sendCheckoutMessages": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Send check out message",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "send email when visitor checked out",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uvisit/sendThanksToVisitorMessages": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Send thank you mail to visitors",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Send thank you email to visitors when they check out",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad requrest"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -2786,6 +4100,18 @@
                     "type": "string"
                 },
                 "costCenterCode": {
+                    "type": "string"
+                },
+                "pictureURl": {
+                    "type": "string"
+                },
+                "companyName": {
+                    "type": "string"
+                },
+                "department": {
+                    "type": "string"
+                },
+                "personStatus": {
                     "type": "string"
                 }
             }
@@ -3506,6 +4832,207 @@
                     "type": "string"
                 },
                 "countryCode": {
+                    "type": "string"
+                }
+            }
+        },
+        "Visitor": {
+            "properties": {
+                "username": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Username"
+                    }
+                },
+                "person": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Person"
+                    }
+                }
+            }
+        },
+        "findVisitorsCompany": {
+            "properties": {
+                "company": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                }
+            }
+        },
+        "VisitorRecord": {
+            "properties": {
+                "companyLocation": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/findVisitorsCompany"
+                    }
+                },
+                "visitorRecord": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VisitRecord"
+                    }
+                }
+            }
+        },
+        "VisitRecord": {
+            "properties": {
+                "visitorEmail": {
+                    "type": "string"
+                },
+                "visitHost": {
+                    "type": "string"
+                },
+                "visitAlternateHost": {
+                    "type": "string"
+                },
+                "checkinTime": {
+                    "type": "string"
+                },
+                "checkoutTime": {
+                    "type": "string"
+                },
+                "visitRate": {
+                    "type": "string"
+                },
+                "visitComments": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "fiveVariables": {
+            "properties": {
+                "var1": {
+                    "type": "string"
+                },
+                "var2": {
+                    "type": "string"
+                },
+                "var3": {
+                    "type": "string"
+                },
+                "var4": {
+                    "type": "string"
+                },
+                "var5": {
+                    "type": "string"
+                }
+            }
+        },
+        "CostCenterBatch": {
+            "properties": {
+                "costcenter": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CostCenter"
+                    }
+                }
+            }
+        },
+        "PersonBatch": {
+            "properties": {
+                "persons": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Person"
+                    }
+                }
+            }
+        },
+        "Location": {
+            "properties": {
+                "locationCompany": {
+                    "type": "string"
+                },
+                "locationName": {
+                    "type": "string"
+                },
+                "locationPhone": {
+                    "type": "string"
+                },
+                "loocationLatitud": {
+                    "type": "string"
+                },
+                "locationLongitud": {
+                    "type": "string"
+                },
+                "locationTimezone": {
+                    "type": "string"
+                },
+                "locationSecurityEmail": {
+                    "type": "string"
+                },
+                "locationSecurityPhone": {
+                    "type": "string"
+                },
+                "locationReceptionEmail": {
+                    "type": "string"
+                },
+                "locationReceptionPhone": {
+                    "type": "string"
+                },
+                "locationStatus": {
+                    "type": "string"
+                },
+                "locationSendEmailHost": {
+                    "type": "string"
+                },
+                "locationSendSMSHost": {
+                    "type": "string"
+                },
+                "locationSendEmailSecurity": {
+                    "type": "string"
+                },
+                "locationSendSMSSecurity": {
+                    "type": "string"
+                },
+                "locationSendEmailReception": {
+                    "type": "string"
+                },
+                "locationSendSMSReception": {
+                    "type": "string"
+                },
+                "locationNDA": {
+                    "type": "string"
+                },
+                "locationShowNDA": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Address"
+                    }
+                }
+            }
+        },
+        "Address": {
+            "properties": {
+                "unit": {
+                    "type": "string"
+                },
+                "line1": {
+                    "type": "string"
+                },
+                "line2": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "province": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "postcode": {
                     "type": "string"
                 }
             }
