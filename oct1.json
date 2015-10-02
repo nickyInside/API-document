@@ -1,9 +1,9 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "The uDo REST API lets you interact with uDo platform from frontend to backend via sending an HTTP request.\n\n\n\n\nuDo is a cloud-based app platform. Its purpose is to connect local service providers (both contents, and APIs) to the end users through the smart end devices, such as kiosk, ipad, smart phones, game consoles, smart tv, and smart watch, etc.\n\nUsername refers to comapny name in uVisit (addVisitor, editVisitor, deleteVisitor), in uMan (findLocationCompany, findPersonWorkForCompany),\nrefers to email address (checkVisitorEmail, findLastFourVisitRecords, findVisitorByEmail, findLastForPersonVisit), \nrefers to date (findCheckInVisitorsToday)\n\nfiveVariables is generic objects for checkin and checkout which are\nSMS and email actions variables\n\n var1 -  senderEmail (unique) \n \n var2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)\n \n var3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)\n \n var4 -  visitorName \n \n var5 -  visitRecordId (visitorEmail + checkinTime)\n",
-        "version": "0.1.11.7",
         "title": "uDo Platform API",
+        "description": "The uDo REST API lets you interact with uDo platform from frontend to backend via sending an HTTP request.\n\nuDo is a cloud-based app platform. Its purpose is to connect local service providers (both contents, and APIs) to the end users through the smart end devices, such as kiosk, ipad, smart phones, game consoles, smart tv, and smart watch, etc.",
+        "version": "0.1.11.7",
         "termsOfService": "http://machool.com/terms/",
         "contact": {
             "name": "info@machool.com"
@@ -21,7 +21,7 @@
                     "uMan"
                 ],
                 "summary": "Check username",
-                "description": "",
+                "description": "Username refers to sender email",
                 "operationId": "usernameCheck",
                 "consumes": [
                     "application/json"
@@ -59,7 +59,7 @@
                     "uMan"
                 ],
                 "summary": "Access to the application services",
-                "description": "",
+                "description": "Username refers to sender email",
                 "operationId": "login",
                 "consumes": [
                     "application/json"
@@ -103,7 +103,7 @@
                     "uMan"
                 ],
                 "summary": "Send email to reset password",
-                "description": "",
+                "description": "Username refers to sender email",
                 "operationId": "forgetpassword",
                 "consumes": [
                     "application/json"
@@ -191,7 +191,7 @@
                     "uMan"
                 ],
                 "summary": "Account Details",
-                "description": "",
+                "description": "Username refers to sender email",
                 "operationId": "accountDetails",
                 "consumes": [
                     "application/json"
@@ -420,7 +420,7 @@
                     "uMan"
                 ],
                 "summary": "Get company cost center",
-                "description": "",
+                "description": "Username refers to company name",
                 "operationId": "getCostCenterCompany",
                 "consumes": [
                     "application/json"
@@ -652,7 +652,7 @@
                     "uMan"
                 ],
                 "summary": "Get service provider",
-                "description": "",
+                "description": "Username refers to company name",
                 "operationId": "getServiceProvidersCompanyService",
                 "consumes": [
                     "application/json"
@@ -710,7 +710,7 @@
                     "uMan"
                 ],
                 "summary": "add sub account",
-                "description": "",
+                "description": "Username refers to sender email",
                 "operationId": "subAccountAdd",
                 "consumes": [
                     "application/json"
@@ -768,7 +768,7 @@
                     "uMan"
                 ],
                 "summary": "Save sub account",
-                "description": "",
+                "description": "Username refers to sender email",
                 "operationId": "subAccountSave",
                 "consumes": [
                     "application/json"
@@ -826,7 +826,7 @@
                     "uMan"
                 ],
                 "summary": "Delete sub account",
-                "description": "",
+                "description": "Username refers to sender email",
                 "operationId": "subAccountDelete",
                 "consumes": [
                     "application/json"
@@ -884,7 +884,7 @@
                     "uMan"
                 ],
                 "summary": "Get company accounts",
-                "description": "",
+                "description": "Username refers to a company name",
                 "operationId": "getCompanyAccounts",
                 "consumes": [
                     "application/json"
@@ -945,7 +945,7 @@
                     "uMan"
                 ],
                 "summary": "Get comapny services",
-                "description": "",
+                "description": "Username refers to a company neme",
                 "operationId": "getCompanyServices",
                 "consumes": [
                     "application/json"
@@ -997,74 +997,13 @@
                 }
             }
         },
-        "/uman/getAppRoles": {
-            "post": {
-                "tags": [
-                    "uMan"
-                ],
-                "summary": "Get app roles",
-                "description": "",
-                "operationId": "getAppRoles",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "username",
-                        "description": "Account username",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "header",
-                        "name": "token",
-                        "description": "Accont token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Get all the roles that uDo appliction has (root, administrator, and user)",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/Username"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "schema": {
-                            "$ref": "#/definitions/RolesArray"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not found"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        },
         "/uman/getCompanyAccountRoles": {
             "post": {
                 "tags": [
                     "uMan"
                 ],
                 "summary": "Get account roles of the company",
-                "description": "",
+                "description": "Username refers to company name",
                 "consumes": [
                     "application/json"
                 ],
@@ -1242,7 +1181,7 @@
                     "uMan"
                 ],
                 "summary": "Find company location",
-                "description": "",
+                "description": "Username refers to a company name",
                 "consumes": [
                     "application/json"
                 ],
@@ -1422,7 +1361,7 @@
                     "uMan"
                 ],
                 "summary": "Find all persons who work for a company",
-                "description": "",
+                "description": "Username refers to a company name",
                 "consumes": [
                     "application/json"
                 ],
@@ -1659,7 +1598,7 @@
         "/uship/senderCheck": {
             "post": {
                 "tags": [
-                    "uShip"
+                    "uSend"
                 ],
                 "summary": "Check sender",
                 "description": "",
@@ -1720,7 +1659,7 @@
         "/uship/senderAdd": {
             "post": {
                 "tags": [
-                    "uShip"
+                    "uSend"
                 ],
                 "summary": "Add sender information",
                 "description": "",
@@ -1781,7 +1720,7 @@
         "/uship/senderDetails": {
             "post": {
                 "tags": [
-                    "uShip"
+                    "uSend"
                 ],
                 "summary": "Get sender information",
                 "description": "",
@@ -1842,7 +1781,7 @@
         "/uship/shippingAdd": {
             "post": {
                 "tags": [
-                    "uShip"
+                    "uSend"
                 ],
                 "summary": "Add a new shipment",
                 "description": "",
@@ -1903,7 +1842,7 @@
         "/uship/shipmentLabel": {
             "post": {
                 "tags": [
-                    "uShip"
+                    "uSend"
                 ],
                 "summary": "Get shipping information",
                 "description": "",
@@ -1964,7 +1903,7 @@
         "/uship/shipmentTransmit": {
             "post": {
                 "tags": [
-                    "uShip"
+                    "uSend"
                 ],
                 "summary": "Transmit shipment",
                 "description": "",
@@ -2025,7 +1964,7 @@
         "/uship/CanadaPostServices": {
             "post": {
                 "tags": [
-                    "uShip"
+                    "uSend"
                 ],
                 "summary": "Get Canada Post services",
                 "description": "",
@@ -2089,7 +2028,7 @@
         "/uship/CanadaPostRates": {
             "post": {
                 "tags": [
-                    "uShip"
+                    "uSend"
                 ],
                 "summary": "Get Canada Post rates",
                 "description": "",
@@ -2153,7 +2092,7 @@
         "/uship/shipmentComplete": {
             "post": {
                 "tags": [
-                    "uShip"
+                    "uSend"
                 ],
                 "summary": "Shipment complete action",
                 "description": "",
@@ -2214,10 +2153,10 @@
         "/uship/shipmentManifest": {
             "post": {
                 "tags": [
-                    "uShip"
+                    "uSend"
                 ],
                 "summary": "get a shipment manifest action",
-                "description": "",
+                "description": "fiveVariables\nvar1 -  senderEmail (unique) \nvar2 -  sender telephone\nvar3 -  shipping ID\nvar4 -  notification email address \nvar5 -  bland (not use)",
                 "operationId": "shipementManifest",
                 "consumes": [
                     "application/json"
@@ -2275,7 +2214,7 @@
         "/uship/CanadaPostAllowedServices": {
             "post": {
                 "tags": [
-                    "uShip"
+                    "uSend"
                 ],
                 "summary": "Get Canada Post services",
                 "description": "",
@@ -2850,7 +2789,7 @@
                         "description": "delete all payment plan",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/Plan"
+                            "$ref": "#/definitions/PlanType"
                         }
                     }
                 ],
@@ -3239,13 +3178,487 @@
                 }
             }
         },
+        "/upay/findPlanServicesCompany": {
+            "post": {
+                "tags": [
+                    "uPay"
+                ],
+                "summary": "Send request to get all services that the company purchased",
+                "description": "Username refers to a company name",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Send request to get all services that the company purchased",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/upay/findBillingInfoCompany": {
+            "post": {
+                "tags": [
+                    "uPay"
+                ],
+                "summary": "Find Company's billing information",
+                "description": "Username refers to a company name",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Send request to get company's billing information",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/upay/updateCreditCardStatus": {
+            "post": {
+                "tags": [
+                    "uPay"
+                ],
+                "summary": "Update credit card status",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Send request to update client's credit card information",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/BillingInfo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/upay/subscribeToPlan": {
+            "post": {
+                "tags": [
+                    "uPay"
+                ],
+                "summary": "Subscribe user to a plan",
+                "description": "fiveVariables\nvar1 -  company name \nvar2 -  service name\nvar3 -  subscription periods\nvar4 -  user email address \nvar5 -  blank (not use)",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Link user to uDo plan (service name, subscription periods)",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/upay/authorizeCustomer": {
+            "post": {
+                "tags": [
+                    "uPay"
+                ],
+                "summary": "Authorize credit card information",
+                "description": "fiveVariables\nvar1 -  client email address  \nvar2 -  card number array\nvar3 -  authorization\nvar4, var5 -  blank (not use)",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Authorize client credit card information",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/upay/getPayFirmaCustomerDetails": {
+            "post": {
+                "tags": [
+                    "uPay"
+                ],
+                "summary": "Get customer detail",
+                "description": "Username refers to an email address",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Send request to get customer's credit card information",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/upay/deleteCreditCard": {
+            "post": {
+                "tags": [
+                    "uPay"
+                ],
+                "summary": "Delete credit card information",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Send request to remove customer's credit card information",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/upay/cancelPlan": {
+            "post": {
+                "tags": [
+                    "uPay"
+                ],
+                "summary": "cancel uDo plan service",
+                "description": "Username refers to a plan ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Send request to cancel uDo plan service",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
         "/uvisit/addVisitor": {
             "post": {
                 "tags": [
                     "uVisit"
                 ],
                 "summary": "Add new visitor",
-                "description": "",
+                "description": "Username refers to a company name",
                 "consumes": [
                     "applicaiton/json"
                 ],
@@ -3305,7 +3718,7 @@
                     "uVisit"
                 ],
                 "summary": "Edit visitor",
-                "description": "",
+                "description": "Username refers to a company name",
                 "consumes": [
                     "application/json"
                 ],
@@ -3365,7 +3778,7 @@
                     "uVisit"
                 ],
                 "summary": "Delete visitor",
-                "description": "",
+                "description": "Username refers to a company name",
                 "consumes": [
                     "application/json"
                 ],
@@ -3479,7 +3892,7 @@
                 }
             }
         },
-        "/uvisit/addVisitorRecord": {
+        "/uvisit/addVisitRecord": {
             "post": {
                 "tags": [
                     "uVisit"
@@ -3490,7 +3903,7 @@
                     "application/json"
                 ],
                 "produces": [
-                    "applicatioin/json"
+                    "application/json"
                 ],
                 "parameters": [
                     {
@@ -3534,6 +3947,63 @@
                         "description": "Conflict"
                     },
                     "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uvisit/editVisitRecord": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Edit visitor record",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Edit visitor record which includes check in time, check out timr, and visitor information to the company",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/VisitorRecord"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
                         "description": "Internal server error"
                     }
                 }
@@ -3665,6 +4135,7 @@
                     "uVisit"
                 ],
                 "summary": "Find the visitors who checked in today",
+                "description": "Username refers to date",
                 "consumes": [
                     "application/json"
                 ],
@@ -3724,6 +4195,7 @@
                     "uVisit"
                 ],
                 "summary": "Find visitors who go to the company location",
+                "description": "Username refers to a email address",
                 "consumes": [
                     "application/json"
                 ],
@@ -3749,6 +4221,7 @@
                         "in": "body",
                         "name": "body",
                         "description": "Find visitors who go to the company location by email",
+                        "required": true,
                         "schema": {
                             "$ref": "#/definitions/Username"
                         }
@@ -3782,7 +4255,7 @@
                     "uVisit"
                 ],
                 "summary": "Find last four persons who visited the company in a day",
-                "description": "",
+                "description": "Username refers to an email address",
                 "consumes": [
                     "application/json"
                 ],
@@ -3842,7 +4315,7 @@
                     "uVisit"
                 ],
                 "summary": "Send checkin message",
-                "description": "",
+                "description": "fiveVariables\nvar1 -  senderEmail (unique) \nvar2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)\nvar3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)\nvar4 -  visitorName \nvar5 -  visitRecordId (visitorEmail + checkinTime)",
                 "consumes": [
                     "application/json"
                 ],
@@ -3902,7 +4375,7 @@
                     "uVisit"
                 ],
                 "summary": "Send check out message",
-                "description": "",
+                "description": "fiveVariables (sendCheckinMessages, sendCheckoutMessages, sendThanksToVisitorMessages)\nvar1 -  senderEmail (unique) \nvar2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)\nvar3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)\nvar4 -  visitorName \nvar5 -  visitRecordId (visitorEmail + checkinTime)",
                 "consumes": [
                     "application/json"
                 ],
@@ -3962,7 +4435,7 @@
                     "uVisit"
                 ],
                 "summary": "Send thank you mail to visitors",
-                "description": "",
+                "description": "fiveVariables (sendCheckinMessages, sendCheckoutMessages, sendThanksToVisitorMessages)\nvar1 -  senderEmail (unique) \nvar2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)\nvar3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)\nvar4 -  visitorName \nvar5 -  visitRecordId (visitorEmail + checkinTime)",
                 "consumes": [
                     "application/json"
                 ],
@@ -4000,6 +4473,543 @@
                     },
                     "400": {
                         "description": "Bad requrest"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uvisit/findNumberVisitsCompanyByDay": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Find the number of visits by day",
+                "description": "fiveVariable (findNumberVisitsCompanyByDay)\nvar1 - from date\nvar2 - to date\nvar3 - show duplicate (yes - show/ no - not show)\nvar4 - blank (not use)\nvar5 - blank (not use)",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Send request to get number of visits by day",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad requrest"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uvisit/setCheckoutTimeVisitRecord": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Send checkout time to a visit record",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "send request (location, visit record) to get checkout record to a visit record",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/VisitorRecord"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad requrest"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uvisit/findAllVisitorPeriod": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Find all visitor record in a time period",
+                "description": "fiveVariables (findAllVisitorPeriod, findTwentyMostVisitedHostPeriods)\nvar1 - from date\nvar2 - to date\nvar3, var4, var5 - blank (not use)",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Send request to get all visitors in a period of time",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad requrest"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uvisit/findVisitsHostByDayPeriod": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Find host who has visits in a period of time",
+                "description": "fiveVariables (findVisitsHostByDayPeriod, findVisitRecordsHostByDayPeriod)\nvar1 - from date\nvar2 - to date\nvar3 - host email (unique)\nvar4, var5 - blank (not use)",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Send request to get host who has visits in a period of time",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad requrest"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uvisit/findVisitRecordsHostByDayPeriod": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Find host who has visit record (checkin time, checkout time, rate etc)",
+                "description": "fiveVariables (findVisitsHostByDayPeriod, findVisitRecordsHostByDayPeriod)\nvar1 - from date\nvar2 - to date\nvar3 - host email (unique)\nvar4, var5 - blank (not use)",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Find host who has visit record (checkin time, checkout time, rate etc) in a period of time",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad requrest"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uvisit/findTwentyMostVisitedHostPeriods": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Find twenty hosts who have most visits",
+                "description": "fiveVariables (findAllVisitorPeriod, findTwentyMostVisitedHostPeriods)\nvar1 - from date\nvar2 - to date\nvar3, var4, var5 - blank (not use)",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Find twenty hosts who have most visits in a period of time",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uvisit/findAllVisitorsToday": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Find today's all visitors",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Send request to get today's all visit record, visitor, and host",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uvisit/getBadgeURL": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Get Badge image URL",
+                "description": "fiveVariables (getBadgeuRL, getBadgePDF)\nvar1 - picture \nvar2 - visitor name\nvar3 - company name\nvar4 - email address\nvar5 - qr code",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Send request to get a visitor badge URL",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uvisit/getBadgePDF": {
+            "post": {
+                "tags": [
+                    "uVisit"
+                ],
+                "summary": "Get badge PDF file",
+                "description": "fiveVariables (getBadgeuRL, getBadgePDF)\nvar1 - picture \nvar2 - visitor name\nvar3 - company name\nvar4 - email address\nvar5 - qr code",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Send request to get a visitor badge PDF file for print",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
                     },
                     "403": {
                         "description": "Forbidden"
@@ -4102,7 +5112,7 @@
                 "costCenterCode": {
                     "type": "string"
                 },
-                "pictureURl": {
+                "pictureURL": {
                     "type": "string"
                 },
                 "companyName": {
@@ -4252,16 +5262,6 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/Signup"
-                    }
-                }
-            }
-        },
-        "RolesArray": {
-            "properties": {
-                "roles": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Role"
                     }
                 }
             }
@@ -4752,6 +5752,13 @@
                 }
             }
         },
+        "PlanType": {
+            "properties": {
+                "planType": {
+                    "type": "string"
+                }
+            }
+        },
         "PlanService": {
             "properties": {
                 "companyName": {
@@ -4782,7 +5789,37 @@
         },
         "PlansArrayItem": {
             "properties": {
-                "planserviceItem": {
+                "name": {
+                    "type": "string"
+                },
+                "planType": {
+                    "type": "string"
+                },
+                "nameDisplayed": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "billingFrequency": {
+                    "type": "string"
+                },
+                "numberOfPayments": {
+                    "type": "string"
+                },
+                "amountPerPayment": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "sendReceipt": {
+                    "type": "string"
+                },
+                "percentageInvoice": {
+                    "type": "string"
+                },
+                "billingEmail": {
                     "type": "string"
                 }
             }
@@ -4883,10 +5920,16 @@
                 "visitorEmail": {
                     "type": "string"
                 },
-                "visitHost": {
+                "visitHostEmail": {
                     "type": "string"
                 },
-                "visitAlternateHost": {
+                "visitHostPhone": {
+                    "type": "string"
+                },
+                "visitAlternateHostEmail": {
+                    "type": "string"
+                },
+                "visitAlternateHostPhone": {
                     "type": "string"
                 },
                 "checkinTime": {

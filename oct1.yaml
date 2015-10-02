@@ -1,42 +1,17 @@
 swagger: '2.0'
 info:
-  description: >
+  title: uDo Platform API
+  description:
     The uDo REST API lets you interact with uDo platform from frontend to backend
     via sending an HTTP request.
-
-
-
 
 
     uDo is a cloud-based app platform. Its purpose is to connect local service
     providers (both contents, and APIs) to the end users through the smart
     end devices, such as kiosk, ipad, smart phones, game consoles, smart tv,
     and smart watch, etc.
-    
-    
-    Username refers to comapny name in uVisit (addVisitor, editVisitor, deleteVisitor), in uMan (findLocationCompany, findPersonWorkForCompany),
-    
-    refers to email address (checkVisitorEmail, findLastFourVisitRecords, findVisitorByEmail, findLastForPersonVisit), 
-    
-    refers to date (findCheckInVisitorsToday)
-    
-    
-    fiveVariables is generic objects for checkin and checkout which are
-    
-    SMS and email actions variables
-    
-     var1 -  senderEmail (unique) 
-     
-     var2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)
-     
-     var3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)
-     
-     var4 -  visitorName 
-     
-     var5 -  visitRecordId (visitorEmail + checkinTime)
-    
+  
   version: 0.1.11.7
-  title: uDo Platform API
   termsOfService: 'http://machool.com/terms/'
   contact:
     name: info@machool.com
@@ -50,7 +25,7 @@ paths:
       tags:
         - uMan
       summary: Check username
-      description: ''
+      description: 'Username refers to sender email'
       operationId: usernameCheck
       consumes:
         - application/json
@@ -75,7 +50,7 @@ paths:
       tags:
         - uMan
       summary: Access to the application services
-      description: ''
+      description: 'Username refers to sender email'
       operationId: login
       consumes:
         - application/json
@@ -104,7 +79,7 @@ paths:
       tags:
         - uMan
       summary: Send email to reset password
-      description: ''
+      description: 'Username refers to sender email'
       operationId: forgetpassword
       consumes:
         - application/json
@@ -162,7 +137,7 @@ paths:
       tags:
         - uMan
       summary: Account Details
-      description: ''
+      description: 'Username refers to sender email'
       operationId: accountDetails
       consumes:
         - application/json
@@ -316,7 +291,7 @@ paths:
       tags:
         - uMan
       summary: Get company cost center
-      description: ''
+      description: 'Username refers to company name'
       operationId: getCostCenterCompany
       consumes:
         - application/json
@@ -472,7 +447,7 @@ paths:
       tags:
         - uMan
       summary: Get service provider
-      description: ''
+      description: 'Username refers to company name'
       operationId: getServiceProvidersCompanyService
       consumes:
         - application/json
@@ -511,7 +486,7 @@ paths:
       tags:
         - uMan
       summary: add sub account
-      description: ''
+      description: 'Username refers to sender email'
       operationId: subAccountAdd
       consumes:
         - application/json
@@ -550,7 +525,7 @@ paths:
       tags:
         - uMan
       summary: Save sub account
-      description: ''
+      description: 'Username refers to sender email'
       operationId: subAccountSave
       consumes:
         - application/json
@@ -589,7 +564,7 @@ paths:
       tags:
         - uMan
       summary: Delete sub account
-      description: ''
+      description: 'Username refers to sender email'
       operationId: subAccountDelete
       consumes:
         - application/json
@@ -629,7 +604,7 @@ paths:
       tags:
         - uMan
       summary: Get company accounts
-      description: ''
+      description: 'Username refers to a company name'
       operationId: getCompanyAccounts
       consumes:
         - application/json
@@ -670,7 +645,7 @@ paths:
       tags:
         - uMan
       summary: Get comapny services
-      description: ''
+      description: 'Username refers to a company neme'
       operationId: getCompanyServices
       consumes:
         - application/json
@@ -704,54 +679,13 @@ paths:
           description: Not found
         '500':
           description: Internal server error
-  /uman/getAppRoles:
-    post:
-      tags:
-        - uMan
-      summary: Get app roles
-      description: ''
-      operationId: getAppRoles
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - in: header
-          name: username
-          description: Account username
-          required: true
-          type: string
-        - in: header
-          name: token
-          description: Accont token
-          required: true
-          type: string
-        - in: body
-          name: body
-          description: 'Get all the roles that uDo appliction has (root, administrator, and user)'
-          required: true
-          schema:
-            $ref: '#/definitions/Username'
-      responses:
-        '200':
-          description: Success
-          schema:
-            $ref: '#/definitions/RolesArray'
-        '400':
-          description: Bad request
-        '403':
-          description: Forbidden
-        '404':
-          description: Not found
-        '500':
-          description: Internal server error
-          
+
   /uman/getCompanyAccountRoles:
     post:
       tags:
         - uMan
       summary: Get account roles of the company
-      description: ''
+      description: 'Username refers to company name'
       consumes:
         - application/json
       produces:
@@ -873,7 +807,7 @@ paths:
       tags:
         - uMan
       summary: Find company location
-      description: ''
+      description: 'Username refers to a company name'
       consumes: 
         - application/json
       produces:
@@ -996,7 +930,7 @@ paths:
       tags:
         - uMan
       summary: Find all persons who work for a company
-      description: ''
+      description: 'Username refers to a company name'
       consumes: 
         - application/json
       produces:
@@ -1158,7 +1092,7 @@ paths:
   /uship/senderCheck:
     post:
       tags:
-        - uShip
+        - uSend
       summary: Check sender
       description: ''
       operationId: senderCheck
@@ -1200,7 +1134,7 @@ paths:
   /uship/senderAdd:
     post:
       tags:
-        - uShip
+        - uSend
       summary: Add sender information
       description: ''
       operationId: senderAdd
@@ -1242,7 +1176,7 @@ paths:
   /uship/senderDetails:
     post:
       tags:
-        - uShip
+        - uSend
       summary: Get sender information
       description: ''
       operationId: senderDetails
@@ -1283,7 +1217,7 @@ paths:
   /uship/shippingAdd:
     post:
       tags:
-        - uShip
+        - uSend
       summary: Add a new shipment
       description: ''
       operationId: shippingAdd
@@ -1324,7 +1258,7 @@ paths:
   /uship/shipmentLabel:
     post:
       tags:
-        - uShip
+        - uSend
       summary: Get shipping information
       description: ''
       operationId: shipemntLabel
@@ -1365,7 +1299,7 @@ paths:
   /uship/shipmentTransmit:
     post:
       tags:
-        - uShip
+        - uSend
       summary: Transmit shipment
       description: ''
       operationId: shipmentTransmit
@@ -1406,7 +1340,7 @@ paths:
   /uship/CanadaPostServices:
     post:
       tags:
-        - uShip
+        - uSend
       summary: Get Canada Post services
       description: ''
       operationId: CanadaPostServices
@@ -1449,7 +1383,7 @@ paths:
   /uship/CanadaPostRates:
     post:
       tags:
-        - uShip
+        - uSend
       summary: Get Canada Post rates
       description: ''
       operationId: CanadaPostRates
@@ -1492,7 +1426,7 @@ paths:
   /uship/shipmentComplete:
     post:
       tags:
-        - uShip
+        - uSend
       summary: Shipment complete action
       description: ''
       operationId: shipmentComplete
@@ -1530,12 +1464,23 @@ paths:
           description: Conflict
         '500':
           description: Internal server error
+          
   /uship/shipmentManifest:
     post:
       tags:
-        - uShip
+        - uSend
       summary: get a shipment manifest action
-      description: ''
+      description: 'fiveVariables
+                   
+                   var1 -  senderEmail (unique) 
+                   
+                   var2 -  sender telephone
+                   
+                   var3 -  shipping ID
+                   
+                   var4 -  notification email address 
+                   
+                   var5 -  bland (not use)'
       operationId: shipementManifest
       consumes:
         - application/json
@@ -1571,10 +1516,11 @@ paths:
           description: Conflict
         '500':
           description: Internal server error
+          
   /uship/CanadaPostAllowedServices:
     post:
       tags:
-        - uShip
+        - uSend
       summary: Get Canada Post services
       description: ''
       operationId: CanadaPostAllowedServices
@@ -1612,6 +1558,7 @@ paths:
           description: Conflict
         '500':
           description: Internal server error
+          
   /ulog/logger:
     post:
       tags:
@@ -1815,6 +1762,7 @@ paths:
           description: Conflict
         '500':
           description: Internal server error
+          
   /uPay/addPlan:
     post:
       tags:
@@ -1935,6 +1883,7 @@ paths:
           description: Conflict
         '500':
           description: Internal server error
+          
   /uPay/findPlansByType:
     post:
       tags:
@@ -1961,7 +1910,7 @@ paths:
           description: delete all payment plan
           required: true
           schema:
-            $ref: '#/definitions/Plan'
+            $ref: '#/definitions/PlanType'
       responses:
         '200':
           description: Success
@@ -1977,6 +1926,7 @@ paths:
           description: Conflict
         '500':
           description: Internal server error
+          
   /uPay/addPlanService:
     post:
       tags:
@@ -2097,6 +2047,7 @@ paths:
           description: Conflict
         '500':
           description: Internal server error
+          
   /upay/addBillingInfo:
     post:
       tags:
@@ -2137,6 +2088,7 @@ paths:
           description: Conflict
         '500':
           description: Internal server error
+          
   /upay/editBillingInfo:
     post:
       tags:
@@ -2177,6 +2129,7 @@ paths:
           description: Conflict
         '500':
           description: Internal server error
+          
   /upay/deleteBillingInfo:
     post:
       tags:
@@ -2218,12 +2171,354 @@ paths:
         '500':
           description: Internal server error
           
+  /upay/findPlanServicesCompany:
+    post:
+      tags:
+        - uPay
+      summary: Send request to get all services that the company purchased
+      description: 'Username refers to a company name'
+      consumes: 
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Send request to get all services that the company purchased
+          required: true
+          schema:
+            $ref: '#/definitions/Username'
+      responses:
+        '200':
+          description: success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /upay/findBillingInfoCompany:
+    post:
+      tags:
+        - uPay
+      summary: Find Company's billing information
+      description: 'Username refers to a company name'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Send request to get company's billing information
+          required: true
+          schema:
+            $ref: '#/definitions/Username'
+      responses:
+        '200':
+          description: success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /upay/updateCreditCardStatus:
+    post:
+      tags:
+        - uPay
+      summary: Update credit card status
+      description: ''
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Send request to update client's credit card information
+          required: true
+          schema:
+            $ref: '#/definitions/BillingInfo'
+      responses:
+        '200':
+          description: success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+    
+  /upay/subscribeToPlan:
+    post:
+      tags:
+        - uPay
+      summary: Subscribe user to a plan
+      description: 'fiveVariables
+                   
+                   var1 -  company name 
+                   
+                   var2 -  service name
+                   
+                   var3 -  subscription periods
+                   
+                   var4 -  user email address 
+                   
+                   var5 -  blank (not use)'
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Link user to uDo plan (service name, subscription periods)
+          required: true
+          schema:
+            $ref: '#/definitions/fiveVariables'
+      responses:
+        '200':
+          description: success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /upay/authorizeCustomer:
+    post:
+      tags:
+        - uPay
+      summary: Authorize credit card information
+      description: 'fiveVariables
+                   
+                   var1 -  client email address  
+                   
+                   var2 -  card number array
+                   
+                   var3 -  authorization
+                   
+                   var4, var5 -  blank (not use)'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Authorize client credit card information
+          required: true
+          schema:
+            $ref: '#/definitions/fiveVariables'
+      responses:
+        '200':
+          description: success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error 
+          
+  /upay/getPayFirmaCustomerDetails:
+    post:
+      tags:
+        - uPay
+      summary: Get customer detail
+      description: 'Username refers to an email address'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Send request to get customer's credit card information
+          required: true
+          schema:
+            $ref: '#/definitions/Username'
+      responses:
+        '200':
+          description: success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error 
+          
+  /upay/deleteCreditCard:
+    post:
+      tags:
+        - uPay
+      summary: Delete credit card information
+      description: ''
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Send request to remove customer's credit card information
+          required: true
+          schema:
+            $ref: '#/definitions/fiveVariables'
+      responses:
+        '200':
+          description: success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /upay/cancelPlan:
+    post:
+      tags:
+        - uPay
+      summary: cancel uDo plan service
+      description: 'Username refers to a plan ID'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Send request to cancel uDo plan service
+          required: true
+          schema:
+            $ref: '#/definitions/Username'
+      responses:
+        '200':
+          description: success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
   /uvisit/addVisitor:
     post:
       tags:
         - uVisit
       summary: Add new visitor
-      description: ''
+      description: 'Username refers to a company name'
       consumes:
         - applicaiton/json
       produces:
@@ -2264,7 +2559,7 @@ paths:
       tags:
         - uVisit
       summary: Edit visitor
-      description: ''
+      description: 'Username refers to a company name'
       consumes:
         - application/json
       produces:
@@ -2305,7 +2600,7 @@ paths:
       tags:
         - uVisit
       summary: Delete visitor
-      description: ''
+      description: 'Username refers to a company name'
       consumes: 
         - application/json
       produces:
@@ -2382,7 +2677,7 @@ paths:
         '500':
           description: Internal server error
           
-  /uvisit/addVisitorRecord:
+  /uvisit/addVisitRecord:
     post:
       tags:
         - uVisit
@@ -2391,7 +2686,7 @@ paths:
       consumes:
         - application/json
       produces:
-        - applicatioin/json
+        - application/json
       parameters:
         - in: header
           name: username
@@ -2421,6 +2716,45 @@ paths:
         '409':
           description: Conflict
         '500':
+          description: Internal server error
+          
+  /uvisit/editVisitRecord:
+    post:
+      tags:
+        - uVisit
+      summary: Edit visitor record
+      description: ''
+      consumes:
+        - application/json
+      produces:
+        - application/
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Edit visitor record which includes check in time, check out timr, and visitor information to the company
+          required: true
+          schema:
+            $ref: '#/definitions/VisitorRecord'
+      responses:
+        '200':
+          description: success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
           description: Internal server error
           
   /uvisit/checkVisitorEmail:
@@ -2510,6 +2844,7 @@ paths:
       tags:
         - uVisit
       summary: Find the visitors who checked in today
+      description: 'Username refers to date'
       consumes:
         - application/json
       produces:
@@ -2550,6 +2885,7 @@ paths:
       tags:
         - uVisit
       summary: Find visitors who go to the company location
+      description: 'Username refers to a email address'
       consumes:
         - application/json
       produces:
@@ -2568,6 +2904,7 @@ paths:
         - in: body
           name: body
           description: Find visitors who go to the company location by email
+          required: true
           schema:
             $ref: '#/definitions/Username'
       responses:
@@ -2589,7 +2926,7 @@ paths:
       tags:
         - uVisit
       summary: Find last four persons who visited the company in a day
-      description: ''
+      description: 'Username refers to an email address'
       consumes:
         - application/json
       produces:
@@ -2630,7 +2967,17 @@ paths:
       tags:
         - uVisit
       summary: Send checkin message
-      description: ''
+      description: 'fiveVariables
+                   
+                   var1 -  senderEmail (unique) 
+                   
+                   var2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)
+                   
+                   var3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)
+                   
+                   var4 -  visitorName 
+                   
+                   var5 -  visitRecordId (visitorEmail + checkinTime)'
       consumes: 
         - application/json
       produces:
@@ -2671,7 +3018,17 @@ paths:
       tags:
         - uVisit
       summary: Send check out message
-      description: ''
+      description: 'fiveVariables (sendCheckinMessages, sendCheckoutMessages, sendThanksToVisitorMessages)
+                   
+                   var1 -  senderEmail (unique) 
+                   
+                   var2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)
+                   
+                   var3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)
+                   
+                   var4 -  visitorName 
+                   
+                   var5 -  visitRecordId (visitorEmail + checkinTime)'
       consumes:
         - application/json
       produces:
@@ -2712,7 +3069,17 @@ paths:
       tags:
         - uVisit
       summary: Send thank you mail to visitors
-      description: ''
+      description: 'fiveVariables (sendCheckinMessages, sendCheckoutMessages, sendThanksToVisitorMessages)
+                   
+                   var1 -  senderEmail (unique) 
+                   
+                   var2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)
+                   
+                   var3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)
+                   
+                   var4 -  visitorName 
+                   
+                   var5 -  visitRecordId (visitorEmail + checkinTime)'
       consumes:
         - application/json
       produces:
@@ -2747,9 +3114,434 @@ paths:
           description: Conflict
         '500':
           description: Internal server error
-            
           
+  /uvisit/findNumberVisitsCompanyByDay:
+    post:
+      tags:
+        - uVisit
+      summary: Find the number of visits by day
+      description: 'fiveVariable (findNumberVisitsCompanyByDay)
+                   
+                   var1 - from date
+                   
+                   var2 - to date
+                   
+                   var3 - show duplicate (yes - show/ no - not show)
+                   
+                   var4 - blank (not use)
+                   
+                   var5 - blank (not use)'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Send request to get number of visits by day
+          required: true
+          schema:
+            $ref: '#/definitions/fiveVariables'
+      responses:
+        '200':
+          description: success
+        '400':
+          description: Bad requrest
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /uvisit/setCheckoutTimeVisitRecord:
+    post:
+      tags:
+        - uVisit
+      summary: Send checkout time to a visit record
+      description: ''
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: send request (location, visit record) to get checkout record to a visit record
+          required: true
+          schema:
+            $ref: '#/definitions/VisitorRecord'
+      responses:
+        '200':
+          description: success
+        '400':
+          description: Bad requrest
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /uvisit/findAllVisitorPeriod:
+    post:
+      tags:
+        - uVisit
+      summary: Find all visitor record in a time period
+      description: 'fiveVariables (findAllVisitorPeriod, findTwentyMostVisitedHostPeriods)
+                   
+                   var1 - from date
+                   
+                   var2 - to date
+                   
+                   var3, var4, var5 - blank (not use)'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Send request to get all visitors in a period of time
+          required: true
+          schema:
+            $ref: '#/definitions/fiveVariables'
+      responses:
+        '200':
+          description: success
+        '400':
+          description: Bad requrest
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /uvisit/findVisitsHostByDayPeriod:
+    post: 
+      tags:
+        - uVisit
+      summary: Find host who has visits in a period of time
+      description: 'fiveVariables (findVisitsHostByDayPeriod, findVisitRecordsHostByDayPeriod)
+                   
+                   var1 - from date
+                   
+                   var2 - to date
+                   
+                   var3 - host email (unique)
+                   
+                   var4, var5 - blank (not use)'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Send request to get host who has visits in a period of time
+          required: true
+          schema:
+            $ref: '#/definitions/fiveVariables'
+      responses:
+        '200':
+          description: success
+        '400':
+          description: Bad requrest
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /uvisit/findVisitRecordsHostByDayPeriod:
+    post:
+      tags:
+        - uVisit
+      summary: Find host who has visit record (checkin time, checkout time, rate etc)
+      description: 'fiveVariables (findVisitsHostByDayPeriod, findVisitRecordsHostByDayPeriod)
+                   
+                   var1 - from date
+                   
+                   var2 - to date
+                   
+                   var3 - host email (unique)
+                   
+                   var4, var5 - blank (not use)'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Find host who has visit record (checkin time, checkout time, rate etc) in a period of time
+          required: true
+          schema:
+            $ref: '#/definitions/fiveVariables'
+      responses:
+        '200':
+          description: success
+        '400':
+          description: Bad requrest
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /uvisit/findTwentyMostVisitedHostPeriods:
+    post:
+      tags:
+        - uVisit
+      summary: Find twenty hosts who have most visits
+      description: 'fiveVariables (findAllVisitorPeriod, findTwentyMostVisitedHostPeriods)
+                   
+                   var1 - from date
+                   
+                   var2 - to date
+                   
+                   var3, var4, var5 - blank (not use)'
+      consumes: 
+        - application/json
+      parameters:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Find twenty hosts who have most visits in a period of time
+          required: true
+          schema:
+            $ref: '#/definitions/fiveVariables'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
         
+  /uvisit/findAllVisitorsToday:
+    post:
+      tags:
+        - uVisit
+      summary: Find today's all visitors
+      description: ''
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Send request to get today's all visit record, visitor, and host 
+          required: true
+          schema:
+            $ref: '#/definitions/Username'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /uvisit/getBadgeURL:
+    post:
+      tags:
+        - uVisit
+      summary: Get Badge image URL
+      description: 'fiveVariables (getBadgeuRL, getBadgePDF)
+                   
+                   var1 - picture 
+                   
+                   var2 - visitor name
+                   
+                   var3 - company name
+                   
+                   var4 - email address
+                   
+                   var5 - qr code'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Send request to get a visitor badge URL  
+          required: true
+          schema:
+            $ref: '#/definitions/fiveVariables'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /uvisit/getBadgePDF:
+    post:
+      tags:
+        - uVisit
+      summary: Get badge PDF file
+      description: 'fiveVariables (getBadgeuRL, getBadgePDF)
+                   
+                   var1 - picture 
+                   
+                   var2 - visitor name
+                   
+                   var3 - company name
+                   
+                   var4 - email address
+                   
+                   var5 - qr code'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Send request to get a visitor badge PDF file for print  
+          required: true
+          schema:
+            $ref: '#/definitions/fiveVariables'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
 definitions:
   Username:
     properties:
@@ -2805,7 +3597,7 @@ definitions:
         type: string
       costCenterCode:
         type: string
-      pictureURl:
+      pictureURL:
         type: string
       companyName:
         type: string
@@ -2902,12 +3694,6 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Signup'
-  RolesArray:
-    properties:
-      roles:
-        type: array
-        items:
-          $ref: '#/definitions/Role'
   SenderCheck:
     properties:
       username:
@@ -3221,6 +4007,10 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Plan'
+  PlanType:
+    properties:
+      planType:
+        type: string
   PlanService:
     properties:
       companyName:
@@ -3241,7 +4031,27 @@ definitions:
           $ref: '#/definitions/PlansArrayItem'
   PlansArrayItem:
     properties:
-      planserviceItem:
+      name:
+        type: string
+      planType:
+        type: string
+      nameDisplayed:
+        type: string
+      description: 
+        type: string
+      billingFrequency: 
+        type: string
+      numberOfPayments:
+        type: string
+      amountPerPayment:
+        type: string
+      currency:
+        type: string
+      sendReceipt:
+        type: string
+      percentageInvoice:
+        type: string
+      billingEmail:
         type: string
   BillingInfo:
     properties:
@@ -3307,13 +4117,17 @@ definitions:
   VisitRecord:
     properties:
       visitorEmail:
-         type: string
-      visitHost:
-         type: string
-      visitAlternateHost:
-         type: string
+        type: string
+      visitHostEmail:
+        type: string
+      visitHostPhone:
+        type: string
+      visitAlternateHostEmail:
+        type: string
+      visitAlternateHostPhone:
+        type: string
       checkinTime:
-         type: string
+        type: string
       checkoutTime:
         type: string
       visitRate:
