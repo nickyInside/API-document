@@ -37,3 +37,8 @@ uDo API documentation is now on server so you can access the document without se
 URL: http://uservice.machool.com:3000/
 
 If the browser does not display our API documentation, download JSON or yaml file from our repository and import either one of them. 
+
+
+Oct 1st - Updates
+
+Added uPay and uVisit APIs, modified some objects, and edited description.  
