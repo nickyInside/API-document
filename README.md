@@ -42,3 +42,7 @@ If the browser does not display our API documentation, download JSON or yaml fil
 Oct 1st - Updates
 
 Added uPay and uVisit APIs, modified some objects, and edited description.  
+
+Oct 20th - Updates
+
+Added uContent(request documents, filter documents, and zip documents)
