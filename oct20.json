@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "title": "uDo Platform API",
-        "description": "The uDo REST API lets you interact with uDo platform from frontend to backend via sending an HTTP request.\n\nuDo is a cloud-based app platform. Its purpose is to connect local service providers (both contents, and APIs) to the end users through the smart end devices, such as kiosk, ipad, smart phones, game consoles, smart tv, and smart watch, etc.",
+        "description": "The uDo REST API lets you interact with uDo platform from frontend to backend via sending an HTTP request.<br><br> uDo is a cloud-based app platform. Its purpose is to connect local service providers (both contents, and APIs) to the end users through the smart end devices, such as kiosk, ipad, smart phones, game consoles, smart tv, and smart watch, etc.",
         "version": "0.1.11.7",
         "termsOfService": "http://machool.com/terms/",
         "contact": {
@@ -21,7 +21,7 @@
                     "uMan"
                 ],
                 "summary": "Check username",
-                "description": "Username refers to sender email",
+                "description": "*Username* refers to sender email",
                 "operationId": "usernameCheck",
                 "consumes": [
                     "application/json"
@@ -59,7 +59,7 @@
                     "uMan"
                 ],
                 "summary": "Access to the application services",
-                "description": "Username refers to sender email",
+                "description": "*Username* refers to sender email",
                 "operationId": "login",
                 "consumes": [
                     "application/json"
@@ -71,7 +71,7 @@
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "Username and Password that needs to check in uDo database, and token",
+                        "description": "*Username* and *Password* that needs to check in uDo database, and token",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/Login"
@@ -103,7 +103,7 @@
                     "uMan"
                 ],
                 "summary": "Send email to reset password",
-                "description": "Username refers to sender email",
+                "description": "*Username* refers to sender email",
                 "operationId": "forgetpassword",
                 "consumes": [
                     "application/json"
@@ -191,7 +191,7 @@
                     "uMan"
                 ],
                 "summary": "Account Details",
-                "description": "Username refers to sender email",
+                "description": "*Username* refers to sender email",
                 "operationId": "accountDetails",
                 "consumes": [
                     "application/json"
@@ -652,7 +652,7 @@
                     "uMan"
                 ],
                 "summary": "Get service provider",
-                "description": "Username refers to company name",
+                "description": "*Username* refers to company name",
                 "operationId": "getServiceProvidersCompanyService",
                 "consumes": [
                     "application/json"
@@ -710,7 +710,7 @@
                     "uMan"
                 ],
                 "summary": "add sub account",
-                "description": "Username refers to sender email",
+                "description": "*Username* refers to sender email",
                 "operationId": "subAccountAdd",
                 "consumes": [
                     "application/json"
@@ -768,7 +768,7 @@
                     "uMan"
                 ],
                 "summary": "Save sub account",
-                "description": "Username refers to sender email",
+                "description": "*Username* refers to sender email",
                 "operationId": "subAccountSave",
                 "consumes": [
                     "application/json"
@@ -826,7 +826,7 @@
                     "uMan"
                 ],
                 "summary": "Delete sub account",
-                "description": "Username refers to sender email",
+                "description": "*Username* refers to sender email",
                 "operationId": "subAccountDelete",
                 "consumes": [
                     "application/json"
@@ -884,7 +884,7 @@
                     "uMan"
                 ],
                 "summary": "Get company accounts",
-                "description": "Username refers to a company name",
+                "description": "*Username* refers to a company name",
                 "operationId": "getCompanyAccounts",
                 "consumes": [
                     "application/json"
@@ -945,7 +945,7 @@
                     "uMan"
                 ],
                 "summary": "Get comapny services",
-                "description": "Username refers to a company neme",
+                "description": "*Username* refers to a company neme",
                 "operationId": "getCompanyServices",
                 "consumes": [
                     "application/json"
@@ -1003,7 +1003,7 @@
                     "uMan"
                 ],
                 "summary": "Get account roles of the company",
-                "description": "Username refers to company name",
+                "description": "*Username* refers to company name",
                 "consumes": [
                     "application/json"
                 ],
@@ -1122,6 +1122,7 @@
                 ],
                 "summary": "Add the batch of costcenters",
                 "description": "",
+                "operationId": "addCostCenterBatch",
                 "consumes": [
                     "application/json"
                 ],
@@ -1181,7 +1182,8 @@
                     "uMan"
                 ],
                 "summary": "Find company location",
-                "description": "Username refers to a company name",
+                "description": "*Username* refers to a company name",
+                "operationId": "findLocationCompany",
                 "consumes": [
                     "application/json"
                 ],
@@ -1242,6 +1244,7 @@
                 ],
                 "summary": "Add new person information",
                 "description": "",
+                "operationId": "assPerson",
                 "consumes": [
                     "application/json"
                 ],
@@ -1302,6 +1305,7 @@
                 ],
                 "summary": "Add a set of person information",
                 "description": "",
+                "operationId": "addPersonBatch",
                 "consumes": [
                     "application/json"
                 ],
@@ -1361,7 +1365,8 @@
                     "uMan"
                 ],
                 "summary": "Find all persons who work for a company",
-                "description": "Username refers to a company name",
+                "description": "*Username* refers to a company name",
+                "operationId": "findPersonWorkForCompany",
                 "consumes": [
                     "application/json"
                 ],
@@ -1422,6 +1427,7 @@
                 ],
                 "summary": "Add a comapny location",
                 "description": "",
+                "operationId": "addLocation",
                 "consumes": [
                     "application/json"
                 ],
@@ -1482,6 +1488,7 @@
                 ],
                 "summary": "Add a company location",
                 "description": "",
+                "operationId": "updateLocation",
                 "consumes": [
                     "application/json"
                 ],
@@ -1542,6 +1549,7 @@
                 ],
                 "summary": "Delete a company location",
                 "description": "",
+                "operationId": "deleteLocation",
                 "consumes": [
                     "application/json"
                 ],
@@ -2156,7 +2164,7 @@
                     "uSend"
                 ],
                 "summary": "get a shipment manifest action",
-                "description": "fiveVariables\nvar1 -  senderEmail (unique) \nvar2 -  sender telephone\nvar3 -  shipping ID\nvar4 -  notification email address \nvar5 -  bland (not use)",
+                "description": "fiveVariables<br>\nvar1 -  senderEmail (unique) <br>\nvar2 -  sender telephone<br>\nvar3 -  shipping ID<br>\nvar4 -  notification email address<br>\nvar5 -  blank (not use)<br>",
                 "operationId": "shipementManifest",
                 "consumes": [
                     "application/json"
@@ -2462,6 +2470,7 @@
                 ],
                 "summary": "Get KPI by services",
                 "description": "",
+                "operationId": "getKPITotalByService",
                 "consumes": [
                     "application/json"
                 ],
@@ -2522,6 +2531,7 @@
                 ],
                 "summary": "Get KPI by department",
                 "description": "",
+                "operationId": "getKPITotalByCostCenter",
                 "consumes": [
                     "application/json"
                 ],
@@ -2582,6 +2592,7 @@
                 ],
                 "summary": "Add Machool payment plan",
                 "description": "",
+                "operationId": "addPlan",
                 "consumes": [
                     "application/json"
                 ],
@@ -2642,6 +2653,7 @@
                 ],
                 "summary": "Edit Machool payment plan",
                 "description": "",
+                "operationId": "editPlan",
                 "consumes": [
                     "application/json"
                 ],
@@ -2702,6 +2714,7 @@
                 ],
                 "summary": "delete Machool payment plan",
                 "description": "",
+                "operationId": "deletePlan",
                 "consumes": [
                     "application/json"
                 ],
@@ -2762,6 +2775,7 @@
                 ],
                 "summary": "delete Machool payment plan",
                 "description": "",
+                "operationId": "findPlansByType",
                 "consumes": [
                     "application/json"
                 ],
@@ -2825,6 +2839,7 @@
                 ],
                 "summary": "Add Machool Plan Service",
                 "description": "",
+                "operationId": "addPlanService",
                 "consumes": [
                     "application/json"
                 ],
@@ -2885,6 +2900,7 @@
                 ],
                 "summary": "Edit Machool Plan Service",
                 "description": "",
+                "operationId": "editPlanService",
                 "consumes": [
                     "application/json"
                 ],
@@ -2945,6 +2961,7 @@
                 ],
                 "summary": "Delete Machool Plan Service",
                 "description": "",
+                "operationId": "deletePlanService",
                 "consumes": [
                     "application/json"
                 ],
@@ -3005,6 +3022,7 @@
                 ],
                 "summary": "Add billing information",
                 "description": "",
+                "operationId": "addBillingInfo",
                 "consumes": [
                     "appllication/json"
                 ],
@@ -3065,6 +3083,7 @@
                 ],
                 "summary": "Edit billing information",
                 "description": "",
+                "operationId": "editBillingInfo",
                 "consumes": [
                     "appllication/json"
                 ],
@@ -3125,6 +3144,7 @@
                 ],
                 "summary": "Delete billing information",
                 "description": "",
+                "operationId": "deleteBillingInfo",
                 "consumes": [
                     "appllication/json"
                 ],
@@ -3184,7 +3204,8 @@
                     "uPay"
                 ],
                 "summary": "Send request to get all services that the company purchased",
-                "description": "Username refers to a company name",
+                "description": "*Username* refers to a company name",
+                "operationId": "findPlanServicesCompany",
                 "consumes": [
                     "application/json"
                 ],
@@ -3244,7 +3265,8 @@
                     "uPay"
                 ],
                 "summary": "Find Company's billing information",
-                "description": "Username refers to a company name",
+                "description": "*Username* refers to a company name",
+                "operationId": "findBilingInfoCompany",
                 "consumes": [
                     "application/json"
                 ],
@@ -3305,6 +3327,7 @@
                 ],
                 "summary": "Update credit card status",
                 "description": "",
+                "operationId": "updateCreditCardStatus",
                 "consumes": [
                     "application/json"
                 ],
@@ -3364,7 +3387,8 @@
                     "uPay"
                 ],
                 "summary": "Subscribe user to a plan",
-                "description": "fiveVariables\nvar1 -  company name \nvar2 -  service name\nvar3 -  subscription periods\nvar4 -  user email address \nvar5 -  blank (not use)",
+                "description": "fiveVariables<br>\nvar1 -  company name<br>\nvar2 -  service name<br>\nvar3 -  subscription periods<br>\nvar4 -  user email address<br>\nvar5 -  blank (not use)",
+                "operationId": "subscribeToPlan",
                 "parameters": [
                     {
                         "in": "header",
@@ -3418,7 +3442,8 @@
                     "uPay"
                 ],
                 "summary": "Authorize credit card information",
-                "description": "fiveVariables\nvar1 -  client email address  \nvar2 -  card number array\nvar3 -  authorization\nvar4, var5 -  blank (not use)",
+                "description": "fiveVariables<br>\nvar1 -  client email address<br> \nvar2 -  card number array<br>\nvar3 -  authorization<br>\nvar4, var5 -  blank (not use)",
+                "operationId": "authorizeCustomer",
                 "consumes": [
                     "application/json"
                 ],
@@ -3478,7 +3503,8 @@
                     "uPay"
                 ],
                 "summary": "Get customer detail",
-                "description": "Username refers to an email address",
+                "description": "*Username* refers to an email address",
+                "operationId": "getPayFirmaCustomerDetails",
                 "consumes": [
                     "application/json"
                 ],
@@ -3539,6 +3565,7 @@
                 ],
                 "summary": "Delete credit card information",
                 "description": "",
+                "operationId": "deleteCreditCard",
                 "consumes": [
                     "application/json"
                 ],
@@ -3598,7 +3625,8 @@
                     "uPay"
                 ],
                 "summary": "cancel uDo plan service",
-                "description": "Username refers to a plan ID",
+                "description": "*Username* refers to a plan ID",
+                "operationId": "cancelPlan",
                 "consumes": [
                     "application/json"
                 ],
@@ -3658,7 +3686,8 @@
                     "uVisit"
                 ],
                 "summary": "Add new visitor",
-                "description": "Username refers to a company name",
+                "description": "*Username* refers to a company name",
+                "operationId": "addVisitor",
                 "consumes": [
                     "applicaiton/json"
                 ],
@@ -3718,7 +3747,8 @@
                     "uVisit"
                 ],
                 "summary": "Edit visitor",
-                "description": "Username refers to a company name",
+                "description": "*Username* refers to a company name",
+                "operationId": "editVisitor",
                 "consumes": [
                     "application/json"
                 ],
@@ -3778,7 +3808,8 @@
                     "uVisit"
                 ],
                 "summary": "Delete visitor",
-                "description": "Username refers to a company name",
+                "description": "*Username* refers to a company name",
+                "operationId": "deleteVisitor",
                 "consumes": [
                     "application/json"
                 ],
@@ -3839,6 +3870,7 @@
                 ],
                 "summary": "Find all the visitors in a particular locatioin of the comapny",
                 "description": "",
+                "operationId": "findVisitorsCompany",
                 "consumes": [
                     "application/json"
                 ],
@@ -3899,6 +3931,7 @@
                 ],
                 "summary": "Add visitor record",
                 "description": "",
+                "operationId": "addVisitRecord",
                 "consumes": [
                     "application/json"
                 ],
@@ -3959,6 +3992,7 @@
                 ],
                 "summary": "Edit visitor record",
                 "description": "",
+                "operationId": "editVisitRcord",
                 "consumes": [
                     "application/json"
                 ],
@@ -4016,6 +4050,7 @@
                 ],
                 "summary": "Check visitor's email address",
                 "description": "",
+                "operationId": "checkVisitorEmail",
                 "consumes": [
                     "application/json"
                 ],
@@ -4076,6 +4111,7 @@
                 ],
                 "summary": "Find last four hosts record",
                 "description": "",
+                "operationId": "findLastForuVisitRecords",
                 "consumes": [
                     "application/json"
                 ],
@@ -4135,7 +4171,8 @@
                     "uVisit"
                 ],
                 "summary": "Find the visitors who checked in today",
-                "description": "Username refers to date",
+                "description": "*Username* refers to date",
+                "operationId": "findCheckedInVisitorsToday",
                 "consumes": [
                     "application/json"
                 ],
@@ -4195,7 +4232,8 @@
                     "uVisit"
                 ],
                 "summary": "Find visitors who go to the company location",
-                "description": "Username refers to a email address",
+                "description": "*Username* refers to a email address",
+                "operationId": "findVisitorByEmail",
                 "consumes": [
                     "application/json"
                 ],
@@ -4255,7 +4293,8 @@
                     "uVisit"
                 ],
                 "summary": "Find last four persons who visited the company in a day",
-                "description": "Username refers to an email address",
+                "description": "*Username* refers to an email address",
+                "operationId": "findLastFourPersonVisit",
                 "consumes": [
                     "application/json"
                 ],
@@ -4315,7 +4354,8 @@
                     "uVisit"
                 ],
                 "summary": "Send checkin message",
-                "description": "fiveVariables\nvar1 -  senderEmail (unique) \nvar2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)\nvar3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)\nvar4 -  visitorName \nvar5 -  visitRecordId (visitorEmail + checkinTime)",
+                "description": "fiveVariables<br><br>\nvar1 -  senderEmail (unique)<br>\nvar2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)<br>\nvar3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)<br>\nvar4 -  visitorName<br> \nvar5 -  visitRecordId (visitorEmail + checkinTime)",
+                "operationId": "sendCheckinMessages",
                 "consumes": [
                     "application/json"
                 ],
@@ -4375,7 +4415,8 @@
                     "uVisit"
                 ],
                 "summary": "Send check out message",
-                "description": "fiveVariables (sendCheckinMessages, sendCheckoutMessages, sendThanksToVisitorMessages)\nvar1 -  senderEmail (unique) \nvar2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)\nvar3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)\nvar4 -  visitorName \nvar5 -  visitRecordId (visitorEmail + checkinTime)",
+                "description": "fiveVariables<br> (sendCheckinMessages, sendCheckoutMessages, sendThanksToVisitorMessages)<br><br>\nvar1 -  senderEmail (unique) <br>\nvar2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)<br>\nvar3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)<br>\nvar4 -  visitorName <br>\nvar5 -  visitRecordId (visitorEmail + checkinTime)",
+                "operationId": "sendCheckoutMessages",
                 "consumes": [
                     "application/json"
                 ],
@@ -4435,7 +4476,8 @@
                     "uVisit"
                 ],
                 "summary": "Send thank you mail to visitors",
-                "description": "fiveVariables (sendCheckinMessages, sendCheckoutMessages, sendThanksToVisitorMessages)\nvar1 -  senderEmail (unique) \nvar2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)\nvar3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)\nvar4 -  visitorName \nvar5 -  visitRecordId (visitorEmail + checkinTime)",
+                "description": "fiveVariables<br> (sendCheckinMessages, sendCheckoutMessages, sendThanksToVisitorMessages)<br><br>\nvar1 -  senderEmail (unique) <br>\nvar2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)<br>\nvar3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)<br>\nvar4 -  visitorName  <br> var5 -  visitRecordId (visitorEmail + checkinTime)",
+                "operationId": "sendThanksToVisitorMessages",
                 "consumes": [
                     "application/json"
                 ],
@@ -4495,7 +4537,8 @@
                     "uVisit"
                 ],
                 "summary": "Find the number of visits by day",
-                "description": "fiveVariable (findNumberVisitsCompanyByDay)\nvar1 - from date\nvar2 - to date\nvar3 - show duplicate (yes - show/ no - not show)\nvar4 - blank (not use)\nvar5 - blank (not use)",
+                "description": "fiveVariable<br> (findNumberVisitsCompanyByDay)<br><br>\nvar1 - from date<br>\nvar2 - to date<br>\nvar3 - show duplicate (yes - show/ no - not show)<br>\nvar4 - blank (not use)<br>\nvar5 - blank (not use)",
+                "operationId": "findNumberVisitsCompanyByDay",
                 "consumes": [
                     "application/json"
                 ],
@@ -4556,6 +4599,7 @@
                 ],
                 "summary": "Send checkout time to a visit record",
                 "description": "",
+                "operationId": "setCheckoutTimeVisitRecord",
                 "consumes": [
                     "application/json"
                 ],
@@ -4615,7 +4659,8 @@
                     "uVisit"
                 ],
                 "summary": "Find all visitor record in a time period",
-                "description": "fiveVariables (findAllVisitorPeriod, findTwentyMostVisitedHostPeriods)\nvar1 - from date\nvar2 - to date\nvar3, var4, var5 - blank (not use)",
+                "description": "fiveVariables<br><br>\nvar1 - from date<br>\nvar2 - to date<br>\nvar3, var4, var5 - blank (not use)",
+                "operationId": "findAllVisitorPeriod",
                 "consumes": [
                     "application/json"
                 ],
@@ -4675,7 +4720,8 @@
                     "uVisit"
                 ],
                 "summary": "Find host who has visits in a period of time",
-                "description": "fiveVariables (findVisitsHostByDayPeriod, findVisitRecordsHostByDayPeriod)\nvar1 - from date\nvar2 - to date\nvar3 - host email (unique)\nvar4, var5 - blank (not use)",
+                "description": "fiveVariables<br><br>\nvar1 - from date<br>\nvar2 - to date<br>\nvar3 - host email (unique)<br>\nvar4, var5 - blank (not use)",
+                "operationId": "findVisitsHostByDayPeriod",
                 "consumes": [
                     "application/json"
                 ],
@@ -4735,7 +4781,8 @@
                     "uVisit"
                 ],
                 "summary": "Find host who has visit record (checkin time, checkout time, rate etc)",
-                "description": "fiveVariables (findVisitsHostByDayPeriod, findVisitRecordsHostByDayPeriod)\nvar1 - from date\nvar2 - to date\nvar3 - host email (unique)\nvar4, var5 - blank (not use)",
+                "description": "fiveVariables<br><br>\nvar1 - from date<br>\nvar2 - to date<br>\nvar3 - host email (unique)<br>\nvar4, var5 - blank (not use)",
+                "operationId": "findVisitRecordsHostByDayPeriod",
                 "consumes": [
                     "application/json"
                 ],
@@ -4795,7 +4842,8 @@
                     "uVisit"
                 ],
                 "summary": "Find twenty hosts who have most visits",
-                "description": "fiveVariables (findAllVisitorPeriod, findTwentyMostVisitedHostPeriods)\nvar1 - from date\nvar2 - to date\nvar3, var4, var5 - blank (not use)",
+                "description": "fiveVariables<br><br>\nvar1 - from date<br>\nvar2 - to date<br>\nvar3, var4, var5 - blank (not use)",
+                "operationId": "findTwentyMostVisitedHostPeriods",
                 "consumes": [
                     "application/json"
                 ],
@@ -4853,6 +4901,7 @@
                 ],
                 "summary": "Find today's all visitors",
                 "description": "",
+                "operationId": "findAllVisitorsToday",
                 "consumes": [
                     "application/json"
                 ],
@@ -4912,7 +4961,8 @@
                     "uVisit"
                 ],
                 "summary": "Get Badge image URL",
-                "description": "fiveVariables (getBadgeuRL, getBadgePDF)\nvar1 - picture \nvar2 - visitor name\nvar3 - company name\nvar4 - email address\nvar5 - qr code",
+                "description": "fiveVariables<br><br>\nvar1 - picture<br> \nvar2 - visitor name<br>\nvar3 - company name<br>\nvar4 - email address<br>\nvar5 - qr code",
+                "operationId": "getBadgeURL",
                 "consumes": [
                     "application/json"
                 ],
@@ -4972,7 +5022,8 @@
                     "uVisit"
                 ],
                 "summary": "Get badge PDF file",
-                "description": "fiveVariables (getBadgeuRL, getBadgePDF)\nvar1 - picture \nvar2 - visitor name\nvar3 - company name\nvar4 - email address\nvar5 - qr code",
+                "description": "fiveVariables<br><br>\nvar1 - picture <br>\nvar2 - visitor name<br>\nvar3 - company name<br>\nvar4 - email addressbr>\nvar5 - qr code",
+                "operationId": "gedBadgePDF",
                 "consumes": [
                     "application/json"
                 ],
@@ -5001,6 +5052,555 @@
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/ucontent/getDocument": {
+            "post": {
+                "tags": [
+                    "uContent"
+                ],
+                "summary": "Get (any) document by decument ID",
+                "description": "*username* refers to document ID",
+                "operationId": "getDocument",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "get any document by document ID",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/ucontent/getDocumentByFilename": {
+            "post": {
+                "tags": [
+                    "uContent"
+                ],
+                "summary": "Get (any) document by file name",
+                "description": "*username* refers to file name",
+                "operationId": "getDocumentByFilename",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "get any document by file name",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/ucontent/getAllDocumentsCompany": {
+            "post": {
+                "tags": [
+                    "uContent"
+                ],
+                "summary": "Get all documents in company",
+                "description": "*username* refers to company name",
+                "operationId": "getAllDocumentsCompany",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "get all the documents from company name",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/ucontent/getDocumentDetails": {
+            "post": {
+                "tags": [
+                    "uContent"
+                ],
+                "summary": "Gey document details",
+                "description": "*username* refers to id",
+                "operationId": "getDocumentDetails",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "get information of the documents which includes login user email, company name, upload date, picture name etc.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/ucontent/removeDocument": {
+            "post": {
+                "tags": [
+                    "uContent"
+                ],
+                "summary": "remove document from database",
+                "description": "*username* refers to id",
+                "operationId": "removeDocument",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Remove document by id",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/ucontent/uploadDocument": {
+            "post": {
+                "tags": [
+                    "uContent"
+                ],
+                "summary": "Upload new document",
+                "description": "*username* refers to id",
+                "operationId": "uploadDocument",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Upload a new document by id",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/ucontent/queryDocuments": {
+            "post": {
+                "tags": [
+                    "uContent"
+                ],
+                "summary": "Filter documents",
+                "description": "Filter documents by *id*, *Company name*, *Service name*, *User name*, *Document type*, *File name*, *Extension*, *Picture width*, *Picture height*, *Status*.",
+                "operationId": "queryDocuments",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Filter documents",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Asset"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/ucontent/countDocuments": {
+            "post": {
+                "tags": [
+                    "uContent"
+                ],
+                "summary": "Count the number of documents",
+                "description": "Filter documents and returns the number of the documents",
+                "operationId": "countDocuments",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Filter documents and returns the total number of the documents",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Asset"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/ucontent/getZIPVisitorPhotos": {
+            "post": {
+                "tags": [
+                    "uContent"
+                ],
+                "summary": "Create ZIP file",
+                "description": "Filter documents and create zip file it cotains all the filtered documents ",
+                "operationId": "getZIPVisitorPhotos",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Filter documents and create zip file",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Asset"
                         }
                     }
                 ],
@@ -6076,6 +6676,40 @@
                     "type": "string"
                 },
                 "postcode": {
+                    "type": "string"
+                }
+            }
+        },
+        "Asset": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "aCompanyName": {
+                    "type": "string"
+                },
+                "aServiceName": {
+                    "type": "string"
+                },
+                "aUsername": {
+                    "type": "string"
+                },
+                "aDocumentType": {
+                    "type": "string"
+                },
+                "aFilename": {
+                    "type": "string"
+                },
+                "aExtension": {
+                    "type": "string"
+                },
+                "aPictureWidth": {
+                    "type": "string"
+                },
+                "aPictureHeight": {
+                    "type": "string"
+                },
+                "aStatus": {
                     "type": "string"
                 }
             }

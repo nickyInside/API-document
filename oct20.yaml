@@ -3,9 +3,7 @@ info:
   title: uDo Platform API
   description:
     The uDo REST API lets you interact with uDo platform from frontend to backend
-    via sending an HTTP request.
-
-
+    via sending an HTTP request.<br><br>
     uDo is a cloud-based app platform. Its purpose is to connect local service
     providers (both contents, and APIs) to the end users through the smart
     end devices, such as kiosk, ipad, smart phones, game consoles, smart tv,
@@ -25,7 +23,7 @@ paths:
       tags:
         - uMan
       summary: Check username
-      description: 'Username refers to sender email'
+      description: '*Username* refers to sender email'
       operationId: usernameCheck
       consumes:
         - application/json
@@ -50,7 +48,7 @@ paths:
       tags:
         - uMan
       summary: Access to the application services
-      description: 'Username refers to sender email'
+      description: '*Username* refers to sender email'
       operationId: login
       consumes:
         - application/json
@@ -59,7 +57,7 @@ paths:
       parameters:
         - in: body
           name: body
-          description: 'Username and Password that needs to check in uDo database, and token'
+          description: '*Username* and *Password* that needs to check in uDo database, and token'
           required: true
           schema:
             $ref: '#/definitions/Login'
@@ -79,7 +77,7 @@ paths:
       tags:
         - uMan
       summary: Send email to reset password
-      description: 'Username refers to sender email'
+      description: '*Username* refers to sender email'
       operationId: forgetpassword
       consumes:
         - application/json
@@ -137,7 +135,7 @@ paths:
       tags:
         - uMan
       summary: Account Details
-      description: 'Username refers to sender email'
+      description: '*Username* refers to sender email'
       operationId: accountDetails
       consumes:
         - application/json
@@ -447,7 +445,7 @@ paths:
       tags:
         - uMan
       summary: Get service provider
-      description: 'Username refers to company name'
+      description: '*Username* refers to company name'
       operationId: getServiceProvidersCompanyService
       consumes:
         - application/json
@@ -486,7 +484,7 @@ paths:
       tags:
         - uMan
       summary: add sub account
-      description: 'Username refers to sender email'
+      description: '*Username* refers to sender email'
       operationId: subAccountAdd
       consumes:
         - application/json
@@ -525,7 +523,7 @@ paths:
       tags:
         - uMan
       summary: Save sub account
-      description: 'Username refers to sender email'
+      description: '*Username* refers to sender email'
       operationId: subAccountSave
       consumes:
         - application/json
@@ -564,7 +562,7 @@ paths:
       tags:
         - uMan
       summary: Delete sub account
-      description: 'Username refers to sender email'
+      description: '*Username* refers to sender email'
       operationId: subAccountDelete
       consumes:
         - application/json
@@ -604,7 +602,7 @@ paths:
       tags:
         - uMan
       summary: Get company accounts
-      description: 'Username refers to a company name'
+      description: '*Username* refers to a company name'
       operationId: getCompanyAccounts
       consumes:
         - application/json
@@ -645,7 +643,7 @@ paths:
       tags:
         - uMan
       summary: Get comapny services
-      description: 'Username refers to a company neme'
+      description: '*Username* refers to a company neme'
       operationId: getCompanyServices
       consumes:
         - application/json
@@ -685,7 +683,7 @@ paths:
       tags:
         - uMan
       summary: Get account roles of the company
-      description: 'Username refers to company name'
+      description: '*Username* refers to company name'
       consumes:
         - application/json
       produces:
@@ -767,6 +765,7 @@ paths:
         - uMan
       summary: Add the batch of costcenters
       description: ''
+      operationId: addCostCenterBatch
       consumes:
         - application/json
       produces:
@@ -807,7 +806,8 @@ paths:
       tags:
         - uMan
       summary: Find company location
-      description: 'Username refers to a company name'
+      description: '*Username* refers to a company name'
+      operationId: findLocationCompany
       consumes: 
         - application/json
       produces:
@@ -849,6 +849,7 @@ paths:
         - uMan
       summary: Add new person information
       description: ''
+      operationId: assPerson
       consumes: 
         - application/json
       produces:
@@ -890,6 +891,7 @@ paths:
         - uMan
       summary: Add a set of person information
       description: ''
+      operationId: addPersonBatch
       consumes: 
         - application/json
       produces:
@@ -930,7 +932,8 @@ paths:
       tags:
         - uMan
       summary: Find all persons who work for a company
-      description: 'Username refers to a company name'
+      description: '*Username* refers to a company name'
+      operationId: findPersonWorkForCompany
       consumes: 
         - application/json
       produces:
@@ -972,6 +975,7 @@ paths:
         - uMan
       summary: Add a comapny location
       description: ''
+      operationId: addLocation
       consumes: 
         - application/json
       produces:
@@ -1013,6 +1017,7 @@ paths:
         - uMan
       summary: Add a company location
       description: ''
+      operationId: updateLocation
       consumes:
         - application/json
       produces:
@@ -1054,6 +1059,7 @@ paths:
         - uMan
       summary: Delete a company location
       description: ''
+      operationId: deleteLocation
       consumes:
         - application/json
       produces:
@@ -1197,7 +1203,7 @@ paths:
           type: string
         - in: body
           name: body
-          description: 'Get sender information (in this case, username is sender email address)'
+          description: Get sender information (in this case, username is sender email address)
           required: true
           schema:
             $ref: '#/definitions/Username'
@@ -1470,17 +1476,17 @@ paths:
       tags:
         - uSend
       summary: get a shipment manifest action
-      description: 'fiveVariables
+      description: fiveVariables<br>
                    
-                   var1 -  senderEmail (unique) 
+                   var1 -  senderEmail (unique) <br>
                    
-                   var2 -  sender telephone
+                   var2 -  sender telephone<br>
                    
-                   var3 -  shipping ID
+                   var3 -  shipping ID<br>
                    
-                   var4 -  notification email address 
+                   var4 -  notification email address<br> 
                    
-                   var5 -  bland (not use)'
+                   var5 -  blank (not use)<br>
       operationId: shipementManifest
       consumes:
         - application/json
@@ -1688,6 +1694,7 @@ paths:
         - uAnalyze
       summary: Get KPI by services
       description: ''
+      operationId: getKPITotalByService
       consumes:
         - application/json
       produces:
@@ -1705,7 +1712,7 @@ paths:
           type: string
         - in: body
           name: body
-          description: 'Get total number of shipments / cost by service type (Domestic, international, US, regular, expedited, priority, express etc).'
+          description: Get total number of shipments / cost by service type (Domestic, international, US, regular, expedited, priority, express etc).
           required: true
           schema:
             $ref: '#/definitions/KPITotal'
@@ -1728,6 +1735,7 @@ paths:
         - uAnalyze
       summary: Get KPI by department
       description: ''
+      operationId: getKPITotalByCostCenter
       consumes:
         - application/json
       produces:
@@ -1769,6 +1777,7 @@ paths:
         - uPay
       summary: Add Machool payment plan
       description: ''
+      operationId: addPlan
       consumes:
         - application/json
       produces:
@@ -1809,6 +1818,7 @@ paths:
         - uPay
       summary: Edit Machool payment plan
       description: ''
+      operationId: editPlan
       consumes:
         - application/json
       produces:
@@ -1849,6 +1859,7 @@ paths:
         - uPay
       summary: delete Machool payment plan
       description: ''
+      operationId: deletePlan
       consumes:
         - application/json
       produces:
@@ -1890,6 +1901,7 @@ paths:
         - uPay
       summary: delete Machool payment plan
       description: ''
+      operationId: findPlansByType
       consumes:
         - application/json
       produces:
@@ -1933,6 +1945,7 @@ paths:
         - uPay
       summary: Add Machool Plan Service
       description: ''
+      operationId: addPlanService
       consumes:
         - application/json
       produces:
@@ -1973,6 +1986,7 @@ paths:
         - uPay
       summary: Edit Machool Plan Service
       description: ''
+      operationId: editPlanService
       consumes:
         - application/json
       produces:
@@ -2013,6 +2027,7 @@ paths:
         - uPay
       summary: Delete Machool Plan Service
       description: ''
+      operationId: deletePlanService
       consumes:
         - application/json
       produces:
@@ -2054,6 +2069,7 @@ paths:
         - uPay
       summary: Add billing information
       description: ''
+      operationId: addBillingInfo
       consumes:
         - appllication/json
       produces:
@@ -2095,6 +2111,7 @@ paths:
         - uPay
       summary: Edit billing information
       description: ''
+      operationId: editBillingInfo
       consumes:
         - appllication/json
       produces:
@@ -2136,6 +2153,7 @@ paths:
         - uPay
       summary: Delete billing information
       description: ''
+      operationId: deleteBillingInfo
       consumes:
         - appllication/json
       produces:
@@ -2176,7 +2194,8 @@ paths:
       tags:
         - uPay
       summary: Send request to get all services that the company purchased
-      description: 'Username refers to a company name'
+      description: '*Username* refers to a company name'
+      operationId: findPlanServicesCompany
       consumes: 
         - application/json
       produces:
@@ -2217,7 +2236,8 @@ paths:
       tags:
         - uPay
       summary: Find Company's billing information
-      description: 'Username refers to a company name'
+      description: '*Username* refers to a company name'
+      operationId: findBilingInfoCompany
       consumes:
         - application/json
       produces:
@@ -2259,6 +2279,7 @@ paths:
         - uPay
       summary: Update credit card status
       description: ''
+      operationId: updateCreditCardStatus
       consumes:
         - application/json
       produces:
@@ -2299,17 +2320,18 @@ paths:
       tags:
         - uPay
       summary: Subscribe user to a plan
-      description: 'fiveVariables
+      description: 'fiveVariables<br>
                    
-                   var1 -  company name 
+                   var1 -  company name<br>
                    
-                   var2 -  service name
+                   var2 -  service name<br>
                    
-                   var3 -  subscription periods
+                   var3 -  subscription periods<br>
                    
-                   var4 -  user email address 
+                   var4 -  user email address<br>
                    
                    var5 -  blank (not use)'
+      operationId: subscribeToPlan
       parameters:
         - in: header
           name: username
@@ -2346,15 +2368,16 @@ paths:
       tags:
         - uPay
       summary: Authorize credit card information
-      description: 'fiveVariables
+      description: 'fiveVariables<br>
                    
-                   var1 -  client email address  
+                   var1 -  client email address<br> 
                    
-                   var2 -  card number array
+                   var2 -  card number array<br>
                    
-                   var3 -  authorization
+                   var3 -  authorization<br>
                    
                    var4, var5 -  blank (not use)'
+      operationId: authorizeCustomer
       consumes:
         - application/json
       produces:
@@ -2395,7 +2418,8 @@ paths:
       tags:
         - uPay
       summary: Get customer detail
-      description: 'Username refers to an email address'
+      description: '*Username* refers to an email address'
+      operationId: getPayFirmaCustomerDetails
       consumes:
         - application/json
       produces:
@@ -2437,6 +2461,7 @@ paths:
         - uPay
       summary: Delete credit card information
       description: ''
+      operationId: deleteCreditCard
       consumes:
         - application/json
       produces:
@@ -2477,7 +2502,8 @@ paths:
       tags:
         - uPay
       summary: cancel uDo plan service
-      description: 'Username refers to a plan ID'
+      description: '*Username* refers to a plan ID'
+      operationId: cancelPlan
       consumes:
         - application/json
       produces:
@@ -2518,7 +2544,8 @@ paths:
       tags:
         - uVisit
       summary: Add new visitor
-      description: 'Username refers to a company name'
+      description: '*Username* refers to a company name'
+      operationId: addVisitor
       consumes:
         - applicaiton/json
       produces:
@@ -2559,7 +2586,8 @@ paths:
       tags:
         - uVisit
       summary: Edit visitor
-      description: 'Username refers to a company name'
+      description: '*Username* refers to a company name'
+      operationId: editVisitor
       consumes:
         - application/json
       produces:
@@ -2600,7 +2628,8 @@ paths:
       tags:
         - uVisit
       summary: Delete visitor
-      description: 'Username refers to a company name'
+      description: '*Username* refers to a company name'
+      operationId: deleteVisitor
       consumes: 
         - application/json
       produces:
@@ -2642,6 +2671,7 @@ paths:
         - uVisit
       summary: Find all the visitors in a particular locatioin of the comapny
       description: ''
+      operationId: findVisitorsCompany
       consumes:
         - application/json
       produces:
@@ -2683,6 +2713,7 @@ paths:
         - uVisit
       summary: Add visitor record
       description: ''
+      operationId: addVisitRecord
       consumes:
         - application/json
       produces:
@@ -2724,6 +2755,7 @@ paths:
         - uVisit
       summary: Edit visitor record
       description: ''
+      operationId: editVisitRcord
       consumes:
         - application/json
       produces:
@@ -2763,6 +2795,7 @@ paths:
         - uVisit
       summary: Check visitor's email address
       description: ''
+      operationId: checkVisitorEmail
       consumes:
         - application/json
       produces:
@@ -2804,6 +2837,7 @@ paths:
         - uVisit
       summary: Find last four hosts record
       description: ''
+      operationId: findLastForuVisitRecords
       consumes:
         - application/json
       produces:
@@ -2844,7 +2878,8 @@ paths:
       tags:
         - uVisit
       summary: Find the visitors who checked in today
-      description: 'Username refers to date'
+      description: '*Username* refers to date'
+      operationId: findCheckedInVisitorsToday
       consumes:
         - application/json
       produces:
@@ -2885,7 +2920,8 @@ paths:
       tags:
         - uVisit
       summary: Find visitors who go to the company location
-      description: 'Username refers to a email address'
+      description: '*Username* refers to a email address'
+      operationId: findVisitorByEmail
       consumes:
         - application/json
       produces:
@@ -2926,7 +2962,8 @@ paths:
       tags:
         - uVisit
       summary: Find last four persons who visited the company in a day
-      description: 'Username refers to an email address'
+      description: '*Username* refers to an email address'
+      operationId: findLastFourPersonVisit
       consumes:
         - application/json
       produces:
@@ -2967,17 +3004,18 @@ paths:
       tags:
         - uVisit
       summary: Send checkin message
-      description: 'fiveVariables
+      description: 'fiveVariables<br><br>
                    
-                   var1 -  senderEmail (unique) 
+                   var1 -  senderEmail (unique)<br>
                    
-                   var2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)
+                   var2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)<br>
                    
-                   var3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)
+                   var3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)<br>
                    
-                   var4 -  visitorName 
+                   var4 -  visitorName<br> 
                    
                    var5 -  visitRecordId (visitorEmail + checkinTime)'
+      operationId: sendCheckinMessages
       consumes: 
         - application/json
       produces:
@@ -3018,17 +3056,18 @@ paths:
       tags:
         - uVisit
       summary: Send check out message
-      description: 'fiveVariables (sendCheckinMessages, sendCheckoutMessages, sendThanksToVisitorMessages)
+      description: 'fiveVariables<br> (sendCheckinMessages, sendCheckoutMessages, sendThanksToVisitorMessages)<br><br>
                    
-                   var1 -  senderEmail (unique) 
+                   var1 -  senderEmail (unique) <br>
                    
-                   var2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)
+                   var2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)<br>
                    
-                   var3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)
+                   var3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)<br>
                    
-                   var4 -  visitorName 
+                   var4 -  visitorName <br>
                    
                    var5 -  visitRecordId (visitorEmail + checkinTime)'
+      operationId: sendCheckoutMessages
       consumes:
         - application/json
       produces:
@@ -3069,17 +3108,18 @@ paths:
       tags:
         - uVisit
       summary: Send thank you mail to visitors
-      description: 'fiveVariables (sendCheckinMessages, sendCheckoutMessages, sendThanksToVisitorMessages)
+      description: 'fiveVariables<br> (sendCheckinMessages, sendCheckoutMessages, sendThanksToVisitorMessages)<br><br>
                    
-                   var1 -  senderEmail (unique) 
+                   var1 -  senderEmail (unique) <br>
                    
-                   var2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)
+                   var2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)<br>
                    
-                   var3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)
+                   var3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)<br>
                    
                    var4 -  visitorName 
-                   
+                   <br>
                    var5 -  visitRecordId (visitorEmail + checkinTime)'
+      operationId: sendThanksToVisitorMessages
       consumes:
         - application/json
       produces:
@@ -3120,17 +3160,18 @@ paths:
       tags:
         - uVisit
       summary: Find the number of visits by day
-      description: 'fiveVariable (findNumberVisitsCompanyByDay)
+      description: 'fiveVariable<br> (findNumberVisitsCompanyByDay)<br><br>
                    
-                   var1 - from date
+                   var1 - from date<br>
                    
-                   var2 - to date
+                   var2 - to date<br>
                    
-                   var3 - show duplicate (yes - show/ no - not show)
+                   var3 - show duplicate (yes - show/ no - not show)<br>
                    
-                   var4 - blank (not use)
+                   var4 - blank (not use)<br>
                    
                    var5 - blank (not use)'
+      operationId: findNumberVisitsCompanyByDay
       consumes:
         - application/json
       produces:
@@ -3172,6 +3213,7 @@ paths:
         - uVisit
       summary: Send checkout time to a visit record
       description: ''
+      operationId: setCheckoutTimeVisitRecord
       consumes:
         - application/json
       produces:
@@ -3212,13 +3254,14 @@ paths:
       tags:
         - uVisit
       summary: Find all visitor record in a time period
-      description: 'fiveVariables (findAllVisitorPeriod, findTwentyMostVisitedHostPeriods)
+      description: 'fiveVariables<br><br>
                    
-                   var1 - from date
+                   var1 - from date<br>
                    
-                   var2 - to date
+                   var2 - to date<br>
                    
                    var3, var4, var5 - blank (not use)'
+      operationId: findAllVisitorPeriod
       consumes:
         - application/json
       produces:
@@ -3259,15 +3302,16 @@ paths:
       tags:
         - uVisit
       summary: Find host who has visits in a period of time
-      description: 'fiveVariables (findVisitsHostByDayPeriod, findVisitRecordsHostByDayPeriod)
+      description: 'fiveVariables<br><br>
                    
-                   var1 - from date
+                   var1 - from date<br>
                    
-                   var2 - to date
+                   var2 - to date<br>
                    
-                   var3 - host email (unique)
+                   var3 - host email (unique)<br>
                    
                    var4, var5 - blank (not use)'
+      operationId: findVisitsHostByDayPeriod
       consumes:
         - application/json
       produces:
@@ -3308,15 +3352,16 @@ paths:
       tags:
         - uVisit
       summary: Find host who has visit record (checkin time, checkout time, rate etc)
-      description: 'fiveVariables (findVisitsHostByDayPeriod, findVisitRecordsHostByDayPeriod)
+      description: 'fiveVariables<br><br>
                    
-                   var1 - from date
+                   var1 - from date<br>
                    
-                   var2 - to date
+                   var2 - to date<br>
                    
-                   var3 - host email (unique)
+                   var3 - host email (unique)<br>
                    
                    var4, var5 - blank (not use)'
+      operationId: findVisitRecordsHostByDayPeriod
       consumes:
         - application/json
       produces:
@@ -3357,13 +3402,14 @@ paths:
       tags:
         - uVisit
       summary: Find twenty hosts who have most visits
-      description: 'fiveVariables (findAllVisitorPeriod, findTwentyMostVisitedHostPeriods)
+      description: 'fiveVariables<br><br>
                    
-                   var1 - from date
+                   var1 - from date<br>
                    
-                   var2 - to date
+                   var2 - to date<br>
                    
                    var3, var4, var5 - blank (not use)'
+      operationId: findTwentyMostVisitedHostPeriods
       consumes: 
         - application/json
       parameters:
@@ -3405,6 +3451,7 @@ paths:
         - uVisit
       summary: Find today's all visitors
       description: ''
+      operationId: findAllVisitorsToday
       consumes:
         - application/json
       produces:
@@ -3445,17 +3492,18 @@ paths:
       tags:
         - uVisit
       summary: Get Badge image URL
-      description: 'fiveVariables (getBadgeuRL, getBadgePDF)
+      description: 'fiveVariables<br><br>
                    
-                   var1 - picture 
+                   var1 - picture<br> 
                    
-                   var2 - visitor name
+                   var2 - visitor name<br>
                    
-                   var3 - company name
+                   var3 - company name<br>
                    
-                   var4 - email address
+                   var4 - email address<br>
                    
                    var5 - qr code'
+      operationId: getBadgeURL
       consumes:
         - application/json
       produces:
@@ -3496,17 +3544,18 @@ paths:
       tags:
         - uVisit
       summary: Get badge PDF file
-      description: 'fiveVariables (getBadgeuRL, getBadgePDF)
+      description: 'fiveVariables<br><br>
                    
-                   var1 - picture 
+                   var1 - picture <br>
                    
-                   var2 - visitor name
+                   var2 - visitor name<br>
                    
-                   var3 - company name
+                   var3 - company name<br>
                    
-                   var4 - email address
+                   var4 - email addressbr>
                    
                    var5 - qr code'
+      operationId: gedBadgePDF
       consumes:
         - application/json
       produces:
@@ -3542,6 +3591,384 @@ paths:
         '500':
           description: Internal server error
           
+  /ucontent/getDocument:
+    post:
+      tags:
+        - uContent
+      summary: Get (any) document by decument ID
+      description: '*username* refers to document ID'
+      operationId: getDocument
+      consumes: 
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description:  Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: get any document by document ID
+          required: true
+          schema:
+            $ref: '#/definitions/Username'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /ucontent/getDocumentByFilename:
+    post:
+      tags:
+        - uContent
+      summary: Get (any) document by file name
+      description: '*username* refers to file name'
+      operationId: getDocumentByFilename
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description:  Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: get any document by file name
+          required: true
+          schema:
+            $ref: '#/definitions/Username'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /ucontent/getAllDocumentsCompany:
+    post:
+      tags:
+        - uContent
+      summary: Get all documents in company
+      description: '*username* refers to company name'
+      operationId: getAllDocumentsCompany
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description:  Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: get all the documents from company name
+          required: true
+          schema:
+            $ref: '#/definitions/Username'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /ucontent/getDocumentDetails:
+    post:
+      tags:
+        - uContent
+      summary: Gey document details
+      description: '*username* refers to id'
+      operationId: getDocumentDetails
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description:  Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: get information of the documents which includes login user email, company name, upload date, picture name etc.
+          required: true
+          schema:
+            $ref: '#/definitions/Username'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /ucontent/removeDocument:
+    post:
+      tags:
+        - uContent
+      summary: remove document from database
+      description: '*username* refers to id'
+      operationId: removeDocument
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description:  Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Remove document by id
+          required: true
+          schema:
+            $ref: '#/definitions/Username'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /ucontent/uploadDocument:
+    post:
+      tags:
+        - uContent
+      summary: Upload new document
+      description: '*username* refers to id'
+      operationId: uploadDocument
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description:  Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Upload a new document by id
+          required: true
+          schema:
+            $ref: '#/definitions/Username'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /ucontent/queryDocuments:
+    post:
+      tags:
+        - uContent
+      summary: Filter documents
+      description: 'Filter documents by *id*, *Company name*, *Service name*, *User name*, *Document type*, *File name*, *Extension*, *Picture width*, *Picture height*, *Status*.'
+      operationId: queryDocuments
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description:  Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Filter documents
+          required: true
+          schema:
+            $ref: '#/definitions/Asset'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+      
+  /ucontent/countDocuments:
+    post:
+      tags:
+        - uContent
+      summary: Count the number of documents
+      description: 'Filter documents and returns the number of the documents'
+      operationId: countDocuments
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description:  Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Filter documents and returns the total number of the documents
+          required: true
+          schema:
+            $ref: '#/definitions/Asset'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /ucontent/getZIPVisitorPhotos:
+    post:
+      tags:
+        - uContent
+      summary: Create ZIP file
+      description: 'Filter documents and create zip file it cotains all the filtered documents '
+      operationId: getZIPVisitorPhotos
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description:  Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Filter documents and create zip file
+          required: true
+          schema:
+            $ref: '#/definitions/Asset'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+      
 definitions:
   Username:
     properties:
@@ -4225,3 +4652,28 @@ definitions:
         type: string
       postcode:
         type: string
+        
+  Asset:
+    properties:
+      id:
+        type: string
+      aCompanyName:
+        type: string
+      aServiceName:
+        type: string
+      aUsername:
+        type: string
+      aDocumentType:
+        type: string
+      aFilename:
+        type: string
+      aExtension:
+        type: string
+      aPictureWidth:
+        type: string
+      aPictureHeight:
+        type: string
+      aStatus:
+        type: string
+        
+  
