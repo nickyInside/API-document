@@ -21,9 +21,9 @@ You can add, delete, and modify those APIs by Swagger editor.
 2. type these codes
 
 
-<em>git clone https://github.com/swagger-api/swagger-editor.git</em>
-<em>cd swagger-editor</em>
-<em>npm start</em>
+<em>git clone https://github.com/swagger-api/swagger-editor.git</em><br>
+<em>cd swagger-editor</em><br>
+<em>npm start</em><br>
 
 
 It build automatically and opens browser window.
