@@ -47,9 +47,9 @@ Oct 20th - Updates
 
 Added uContent(request documents, filter documents, and zip documents)
 
-Oct 27th - Updates
+<h3>Oct 27th - Updates</h3>
 
-Added 2 post requests, and modified 1 request
-POST /uman/updateCompanyInfo - Added Company Logo, and changed address
+Added 2 post requests, and modified 1 request<br>
+POST /uman/updateCompanyInfo - Added Company Logo, and changed address<br>
 POST /uman/updateCompanyAddress - Added new request
 POST /uman/saveContactInfo - Added new request
