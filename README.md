@@ -46,3 +46,10 @@ Added uPay and uVisit APIs, modified some objects, and edited description.
 Oct 20th - Updates
 
 Added uContent(request documents, filter documents, and zip documents)
+
+Oct 27th - Updates
+
+Added 2 post requests, and modified 1 request
+POST /uman/updateCompanyInfo - Added Company Logo, and changed address
+POST /uman/updateCompanyAddress - Added new request
+POST /uman/saveContactInfo - Added new request
