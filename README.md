@@ -53,3 +53,7 @@ Added 2 post requests, and modified 1 request<br>
 <em>POST /uman/updateCompanyInfo</em> - Added Company Logo, and changed address<br>
 <em>POST /uman/updateCompanyAddress</em> - Added new request<br>
 <em>POST /uman/saveContactInfo</em> - Added new request<br>
+
+<h3>Dec 3rd - Updates</h3>
+
+Added theme requests and credit card requests<br>
