@@ -57,3 +57,16 @@ Added 2 post requests, and modified 1 request<br>
 <h3>Dec 3rd - Updates</h3>
 
 Added theme requests and credit card requests<br>
+
+<h3>Feb 10th - Updates</h3>
+
+Added 9 new requests(post)<br>
+<em>POST /uevent/deleteEvent</em><br>
+<em>POST /uevent/findEventById</em><br>
+<em>POST /uevent/findEventsCompany</em><br>
+<em>POST /uevent/updateEvent</em><br>
+<em>POST /uevent/addEvent</em><br>
+<em>POST /uevent/addEventVisitor</em><br>
+<em>POST /uevent/findEventVisitorByEmail</em><br>
+<em>POST /uevent/updateEventVisitor</em><br>
+<em>POST /uevent/findAllEventVisitors</em><br>
