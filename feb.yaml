@@ -4569,6 +4569,7 @@ paths:
           description: Conflict
         '500':
           description: Internal server error
+          
   /ucontent/getZIPVisitorPhotos:
     post:
       tags:
@@ -4610,6 +4611,397 @@ paths:
           description: Conflict
         '500':
           description: Internal server error
+          
+  /uevent/deleteEvent:
+    post:
+      tags:
+        - uEvent
+      summary: Delete event 
+      description: '*Username* refers to event ID (Event name, start and end date of the event)'
+      operationId: deleteEvent
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Delete event(s) you created
+          required: true
+          schema:
+            $ref: '#/definitions/Username'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /uevent/findEventById:
+    post:
+      tags:
+        - uEvent
+      summary: Find event by event ID
+      description: '*Username* refers to event ID (Event name, start and end date of the event)'
+      operationId: findEventById
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Find event by event ID
+          required: true
+          schema:
+            $ref: '#/definitions/Username'
+      responses:
+        '200':
+          description: success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /uevent/findEventsCompany:
+    post:
+      tags:
+        - uEvent
+      summary: Find all events of the client(company)
+      description: '*Username* refers to a company name'
+      operationId: findEventsCompany
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Find all events of the company
+          required: true
+          schema:
+            $ref: '#/definitions/Username'
+      responses:
+        '200':
+          description: success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+  
+  /uevent/updateEvent:
+    post:
+      tags:
+        - uEvent
+      summary: update event information
+      description: Update event information if client needs to modify
+      operationId: updateEvent
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Update event information (name, contact, notification etc)
+          required: true
+          schema:
+            $ref: '#/definitions/Event'
+      responses:
+        '200':
+          description: success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /uevent/addEvent:
+    post:
+      tags:
+        - uEvent
+      summary: Add Event
+      description: ''
+      operationId: addEvent
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Add new event
+          required: true
+          schema:
+            $ref: '#/definitions/Event'
+      responses:
+        '200':
+          description: success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /uevent/addEventVisitor:
+    post:
+      tags:
+        - uEvent
+      summary: Add event visitor
+      description: '*Username* refers to event ID (Event name, start and end date of the event)'
+      operationId: addEventVisitor
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Add event visitor in a particular event
+          required: true
+          schema:
+            $ref: '#/definitions/addEventVisitor'
+      responses:
+        '200':
+          description: success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /uevent/findEventVisitorByEmail:
+    post:
+      tags:
+        - uEvent
+      summary: Add event visitor
+      description:  |-
+        fiveVariables<br><br>
+        var1 - event ID <br>
+        var2 - visitor email address<br>
+        var3 - blank<br>
+        var4 - blank<br>
+        var5 - blank
+      operationId: findEventVisitorByEmail
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Find event visitor by event ID and visitor email address
+          required: true
+          schema:
+            $ref: '#/definitions/fiveVariables'
+      responses:
+        '200':
+          description: success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /uevent/updateEventVisitor:
+    post:
+      tags:
+        - uEvent
+      summary: Add event visitor
+      description:  '*Username* refers to event ID (Event name, start and end date of the event)'
+      operationId: updateEventVisitor
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Update event visitor information and visit record
+          required: true
+          schema:
+            $ref: '#/definitions/updateEventVisitor'
+      responses:
+        '200':
+          description: success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
+  /uevent/findAllEventVisitors:
+    post:
+      tags:
+        - uEvent
+      summary: Find all visitors in a particular event
+      description:  |-
+        fiveVariables<br><br>
+        var1 - event ID <br>
+        var2 - UTC(duration from starting time of the event to now)<br>
+        var3 - blank<br>
+        var4 - blank<br>
+        var5 - blank
+      operationId: findAllEeventVisitors
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: username
+          description: Account username
+          required: true
+          type: string
+        - in: header
+          name: token
+          description: Account token
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Find all visitors in a particular event
+          required: true
+          schema:
+            $ref: '#/definitions/fiveVariables'
+      responses:
+        '200':
+          description: success
+        '400':
+          description: Bad request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '409':
+          description: Conflict
+        '500':
+          description: Internal server error
+          
 definitions:
   Username:
     properties:
@@ -5362,3 +5754,87 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/VisitRecord'
+          
+  Event:
+    properties:
+      eventName:
+        type: string
+      eventDescription:
+        type: string
+      eventType:
+        type: string
+      eventFromTime:
+        type: string
+      eventToTime:
+        type: string
+      eventLogoName:
+        type: string
+      eventCost:
+        type: string
+      eventCostCurrency:
+        type: string
+      eventContactName:
+        type: string
+      eventContactPhone:
+        type: string
+      eventContactEmail: 
+        type: string
+      eventWebsite:
+        type: string
+      eventRulesAndRegulations:
+        type: string
+      eventMaxRegistrants:
+        type: string
+      eventRegistrationStarts:
+        type: string
+      eventRegistrationEnds:
+        type: string
+      eventTimeZone:
+        type: string
+      eventLocationName: 
+        type: string
+      eventAddressUnit:
+        type: string
+      eventAddressLine1:
+        type: string
+      eventAddressLine2:
+        type: string
+      eventAddressCity:
+        type: string
+      eventAddressProvince:
+        type: string
+      eventAddressCountry:
+        type: string
+      eventAddressPostcode:
+        type: string
+      eventSendNotificationAtRegistration:
+        type: string
+      eventSendNotificationAtCheckIn:
+        type: string
+      eventSendRemindersToAssistants:
+        type: string
+      eventPrintBadge:
+        type: string
+      eventStatus:
+        type: string
+  
+  addEventVisitor:
+    properties:
+      username:
+        type: string
+      person:
+        type: array
+        items:
+          $ref: '#/definitions/Person'
+          
+  updateEventVisitor:
+    properties:
+      visitor:
+        type: array
+        items:
+          $ref: '#/definitions/Visitor'
+      visitRecord:
+        type: array
+        items:
+          $ref: '#/definitions/VisitRecord'
+          
