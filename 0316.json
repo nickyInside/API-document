@@ -2222,14 +2222,14 @@
                 }
             }
         },
-        "/uship/senderCheck": {
+        "/uship/checkSender": {
             "post": {
                 "tags": [
                     "uSend"
                 ],
                 "summary": "Check sender",
                 "description": "",
-                "operationId": "senderCheck",
+                "operationId": "checkSender",
                 "consumes": [
                     "application/json"
                 ],
@@ -2257,7 +2257,7 @@
                         "description": "Check sender information (username and sender email address)",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/SenderCheck"
+                            "$ref": "#/definitions/CheckSender"
                         }
                     }
                 ],
@@ -2283,14 +2283,14 @@
                 }
             }
         },
-        "/uship/senderAdd": {
+        "/uship/addSender": {
             "post": {
                 "tags": [
                     "uSend"
                 ],
                 "summary": "Add sender information",
                 "description": "",
-                "operationId": "senderAdd",
+                "operationId": "addSender",
                 "consumes": [
                     "application/json"
                 ],
@@ -2405,14 +2405,14 @@
                 }
             }
         },
-        "/uship/shippingAdd": {
+        "/uship/addShipment": {
             "post": {
                 "tags": [
                     "uSend"
                 ],
                 "summary": "Add a new shipment",
                 "description": "",
-                "operationId": "shippingAdd",
+                "operationId": "addShipment",
                 "consumes": [
                     "application/json"
                 ],
@@ -2440,68 +2440,7 @@
                         "description": "Make a new shipment",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/ShippingAdd"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not found"
-                    },
-                    "409": {
-                        "description": "Conflict"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        },
-        "/uship/shipmentLabel": {
-            "post": {
-                "tags": [
-                    "uSend"
-                ],
-                "summary": "Get shipping information",
-                "description": "",
-                "operationId": "shipemntLabel",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "username",
-                        "description": "Account username",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "header",
-                        "name": "token",
-                        "description": "Account token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Get Canada Post shipment information",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/ShipmentId"
+                            "$ref": "#/definitions/AddShipment"
                         }
                     }
                 ],
@@ -2588,16 +2527,16 @@
                 }
             }
         },
-        "/uship/CanadaPostServices": {
+        "/uship/getAvailableServices": {
             "post": {
                 "tags": [
                     "uSend"
                 ],
-                "summary": "Get Canada Post services",
+                "summary": "Send request to get available shipping services",
                 "description": "",
-                "operationId": "CanadaPostServices",
+                "operationId": "getAvailableServices",
                 "consumes": [
-                    "application/json"
+                    "applition/json"
                 ],
                 "produces": [
                     "application/json"
@@ -2620,138 +2559,10 @@
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "Get Canada Post service information",
+                        "description": "Send sender detail, recipient detail, and parcel detail to get available shipping services",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/CPService"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "schema": {
-                            "$ref": "#/definitions/CPServiceArray"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not found"
-                    },
-                    "409": {
-                        "description": "Conflict"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        },
-        "/uship/CanadaPostRates": {
-            "post": {
-                "tags": [
-                    "uSend"
-                ],
-                "summary": "Get Canada Post rates",
-                "description": "",
-                "operationId": "CanadaPostRates",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "username",
-                        "description": "Account username",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "header",
-                        "name": "token",
-                        "description": "Account token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Get Canada Post rates of charge per parcel based on shipment information",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/CPRateParam"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "schema": {
-                            "$ref": "#/definitions/CPRatesArray"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not found"
-                    },
-                    "409": {
-                        "description": "Conflict"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        },
-        "/uship/shipmentComplete": {
-            "post": {
-                "tags": [
-                    "uSend"
-                ],
-                "summary": "Shipment complete action",
-                "description": "",
-                "operationId": "shipmentComplete",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "username",
-                        "description": "Account username",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "header",
-                        "name": "token",
-                        "description": "Account token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "create shipment, transmit shipment, create label, get label, create manifest, get manifest, and send email",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/ShipmentComplete"
+                            "$ref": "#/definitions/ShipmentRateParameters"
                         }
                     }
                 ],
@@ -2777,16 +2588,16 @@
                 }
             }
         },
-        "/uship/shipmentManifest": {
+        "/uship/deleteCPShipments": {
             "post": {
                 "tags": [
                     "uSend"
                 ],
-                "summary": "get a shipment manifest action",
-                "description": "fiveVariables<br>\nvar1 -  senderEmail (unique) <br>\nvar2 -  sender telephone<br>\nvar3 -  shipping ID<br>\nvar4 -  notification email address<br>\nvar5 -  blank (not use)<br>",
-                "operationId": "shipementManifest",
+                "summary": "Delete shipments",
+                "description": "fiveVariable<br><br> var1 - Sender email <br> var2 - From Date (Unix time stamp)<br> var3 - Blank (not use)<br> var4 - blank (not use)<br> var5 - blank (not use)",
+                "operationId": "deleteCPShipment",
                 "consumes": [
-                    "application/json"
+                    "applition/json"
                 ],
                 "produces": [
                     "application/json"
@@ -2809,10 +2620,10 @@
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "Create shipment manifest which contains one or more reciepts of shipment.",
+                        "description": "Send request to delete Canada Post Shipments",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/FiveVariables"
+                            "$ref": "#/definitions/fiveVariables"
                         }
                     }
                 ],
@@ -2838,16 +2649,16 @@
                 }
             }
         },
-        "/uship/CanadaPostAllowedServices": {
+        "/uship/findCPShipmentInfoByGroupDate": {
             "post": {
                 "tags": [
                     "uSend"
                 ],
-                "summary": "Get Canada Post services",
-                "description": "",
-                "operationId": "CanadaPostAllowedServices",
+                "summary": "Find Canada Post shipment",
+                "description": "fiveVariable<br><br> var1 - Destination (DOM,INT,USA)<br> var2 - Date (yyyy-mm-dd)<br> var3 - Blank (not use)<br> var4 - blank (not use)<br> var5 - blank (not use)",
+                "operationId": "findCPShipmentInfoByGroupDate",
                 "consumes": [
-                    "application/json"
+                    "applition/json"
                 ],
                 "produces": [
                     "application/json"
@@ -2870,10 +2681,193 @@
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "Services provided by Canada Post based on conditions such as size and weight.",
+                        "description": "Send request to find Canada Post Shipment information by day or destination.",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/CPRateParam"
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/getCompanyServiceProviderByName": {
+            "post": {
+                "tags": [
+                    "uSend"
+                ],
+                "summary": "Get Service Provider",
+                "description": "fiveVariable<br><br> var1 - Application name<br> var2 - Service provider name<br> var3 - Blank (not use)<br> var4 - blank (not use)<br> var5 - blank (not use)",
+                "operationId": "getCompanyServiceProviderByName",
+                "consumes": [
+                    "applition/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Send request to get service provider by company name.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/findCPShipmentsByGroupPeriod": {
+            "post": {
+                "tags": [
+                    "uSend"
+                ],
+                "summary": "Find Canada Post shipment by period",
+                "description": "fiveVariable<br><br> var1 - From date<br> var2 - To date<br> var3 - Blank (not use)<br> var4 - blank (not use)<br> var5 - blank (not use)",
+                "operationId": "findCPShipmentsByGroupPeriod",
+                "consumes": [
+                    "applition/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Send request to get Canada Post shipment information in the period of time.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/getPlatformId": {
+            "post": {
+                "tags": [
+                    "uSend"
+                ],
+                "summary": "Get platform ID",
+                "description": "fiveVariable<br><br> var1 - Company name<br> var2 - Service name<br> var3 - Provider name<br> var4 - blank (not use)<br> var5 - blank (not use)",
+                "operationId": "getPlatformId",
+                "consumes": [
+                    "applition/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Send request to get platform ID in order to send request to Canada Post to create a credentials.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
                         }
                     }
                 ],
@@ -7467,7 +7461,7 @@
                 }
             }
         },
-        "SenderCheck": {
+        "CheckSender": {
             "properties": {
                 "username": {
                     "type": "string"
@@ -7530,36 +7524,98 @@
                 }
             }
         },
-        "ShippingAdd": {
+        "ServiceCode": {
             "properties": {
-                "sender": {
+                "serviceCode": {
+                    "type": "string"
+                }
+            }
+        },
+        "AddShipment": {
+            "properties": {
+                "shipmentRateParameters": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/Person"
+                        "$ref": "#/definitions/ShipmentRateParameters"
                     }
                 },
-                "shipment": {
+                "shipmentServiceCode": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/Shipment"
+                        "$ref": "#/definitions/ServiceCode"
                     }
                 },
-                "status": {
+                "canadaPostShipment": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/StatusCode"
+                        "$ref": "#/definitions/CanadaPostShipment"
+                    }
+                },
+                "fedExShipment": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/FedexShipment"
                     }
                 }
             }
         },
-        "Shipment": {
+        "ShipmentRateParameters": {
             "properties": {
+                "serviceProviderName": {
+                    "type": "string"
+                },
+                "parcelLength": {
+                    "type": "string"
+                },
+                "parcelWidth": {
+                    "type": "string"
+                },
+                "parcelHeight": {
+                    "type": "string"
+                },
+                "parcelLinearUnits": {
+                    "type": "string"
+                },
+                "parcelWeight": {
+                    "type": "string"
+                },
+                "parcelWeightUnits": {
+                    "type": "string"
+                },
+                "senderName": {
+                    "type": "string"
+                },
+                "senderEmail": {
+                    "type": "string"
+                },
+                "senderCompany": {
+                    "type": "string"
+                },
+                "senderAddress": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Address"
+                    }
+                },
                 "recipientName": {
                     "type": "string"
                 },
                 "recipientCompany": {
                     "type": "string"
                 },
+                "recipientPhone": {
+                    "type": "string"
+                },
+                "recipientAddress": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Address"
+                    }
+                }
+            }
+        },
+        "CanadaPostShipment": {
+            "properties": {
                 "GroupIdOrTransmitShipment": {
                     "type": "string"
                 },
@@ -7570,27 +7626,6 @@
                     "type": "string"
                 },
                 "ExpectedMailingDate": {
-                    "type": "string"
-                },
-                "destinationAddress": {
-                    "type": "string"
-                },
-                "destinationCity": {
-                    "type": "string"
-                },
-                "destinationProvState": {
-                    "type": "string"
-                },
-                "destinationCountry": {
-                    "type": "string"
-                },
-                "destinationPostalZipCode": {
-                    "type": "string"
-                },
-                "destinationName": {
-                    "type": "string"
-                },
-                "destinationCompany": {
                     "type": "string"
                 },
                 "destinationClientVoiceNumber": {
@@ -7629,22 +7664,10 @@
                 "skuTypeCustomsValuePerUnit": {
                     "type": "string"
                 },
-                "parcelHeight": {
-                    "type": "string"
-                },
-                "parcelWidth": {
-                    "type": "string"
-                },
-                "parcelDepth": {
-                    "type": "string"
-                },
-                "parcelWeight": {
-                    "type": "string"
-                },
                 "notificationEmail": {
                     "type": "string"
                 },
-                "notificationOnDelibery": {
+                "notificationOnDelivery": {
                     "type": "string"
                 },
                 "notificationOnException": {
@@ -7677,23 +7700,77 @@
                 "ContractId": {
                     "type": "string"
                 },
-                "IntendedMethodOfPayment": {
-                    "type": "string"
-                },
-                "ServiceCode": {
-                    "type": "string"
-                },
-                "senderEmail": {
-                    "type": "string"
-                },
-                "shippingId": {
+                "IntendedMethodOfPayments": {
                     "type": "string"
                 }
             }
         },
-        "ShipmentId": {
+        "FedexShipment": {
             "properties": {
-                "shipmentId": {
+                "shipTimestamp": {
+                    "type": "string"
+                },
+                "dropoffType": {
+                    "type": "string"
+                },
+                "packagingType": {
+                    "type": "string"
+                },
+                "paymentType": {
+                    "type": "string"
+                },
+                "manifestDetail": {
+                    "type": "string"
+                },
+                "totalWeight": {
+                    "type": "string"
+                },
+                "totalInsuredValue": {
+                    "type": "string"
+                },
+                "preferredCurrency": {
+                    "type": "string"
+                },
+                "recipientLocationNumber": {
+                    "type": "string"
+                },
+                "shippingChargesPayment": {
+                    "type": "string"
+                },
+                "specialServicesRequested": {
+                    "type": "string"
+                },
+                "expressFreightDetail": {
+                    "type": "string"
+                },
+                "freightShipmentDetail": {
+                    "type": "string"
+                },
+                "deliveryInstructions": {
+                    "type": "string"
+                },
+                "variableHandlingChargeDetail": {
+                    "type": "string"
+                },
+                "customsClearanceDetail": {
+                    "type": "string"
+                },
+                "pickupDetail": {
+                    "type": "string"
+                },
+                "smartPostDetail": {
+                    "type": "string"
+                },
+                "blockInsightVisibility": {
+                    "type": "string"
+                },
+                "labelSpecification": {
+                    "type": "string"
+                },
+                "edtRequestType": {
+                    "type": "string"
+                },
+                "packageCount": {
                     "type": "string"
                 }
             }
@@ -7717,135 +7794,6 @@
         "GroupId": {
             "properties": {
                 "groupId": {
-                    "type": "string"
-                }
-            }
-        },
-        "CPServiceArray": {
-            "properties": {
-                "CPServiceItem": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/CPService"
-                    }
-                }
-            }
-        },
-        "CPRatesArray": {
-            "properties": {
-                "CPRatesItem": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/CPService"
-                    }
-                }
-            }
-        },
-        "CPService": {
-            "properties": {
-                "serviceCode": {
-                    "type": "string"
-                },
-                "href": {
-                    "type": "string"
-                },
-                "serviceName": {
-                    "type": "string"
-                },
-                "price": {
-                    "type": "string"
-                },
-                "expectedTransitTime": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "expectedDeliveryTime": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "expectedDelivery": {
-                    "type": "string"
-                },
-                "options": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Options"
-                    }
-                }
-            }
-        },
-        "Options": {
-            "properties": {
-                "options": {
-                    "type": "string"
-                }
-            }
-        },
-        "CPRateParam": {
-            "properties": {
-                "length": {
-                    "type": "string"
-                },
-                "width": {
-                    "type": "string"
-                },
-                "height": {
-                    "type": "string"
-                },
-                "weight": {
-                    "type": "string"
-                },
-                "mailingTo": {
-                    "type": "string"
-                },
-                "originPostalCode": {
-                    "type": "string"
-                },
-                "destinationCode": {
-                    "type": "string"
-                },
-                "countryCode": {
-                    "type": "string"
-                }
-            }
-        },
-        "ShipmentComplete": {
-            "properties": {
-                "sender": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Person"
-                    }
-                },
-                "shipment": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Shipment"
-                    }
-                },
-                "status": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/StatusCode"
-                    }
-                }
-            }
-        },
-        "FiveVariables": {
-            "properties": {
-                "var1": {
-                    "type": "string"
-                },
-                "var2": {
-                    "type": "string"
-                },
-                "var3": {
-                    "type": "string"
-                },
-                "var4": {
-                    "type": "string"
-                },
-                "var5": {
                     "type": "string"
                 }
             }
