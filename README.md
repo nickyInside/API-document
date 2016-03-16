@@ -70,3 +70,21 @@ Added 9 new requests(post)<br>
 <em>POST /uevent/findEventVisitorByEmail</em><br>
 <em>POST /uevent/updateEventVisitor</em><br>
 <em>POST /uevent/findAllEventVisitors</em><br>
+
+<h3>Mar 16th - Updates</h3>
+
+Added 6 new requests(post)<br>
+<em>POST /uship/getAvailableServices</em><br>
+<em>POST /uship/deleteCPShipments</em><br>
+<em>POST /uship/findCPShipmentInfoByGroupDate</em><br>
+<em>POST /uship/getPlatformId</em><br>
+<em>POST /uship/getCompanyServiceProviderByName</em><br>
+<em>POST /uship/findCPShipmentsByGroupPeriod</em><br>
+
+Deleted 6 requests(post)<br>
+<em>POST /uship/shipmentLabel</em><br>
+<em>POST /uship/canadaPostServices</em><br>
+<em>POST /uship/canadaPostRates</em><br>
+<em>POST /uship/shipmentComplete</em><br>
+<em>POST /uship/shipmentManifest</em><br>
+<em>POST /uship/canadaPostAllowedServices</em><br>
