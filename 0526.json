@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "title": "uDo Platform API",
-        "description": "The uDo REST API lets you interact with uDo platform from frontend to backend via sending an HTTP request.<br><br> uDo is a cloud-based app platform. Its purpose is to connect local service providers (both contents, and APIs) to the end users through the smart end devices, such as kiosk, ipad, smart phones, game consoles, smart tv, and smart watch, etc.",
+        "description": "The uDo REST API lets you interact with uDo platform from frontend to backend via sending an HTTP request. uDo is a cloud-based app platform. Its purpose is to connect local service providers (both contents, and APIs) to the end users through the smart end devices, such as kiosk, ipad, smart phones, game consoles, smart tv, and smart watch, etc.",
         "version": "0.1.11.7",
         "termsOfService": "http://machool.com/terms/",
         "contact": {
@@ -2466,7 +2466,7 @@
                 }
             }
         },
-        "/uship/shipmentTransmit": {
+        "/uship/transmitCPShipments": {
             "post": {
                 "tags": [
                     "uSend"
@@ -2501,7 +2501,7 @@
                         "description": "Transmit shipment by providing GroupIds",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/ShipmentTransmit"
+                            "$ref": "#/definitions/TransmitCPShipments"
                         }
                     }
                 ],
@@ -2594,7 +2594,7 @@
                     "uSend"
                 ],
                 "summary": "Delete shipments",
-                "description": "fiveVariable<br><br> var1 - Sender email <br> var2 - From Date (Unix time stamp)<br> var3 - Blank (not use)<br> var4 - blank (not use)<br> var5 - blank (not use)",
+                "description": "fiveVariables var1 - Sender email  var2 - From Date (Unix time stamp) var3 - Blank (not use) var4 - blank (not use) var5 - blank (not use)\n",
                 "operationId": "deleteCPShipment",
                 "consumes": [
                     "applition/json"
@@ -2655,7 +2655,7 @@
                     "uSend"
                 ],
                 "summary": "Find Canada Post shipment",
-                "description": "fiveVariable<br><br> var1 - Destination (DOM,INT,USA)<br> var2 - Date (yyyy-mm-dd)<br> var3 - Blank (not use)<br> var4 - blank (not use)<br> var5 - blank (not use)",
+                "description": "fiveVariable<br><br>\nvar1 - Destination (DOM,INT,USA)<br>\nvar2 - Date (yyyy-mm-dd)<br>\nvar3 - Blank (not use)<br>\nvar4 - blank (not use)<br>\nvar5 - blank (not use)\n",
                 "operationId": "findCPShipmentInfoByGroupDate",
                 "consumes": [
                     "applition/json"
@@ -2865,6 +2865,555 @@
                         "in": "body",
                         "name": "body",
                         "description": "Send request to get platform ID in order to send request to Canada Post to create a credentials.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/findCPGroupManifestIds": {
+            "post": {
+                "tags": [
+                    "uSend"
+                ],
+                "summary": "Find group of shipping manifest ID",
+                "description": "'fiveVariables\nvar1 - Manifest ID - Country - Date\nvar2 - blank (not use)\nvar3 - blank (not use)\nvar4 - blank (not use)\nvar5 - blank (not use)'\n",
+                "operationId": "findCPGroupManifestIds",
+                "consumes": [
+                    "applition/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Send request to get group of shipment manifest IDs.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/findCPGroupPeriod": {
+            "post": {
+                "tags": [
+                    "uSend"
+                ],
+                "summary": "Find Canada Post shipping groups in specific time periods",
+                "description": "'fiveVariables\nvar1 - From date\nvar2 - To date\nvar3 - blank (not use)\nvar4 - blank (not use)\nvar5 - blank (not use)'\n",
+                "operationId": "findCPGroupPeriod",
+                "consumes": [
+                    "applition/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Find Canada Post shipping groups in specific time periods",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/getCPShipments": {
+            "post": {
+                "tags": [
+                    "uSend"
+                ],
+                "summary": "Get all shipments belongs to a group",
+                "description": "'fiveVariables\nvar1 - Group\nvar2 - ID__Desitination__date\nvar3 - transmit or not transmitted(boolean value)\nvar4 - blank (not use)\nvar5 - blank (not use)'\n",
+                "operationId": "getCPShipments",
+                "consumes": [
+                    "applition/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get all shipments belongs to a group(DOM, USA, or INT)",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/voidCPShipments": {
+            "post": {
+                "tags": [
+                    "uSend"
+                ],
+                "summary": "Void shipment from the group",
+                "description": "",
+                "operationId": "voidCPShipments",
+                "consumes": [
+                    "applition/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Void shipment from shipment group",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CPShipmentsIds"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/getCPManifestIds": {
+            "post": {
+                "tags": [
+                    "uSend"
+                ],
+                "summary": "Get all Canada Post manifest ids in the specific period of time",
+                "description": "Five Variables var1 - From Date | var2 - To Date | var3 - Blank | var4 - Blank | var5 - blank",
+                "operationId": "getCPManifestIds",
+                "consumes": [
+                    "applition/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get all Canada Post manifest ids in the specific period of time",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/getCPManifestPDFName": {
+            "post": {
+                "tags": [
+                    "uSend"
+                ],
+                "summary": "Get all Canada Post manifest PDF files name",
+                "description": "Five Variables var1 - Manifest Id | var2 - Blank | var3 - Blank | var4 - Blank | var5 - blank",
+                "operationId": "getCPManifestPDFName",
+                "consumes": [
+                    "applition/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get all Canada Post manifest PDF files name",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/getCPMissingManifests": {
+            "post": {
+                "tags": [
+                    "uSend"
+                ],
+                "summary": "Get all Missing manifest from Canada Post",
+                "description": "Five Variables var1 - From Date | var2 - To Date | var3 - Blank | var4 - Blank | var5 - blank",
+                "operationId": "getCPMissingManifests",
+                "consumes": [
+                    "applition/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get all Missing manifest from Canada Post",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/getCPGroups": {
+            "post": {
+                "tags": [
+                    "uSend"
+                ],
+                "summary": "Get all shipment groups from Canada Post",
+                "description": "Five Variables var1 - From Date | var2 - To Date | var3 - Blank | var4 - Blank | var5 - blank",
+                "operationId": "getCPGroups",
+                "consumes": [
+                    "applition/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get all shipment groups from Canada Post",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/uship/getCPManifestAgain": {
+            "post": {
+                "tags": [
+                    "uSend"
+                ],
+                "summary": "Get CP manifest again",
+                "description": "Five Variables var1 - Cost center ID | var2 - Company ID__Dest__Date | var3 - Manifest ID | var4 - Blank | var5 - blank",
+                "operationId": "getCPManifestAgain",
+                "consumes": [
+                    "applition/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get manifest from Canada Post server if the request is failed",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/fiveVariables"
@@ -7494,32 +8043,10 @@
                 "email": {
                     "type": "string"
                 },
-                "status": {
-                    "type": "string",
-                    "items": {
-                        "$ref": "#/definitions/StatusCode"
-                    }
-                },
-                "company": {
+                "companyName": {
                     "type": "string"
                 },
                 "costCenterCode": {
-                    "type": "string"
-                }
-            }
-        },
-        "StatusCode": {
-            "properties": {
-                "error": {
-                    "type": "string"
-                },
-                "cause": {
-                    "type": "string"
-                },
-                "message": {
-                    "type": "string"
-                },
-                "stacktrace": {
                     "type": "string"
                 }
             }
@@ -7775,25 +8302,36 @@
                 }
             }
         },
-        "ShipmentTransmit": {
+        "TransmitCPShipments": {
             "properties": {
                 "groupIds": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/GroupId"
                     }
-                },
-                "groupIdCSV": {
-                    "type": "string"
-                },
-                "username": {
-                    "type": "string"
                 }
             }
         },
         "GroupId": {
             "properties": {
                 "groupId": {
+                    "type": "string"
+                }
+            }
+        },
+        "CPShipmentsIds": {
+            "properties": {
+                "groupIds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ShipmentsIds"
+                    }
+                }
+            }
+        },
+        "ShipmentsIds": {
+            "properties": {
+                "ShippingId": {
                     "type": "string"
                 }
             }
