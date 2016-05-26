@@ -88,3 +88,16 @@ Deleted 6 requests(post)<br>
 <em>POST /uship/shipmentComplete</em><br>
 <em>POST /uship/shipmentManifest</em><br>
 <em>POST /uship/canadaPostAllowedServices</em><br>
+
+<h3>May 26th - Updates</h3>
+
+Added 6 new requests(post)<br>
+<em>POST /uship/transmitCPShipments</em><br>
+<em>POST /uship/findCPGroupManifestIds</em><br>
+<em>POST /uship/findCPGroupPeriod</em><br>
+<em>POST /uship/getCPShipments</em><br>
+<em>POST /uship/voidCPShipments</em><br>
+<em>POST /uship/getCPManifestIds</em><br>
+<em>POST /uship/getCPMissingManifests</em><br>
+<em>POST /uship/getCPGroups</em><br>
+<em>POST /uship/getCPManifestAgain</em><br>
