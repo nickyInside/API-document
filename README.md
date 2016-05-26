@@ -91,7 +91,7 @@ Deleted 6 requests(post)<br>
 
 <h3>May 26th - Updates</h3>
 
-Added 6 new requests(post)<br>
+Added 9 new requests(post)<br>
 <em>POST /uship/transmitCPShipments</em><br>
 <em>POST /uship/findCPGroupManifestIds</em><br>
 <em>POST /uship/findCPGroupPeriod</em><br>
