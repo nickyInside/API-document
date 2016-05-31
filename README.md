@@ -34,7 +34,7 @@ Added APIs for Machool service plans, billing information
 
 uDo API documentation is now on server so you can access the document without setting up locally!
 
-URL: http://uservice.machool.com:3000/ *The port is not activated now(Oct, 27th 2015)
+URL: http://104.236.112.3:8080/  *The port is active now(May, 31th 2016)
 
 If the browser does not display our API documentation, download JSON or yaml file from our repository and import either one of them. 
 
