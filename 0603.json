@@ -15,6 +15,952 @@
     },
     "host": "45.55.86.229:9000",
     "paths": {
+        "/ucommon/uploadDocument": {
+            "post": {
+                "tags": [
+                    "uCommon"
+                ],
+                "summary": "Upload new document",
+                "description": "upload document to MongoDB",
+                "operationId": "uploadDocument",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "aCompanyName",
+                        "description": "company name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "aServiceName",
+                        "description": "Service name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "aUsername",
+                        "description": "Username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "aDocumentName",
+                        "description": "Document name like email template, nda, visitor photo, shipping label etc",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "aDocumentType",
+                        "description": "Document type like email template, nda, visitor photo, shipping label etc",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "aFilename",
+                        "description": "File name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "aExtension",
+                        "description": "Extension like jpg, png, pdf, doc, txt etc",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "aPictureWidth",
+                        "description": "image width",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "aPictureHeight",
+                        "description": "image height",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "aStatus",
+                        "description": "It is always \"1\" (means we can use the document. \"0\" no longer use)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "document",
+                        "description": "Actual file we upload",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Upload document response \n\n200 success\n\n400 bad request\n\n404 not found\n\n500 internal server error\n",
+                        "schema": {
+                            "$ref": "#/definitions/uploadResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/ucommon/getAllDocumentsCompany": {
+            "post": {
+                "tags": [
+                    "uCommon"
+                ],
+                "summary": "Get all documents in company",
+                "description": "*username* refers to company name",
+                "operationId": "getAllDocumentsCompany",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "get all the documents from company name",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "array of MongoDB objects",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/MongoDBObject"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not document found for company"
+                    }
+                }
+            }
+        },
+        "/ucommon/getDocument": {
+            "post": {
+                "tags": [
+                    "uCommon"
+                ],
+                "summary": "Get (any) document by decument ID",
+                "description": "*username* refers to document ID",
+                "operationId": "getDocument",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "get any document by document ID",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved"
+                    },
+                    "404": {
+                        "description": "Could not retrieve"
+                    }
+                }
+            }
+        },
+        "/ucommon/removeDocument": {
+            "post": {
+                "tags": [
+                    "uCommon"
+                ],
+                "summary": "remove document from database",
+                "description": "*username* refers to id",
+                "operationId": "removeDocument",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Remove document by id",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully removed"
+                    },
+                    "401": {
+                        "description": "MongoDB is down"
+                    },
+                    "404": {
+                        "description": "Document could not find"
+                    }
+                }
+            }
+        },
+        "/ucommon/getDocumentByFilename": {
+            "post": {
+                "tags": [
+                    "uCommon"
+                ],
+                "summary": "Get (any) document by file name",
+                "description": "*username* refers to file name",
+                "operationId": "getDocumentByFilename",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "get any document by file name",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved"
+                    },
+                    "404": {
+                        "description": "Could not retrieve"
+                    }
+                }
+            }
+        },
+        "/ucommon/displayPicture": {
+            "get": {
+                "tags": [
+                    "uCommon"
+                ],
+                "summary": "Filter documents",
+                "description": "Filter documents by *id*, *Company name*, *Service name*, *User name*, *Document type*, *File name*, *Extension*, *Picture width*, *Picture height*, *Status*.'\n",
+                "operationId": "displayPicture",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Filter documents",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Asset"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/ucommon/queryDocuments": {
+            "post": {
+                "tags": [
+                    "uCommon"
+                ],
+                "summary": "Filter documents",
+                "description": "Filter documents by *id*, *Company name*, *Service name*, *User name*, *Document type*, *File name*, *Extension*, *Picture width*, *Picture height*, *Status*.'\n",
+                "operationId": "queryDocuments",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Filter documents",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/QueryDocuments"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/ucommon/countDocuments": {
+            "post": {
+                "tags": [
+                    "uCommon"
+                ],
+                "summary": "Count the number of documents",
+                "description": "Filter documents and returns the number of the documents",
+                "operationId": "countDocuments",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Filter documents and returns the total number of the documents",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Asset"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/ucommon/getZIPVisitorPhotos": {
+            "post": {
+                "tags": [
+                    "uCommon"
+                ],
+                "summary": "Create ZIP file",
+                "description": "Filter documents and create zip file it cotains all the filtered documents ",
+                "operationId": "getZIPVisitorPhotos",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Filter documents and create zip file",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/QueryDocuments"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "409": {
+                        "description": "Conflict"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/ucommon/getDocumentByFilenameStream": {
+            "post": {
+                "tags": [
+                    "uCommon"
+                ],
+                "summary": "",
+                "description": "*username* refers to file name",
+                "operationId": "getDocumentByFilenameStream",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "get any document by file name",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Username"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved file string"
+                    },
+                    "404": {
+                        "description": "Could not retrieve"
+                    }
+                }
+            }
+        },
+        "/ucommon/getZIPArrayPhotos": {
+            "post": {
+                "tags": [
+                    "uCommon"
+                ],
+                "summary": "get array of zip photos",
+                "description": "Retrieve zipped array photos",
+                "operationId": "getZIPArrayPhotos",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Request to get zipped array (group of) photos",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ArrayPhotos"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved zip file (object)"
+                    },
+                    "404": {
+                        "description": "Could not retrieve"
+                    }
+                }
+            }
+        },
+        "/ucommon/getCacheConfiguration": {
+            "post": {
+                "tags": [
+                    "uCommon"
+                ],
+                "summary": "get cache configuration",
+                "description": "Get Cache Configuration\n\nDisk Storage Path - Directory of cache storage\n\nMax Bytes Local Disk - 0(unlimited)\n\nMax Bytes Local Heap - 0(unlimited)\n",
+                "operationId": "getCacheConfiguration",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Returns cache configuration parameters",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/CacheConfiguration"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/ucommon/getCacheNames": {
+            "post": {
+                "tags": [
+                    "uCommon"
+                ],
+                "summary": "get cache name",
+                "description": "Get cache name\n\n1 - framework name\n\n2 - cache name\n",
+                "operationId": "getCacheNames",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Returns cache configuration parameters",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/CacheNames"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/ucommon/putObjectInCache": {
+            "post": {
+                "tags": [
+                    "uCommon"
+                ],
+                "summary": "Put object in cache",
+                "description": "Five variables\n\nvar1 - Name of cache\n\nvar2 - Object key\n\nvar3 - Object value\n\nvar4 - Number of second you want to keep cache\n\nvar5 - blank\n",
+                "operationId": "putObjectInCache",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Put object in cache data",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully put object"
+                    },
+                    "404": {
+                        "description": "Could not put object"
+                    }
+                }
+            }
+        },
+        "/ucommon/getObjectFromCache": {
+            "post": {
+                "tags": [
+                    "uCommon"
+                ],
+                "summary": "get object from cache",
+                "description": "Five variables\n\nvar1 - Name of cache\n\nvar2 - Object key\n\nvar3 - blank\n\nvar4 - blank\n\nvar5 - blank\n",
+                "operationId": "getObjectFromCache",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get object From cache data, you only need a name of chache and an object key to get object values.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved cache data"
+                    },
+                    "404": {
+                        "description": "Could not retrieve cache data"
+                    }
+                }
+            }
+        },
+        "/ucommon/getCacheSize": {
+            "post": {
+                "tags": [
+                    "uCommon"
+                ],
+                "summary": "get size of cache",
+                "description": "Five variables\n\nvar1 - Name of cache\n\nvar2 - blank\n\nvar3 - blank\n\nvar4 - blank\n\nvar5 - blank\n",
+                "operationId": "getCacheSize",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get cache size by the name of cache",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved cache size"
+                    },
+                    "404": {
+                        "description": "Could not retrieve cache size"
+                    }
+                }
+            }
+        },
+        "/ucommon/getElementProperties": {
+            "post": {
+                "tags": [
+                    "uCommon"
+                ],
+                "summary": "get element properties",
+                "description": "Five variables\n\nvar1 - Name of cache\n\nvar2 - Object key\n\nvar3 - blank\n\nvar4 - blank\n\nvar5 - blank\n",
+                "operationId": "getElementProperties",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "username",
+                        "description": "Account username",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "token",
+                        "description": "Account token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Get element properties with cache name and object key",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/fiveVariables"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved properties"
+                    },
+                    "404": {
+                        "description": "Could not retrieve properties"
+                    }
+                }
+            }
+        },
         "/uman/usernameCheck": {
             "post": {
                 "tags": [
@@ -6666,555 +7612,6 @@
                 }
             }
         },
-        "/ucontent/getDocument": {
-            "post": {
-                "tags": [
-                    "uContent"
-                ],
-                "summary": "Get (any) document by decument ID",
-                "description": "*username* refers to document ID",
-                "operationId": "getDocument",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "username",
-                        "description": "Account username",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "header",
-                        "name": "token",
-                        "description": "Account token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "get any document by document ID",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/Username"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not found"
-                    },
-                    "409": {
-                        "description": "Conflict"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        },
-        "/ucontent/getDocumentByFilename": {
-            "post": {
-                "tags": [
-                    "uContent"
-                ],
-                "summary": "Get (any) document by file name",
-                "description": "*username* refers to file name",
-                "operationId": "getDocumentByFilename",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "username",
-                        "description": "Account username",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "header",
-                        "name": "token",
-                        "description": "Account token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "get any document by file name",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/Username"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not found"
-                    },
-                    "409": {
-                        "description": "Conflict"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        },
-        "/ucontent/getAllDocumentsCompany": {
-            "post": {
-                "tags": [
-                    "uContent"
-                ],
-                "summary": "Get all documents in company",
-                "description": "*username* refers to company name",
-                "operationId": "getAllDocumentsCompany",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "username",
-                        "description": "Account username",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "header",
-                        "name": "token",
-                        "description": "Account token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "get all the documents from company name",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/Username"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not found"
-                    },
-                    "409": {
-                        "description": "Conflict"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        },
-        "/ucontent/getDocumentDetails": {
-            "post": {
-                "tags": [
-                    "uContent"
-                ],
-                "summary": "Gey document details",
-                "description": "*username* refers to id",
-                "operationId": "getDocumentDetails",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "username",
-                        "description": "Account username",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "header",
-                        "name": "token",
-                        "description": "Account token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "get information of the documents which includes login user email, company name, upload date, picture name etc.",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/Username"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not found"
-                    },
-                    "409": {
-                        "description": "Conflict"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        },
-        "/ucontent/removeDocument": {
-            "post": {
-                "tags": [
-                    "uContent"
-                ],
-                "summary": "remove document from database",
-                "description": "*username* refers to id",
-                "operationId": "removeDocument",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "username",
-                        "description": "Account username",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "header",
-                        "name": "token",
-                        "description": "Account token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Remove document by id",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/Username"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not found"
-                    },
-                    "409": {
-                        "description": "Conflict"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        },
-        "/ucontent/uploadDocument": {
-            "post": {
-                "tags": [
-                    "uContent"
-                ],
-                "summary": "Upload new document",
-                "description": "*username* refers to id",
-                "operationId": "uploadDocument",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "username",
-                        "description": "Account username",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "header",
-                        "name": "token",
-                        "description": "Account token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Upload a new document by id",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/Username"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not found"
-                    },
-                    "409": {
-                        "description": "Conflict"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        },
-        "/ucontent/queryDocuments": {
-            "post": {
-                "tags": [
-                    "uContent"
-                ],
-                "summary": "Filter documents",
-                "description": "Filter documents by *id*, *Company name*, *Service name*, *User name*, *Document type*, *File name*, *Extension*, *Picture width*, *Picture height*, *Status*.",
-                "operationId": "queryDocuments",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "username",
-                        "description": "Account username",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "header",
-                        "name": "token",
-                        "description": "Account token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Filter documents",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/Asset"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not found"
-                    },
-                    "409": {
-                        "description": "Conflict"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        },
-        "/ucontent/countDocuments": {
-            "post": {
-                "tags": [
-                    "uContent"
-                ],
-                "summary": "Count the number of documents",
-                "description": "Filter documents and returns the number of the documents",
-                "operationId": "countDocuments",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "username",
-                        "description": "Account username",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "header",
-                        "name": "token",
-                        "description": "Account token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Filter documents and returns the total number of the documents",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/Asset"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not found"
-                    },
-                    "409": {
-                        "description": "Conflict"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        },
-        "/ucontent/getZIPVisitorPhotos": {
-            "post": {
-                "tags": [
-                    "uContent"
-                ],
-                "summary": "Create ZIP file",
-                "description": "Filter documents and create zip file it cotains all the filtered documents ",
-                "operationId": "getZIPVisitorPhotos",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "username",
-                        "description": "Account username",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "header",
-                        "name": "token",
-                        "description": "Account token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Filter documents and create zip file",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/Asset"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not found"
-                    },
-                    "409": {
-                        "description": "Conflict"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        },
         "/uevent/deleteEvent": {
             "post": {
                 "tags": [
@@ -7766,9 +8163,244 @@
         }
     },
     "definitions": {
+        "uploadResponse": {
+            "properties": {
+                "status": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "fileUploaded": {
+                    "type": "string"
+                }
+            }
+        },
+        "MongoDBObject": {
+            "properties": {
+                "part1": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/part1"
+                    }
+                },
+                "part2": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/part2"
+                    }
+                },
+                "part3": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/part3"
+                    }
+                }
+            }
+        },
+        "part1": {
+            "properties": {
+                "aliases": {
+                    "type": "string"
+                },
+                "chunkSize": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "aUsername": {
+                    "type": "string"
+                },
+                "length": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "aPictureWidth": {
+                    "type": "string"
+                },
+                "aCompanyName": {
+                    "type": "string"
+                },
+                "filename": {
+                    "type": "string"
+                },
+                "uploadDate": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/uploadDate"
+                    }
+                }
+            }
+        },
+        "uploadDate": {
+            "properties": {
+                "$date": {
+                    "type": "string"
+                }
+            }
+        },
+        "part2": {
+            "properties": {
+                "aFilename": {
+                    "type": "string"
+                },
+                "aPictureHeight": {
+                    "type": "string"
+                },
+                "aContentType": {
+                    "type": "string"
+                },
+                "aDocumentType": {
+                    "type": "string"
+                },
+                "aServiceName": {
+                    "type": "string"
+                },
+                "_id": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/_id"
+                    }
+                }
+            }
+        },
+        "_id": {
+            "properties": {
+                "$sold": {
+                    "type": "string"
+                }
+            }
+        },
+        "part3": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "aStatus": {
+                    "type": "string"
+                },
+                "contentType": {
+                    "type": "string"
+                },
+                "aExtension": {
+                    "type": "string"
+                },
+                "md5": {
+                    "type": "string"
+                }
+            }
+        },
         "Username": {
             "properties": {
                 "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "Asset": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "aCompanyName": {
+                    "type": "string"
+                },
+                "aServiceName": {
+                    "type": "string"
+                },
+                "aUsername": {
+                    "type": "string"
+                },
+                "aDocumentType": {
+                    "type": "string"
+                },
+                "aFilename": {
+                    "type": "string"
+                },
+                "aExtension": {
+                    "type": "string"
+                },
+                "aPictureWidth": {
+                    "type": "string"
+                },
+                "aPictureHeight": {
+                    "type": "string"
+                },
+                "aStatus": {
+                    "type": "string"
+                }
+            }
+        },
+        "QueryDocuments": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "aCompanyName": {
+                    "type": "string"
+                },
+                "aServiceName": {
+                    "type": "string"
+                },
+                "aUsername": {
+                    "type": "string"
+                },
+                "aDocumentType": {
+                    "type": "string"
+                },
+                "aFilename": {
+                    "type": "string"
+                },
+                "aExtension": {
+                    "type": "string"
+                },
+                "aFrom": {
+                    "type": "string"
+                },
+                "aTo": {
+                    "type": "string"
+                },
+                "aStatus": {
+                    "type": "string"
+                }
+            }
+        },
+        "ArrayPhotos": {
+            "properties": {
+                "fileNames": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/fileNames"
+                    }
+                }
+            }
+        },
+        "fileNames": {
+            "properties": {
+                "fileName": {
+                    "type": "string"
+                }
+            }
+        },
+        "CacheConfiguration": {
+            "properties": {
+                "DiskStragePath": {
+                    "type": "string"
+                },
+                "MaxBytesLocalDisk": {
+                    "type": "string"
+                },
+                "MaxBytesLocalHeap": {
+                    "type": "string"
+                }
+            }
+        },
+        "CacheNames": {
+            "properties": {
+                "1": {
+                    "type": "string"
+                },
+                "2": {
                     "type": "string"
                 }
             }
@@ -8791,40 +9423,6 @@
                     "type": "string"
                 },
                 "postcode": {
-                    "type": "string"
-                }
-            }
-        },
-        "Asset": {
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "aCompanyName": {
-                    "type": "string"
-                },
-                "aServiceName": {
-                    "type": "string"
-                },
-                "aUsername": {
-                    "type": "string"
-                },
-                "aDocumentType": {
-                    "type": "string"
-                },
-                "aFilename": {
-                    "type": "string"
-                },
-                "aExtension": {
-                    "type": "string"
-                },
-                "aPictureWidth": {
-                    "type": "string"
-                },
-                "aPictureHeight": {
-                    "type": "string"
-                },
-                "aStatus": {
                     "type": "string"
                 }
             }
