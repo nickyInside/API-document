@@ -101,3 +101,9 @@ Added 9 new requests(post)<br>
 <em>POST /uship/getCPMissingManifests</em><br>
 <em>POST /uship/getCPGroups</em><br>
 <em>POST /uship/getCPManifestAgain</em><br>
+
+<h3>June 3rd - Updates</h3>
+
+Changed name from "uContent" to "uCommon"
+Modified Responses
+Added 9 new requests(post and get)<br>
