@@ -342,8 +342,8 @@
                 "tags": [
                     "uCommon"
                 ],
-                "summary": "Filter documents",
-                "description": "Filter documents by *id*, *Company name*, *Service name*, *User name*, *Document type*, *File name*, *Extension*, *Picture width*, *Picture height*, *Status*.'\n",
+                "summary": "Request to get and display pictures",
+                "description": "Filter documents by **id, Company name, Service name, User name, Document type, File name, Extension, Picture width, Picture height, Status**.\n",
                 "operationId": "displayPicture",
                 "consumes": [
                     "application/json"
@@ -369,7 +369,7 @@
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "Filter documents",
+                        "description": "Request to get and display pictures",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/Asset"
@@ -404,7 +404,7 @@
                     "uCommon"
                 ],
                 "summary": "Filter documents",
-                "description": "Filter documents by *id*, *Company name*, *Service name*, *User name*, *Document type*, *File name*, *Extension*, *Picture width*, *Picture height*, *Status*.'\n",
+                "description": "Filter documents by **id, Company name, Service name, User name, Document type, File name, Extension, Picture width, Picture height, Status**.\n",
                 "operationId": "queryDocuments",
                 "consumes": [
                     "application/json"
@@ -3540,7 +3540,7 @@
                     "uSend"
                 ],
                 "summary": "Delete shipments",
-                "description": "fiveVariables var1 - Sender email  var2 - From Date (Unix time stamp) var3 - Blank (not use) var4 - blank (not use) var5 - blank (not use)\n",
+                "description": "fiveVariables\n\nvar1 - Sender email \n\nvar2 - From Date (Unix time stamp)\n\nvar3 - Blank (not use)\n\nvar4 - blank (not use)\n\nvar5 - blank (not use)\n",
                 "operationId": "deleteCPShipment",
                 "consumes": [
                     "applition/json"
@@ -3601,7 +3601,7 @@
                     "uSend"
                 ],
                 "summary": "Find Canada Post shipment",
-                "description": "fiveVariable<br><br>\nvar1 - Destination (DOM,INT,USA)<br>\nvar2 - Date (yyyy-mm-dd)<br>\nvar3 - Blank (not use)<br>\nvar4 - blank (not use)<br>\nvar5 - blank (not use)\n",
+                "description": "fiveVariable\n\nvar1 - Destination (DOM,INT,USA)\n\nvar2 - Date (yyyy-mm-dd)\n\nvar3 - Blank (not use)\n\nvar4 - blank (not use)\n\nvar5 - blank (not use)\n",
                 "operationId": "findCPShipmentInfoByGroupDate",
                 "consumes": [
                     "applition/json"
@@ -3662,7 +3662,7 @@
                     "uSend"
                 ],
                 "summary": "Get Service Provider",
-                "description": "fiveVariable<br><br> var1 - Application name<br> var2 - Service provider name<br> var3 - Blank (not use)<br> var4 - blank (not use)<br> var5 - blank (not use)",
+                "description": "fiveVariable\n\nvar1 - Application name\n\nvar2 - Service provider name\n\nvar3 - Blank (not use)\n\nvar4 - blank (not use)\n\nvar5 - blank (not use)\n",
                 "operationId": "getCompanyServiceProviderByName",
                 "consumes": [
                     "applition/json"
@@ -3723,7 +3723,7 @@
                     "uSend"
                 ],
                 "summary": "Find Canada Post shipment by period",
-                "description": "fiveVariable<br><br> var1 - From date<br> var2 - To date<br> var3 - Blank (not use)<br> var4 - blank (not use)<br> var5 - blank (not use)",
+                "description": "fiveVariable\n\nvar1 - From date\n\nvar2 - To date\n\nvar3 - Blank (not use)\n\nvar4 - blank (not use)\n\nvar5 - blank (not use)\n",
                 "operationId": "findCPShipmentsByGroupPeriod",
                 "consumes": [
                     "applition/json"
@@ -3784,7 +3784,7 @@
                     "uSend"
                 ],
                 "summary": "Get platform ID",
-                "description": "fiveVariable<br><br> var1 - Company name<br> var2 - Service name<br> var3 - Provider name<br> var4 - blank (not use)<br> var5 - blank (not use)",
+                "description": "fiveVariables\n\nvar1 - Company name\n\nvar2 - Service name\n\nvar3 - Provider name\n\nvar4 - blank (not use)\n\nvar5 - blank (not use)\n",
                 "operationId": "getPlatformId",
                 "consumes": [
                     "applition/json"
@@ -3845,7 +3845,7 @@
                     "uSend"
                 ],
                 "summary": "Find group of shipping manifest ID",
-                "description": "'fiveVariables\nvar1 - Manifest ID - Country - Date\nvar2 - blank (not use)\nvar3 - blank (not use)\nvar4 - blank (not use)\nvar5 - blank (not use)'\n",
+                "description": "fiveVariables\n\nvar1 - Manifest ID - Country - Date\n\nvar2 - blank (not use)\n\nvar3 - blank (not use)\n\nvar4 - blank (not use)\n\nvar5 - blank (not use)\n",
                 "operationId": "findCPGroupManifestIds",
                 "consumes": [
                     "applition/json"
@@ -3906,7 +3906,7 @@
                     "uSend"
                 ],
                 "summary": "Find Canada Post shipping groups in specific time periods",
-                "description": "'fiveVariables\nvar1 - From date\nvar2 - To date\nvar3 - blank (not use)\nvar4 - blank (not use)\nvar5 - blank (not use)'\n",
+                "description": "fiveVariables\n\nvar1 - From date\n\nvar2 - To date\n\nvar3 - blank (not use)\n\nvar4 - blank (not use)\n\nvar5 - blank (not use)\n",
                 "operationId": "findCPGroupPeriod",
                 "consumes": [
                     "applition/json"
@@ -3967,7 +3967,7 @@
                     "uSend"
                 ],
                 "summary": "Get all shipments belongs to a group",
-                "description": "'fiveVariables\nvar1 - Group\nvar2 - ID__Desitination__date\nvar3 - transmit or not transmitted(boolean value)\nvar4 - blank (not use)\nvar5 - blank (not use)'\n",
+                "description": "fiveVariables\n\nvar1 - Group\n\nvar2 - ID Desitination date\n\nvar3 - transmit or not transmitted(boolean value)\n\nvar4 - blank (not use)\n\nvar5 - blank (not use)\n",
                 "operationId": "getCPShipments",
                 "consumes": [
                     "applition/json"
@@ -4089,7 +4089,7 @@
                     "uSend"
                 ],
                 "summary": "Get all Canada Post manifest ids in the specific period of time",
-                "description": "Five Variables var1 - From Date | var2 - To Date | var3 - Blank | var4 - Blank | var5 - blank",
+                "description": "Five Variables\n\nvar1 - From Date\n\nvar2 - To Date\n\nvar3 - Blank\n\nvar4 - Blank\n\nvar5 - blank\n",
                 "operationId": "getCPManifestIds",
                 "consumes": [
                     "applition/json"
@@ -4150,7 +4150,7 @@
                     "uSend"
                 ],
                 "summary": "Get all Canada Post manifest PDF files name",
-                "description": "Five Variables var1 - Manifest Id | var2 - Blank | var3 - Blank | var4 - Blank | var5 - blank",
+                "description": "Five Variables\n\n\nvar1 - Manifest ID\n\nvar2 - Blank\n\nvar3 - Blank\n\nvar4 - Blank\n\nvar5 - blank\n",
                 "operationId": "getCPManifestPDFName",
                 "consumes": [
                     "applition/json"
@@ -4211,7 +4211,7 @@
                     "uSend"
                 ],
                 "summary": "Get all Missing manifest from Canada Post",
-                "description": "Five Variables var1 - From Date | var2 - To Date | var3 - Blank | var4 - Blank | var5 - blank",
+                "description": "Five Variables\n\nvar1 - From Date\n\nvar2 - To Date\n\nvar3 - Blank\n\nvar4 - Blank\n\nvar5 - blank\n",
                 "operationId": "getCPMissingManifests",
                 "consumes": [
                     "applition/json"
@@ -4272,7 +4272,7 @@
                     "uSend"
                 ],
                 "summary": "Get all shipment groups from Canada Post",
-                "description": "Five Variables var1 - From Date | var2 - To Date | var3 - Blank | var4 - Blank | var5 - blank",
+                "description": "Five Variables\n\nvar1 - From Date\n\nvar2 - To Date\n\nvar3 - Blank\n\nvar4 - Blank\n\nvar5 - blank\n",
                 "operationId": "getCPGroups",
                 "consumes": [
                     "applition/json"
@@ -4333,7 +4333,7 @@
                     "uSend"
                 ],
                 "summary": "Get CP manifest again",
-                "description": "Five Variables var1 - Cost center ID | var2 - Company ID__Dest__Date | var3 - Manifest ID | var4 - Blank | var5 - blank",
+                "description": "Five Variables\n\nvar1 - Cost center ID\n\nvar2 - Company ID Destination Date\n\nvar3 - Manifest ID\n\nvar4 - Blank\n\nvar5 - blank\n",
                 "operationId": "getCPManifestAgain",
                 "consumes": [
                     "applition/json"
@@ -5495,7 +5495,7 @@
                     "uPay"
                 ],
                 "summary": "Subscribe user to a plan",
-                "description": "fiveVariables<br>\nvar1 -  company name<br>\nvar2 -  service name<br>\nvar3 -  subscription periods<br>\nvar4 -  user email address<br>\nvar5 -  blank (not use)",
+                "description": "fiveVariables\n\nvar1 -  company name\n\nvar2 -  service name\n\nvar3 -  subscription periods\n\nvar4 -  user email address\n\nvar5 -  blank (not use)\n",
                 "operationId": "subscribeToPlan",
                 "parameters": [
                     {
@@ -5550,7 +5550,7 @@
                     "uPay"
                 ],
                 "summary": "Authorize credit card information",
-                "description": "fiveVariables<br>\nvar1 -  client email address<br> \nvar2 -  card number array<br>\nvar3 -  authorization<br>\nvar4, var5 -  blank (not use)",
+                "description": "fiveVariables\n\nvar1 -  client email address\n\nvar2 -  card number array\n\nvar3 -  authorization\n\nvar4, var5 -  blank (not use)\n",
                 "operationId": "authorizeCustomer",
                 "consumes": [
                     "application/json"
@@ -5733,7 +5733,7 @@
                     "uPay"
                 ],
                 "summary": "Delete credit card information",
-                "description": "fiveVariable<br><br>\nvar1 - First/last name, company neme and email address<br>\nvar2 - Card Lookup id<br>\nvar3 - Customer email<br>\nvar4 - blank (not use)<br>\nvar5 - blank (not use)",
+                "description": "fiveVariable\n\nvar1 - First/last name, company neme and email address\n\nvar2 - Card Lookup id\n\nvar3 - Customer email\n\nvar4 - blank (not use)\n\nvar5 - blank (not use)\n",
                 "operationId": "deleteCreditCard",
                 "consumes": [
                     "application/json"
@@ -6584,7 +6584,7 @@
                     "uVisit"
                 ],
                 "summary": "Send checkin message",
-                "description": "fiveVariables<br><br>\nvar1 -  senderEmail (unique)<br>\nvar2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)<br>\nvar3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)<br>\nvar4 -  visitorName<br> \nvar5 -  visitRecordId (visitorEmail + checkinTime)",
+                "description": "fiveVariables\n\nvar1 -  senderEmail (unique)\n\nvar2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)\n\nvar3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)\n\nvar4 -  visitorName\n\nvar5 -  visitRecordId (visitorEmail + checkinTime)\n",
                 "operationId": "sendCheckinMessages",
                 "consumes": [
                     "application/json"
@@ -6645,7 +6645,7 @@
                     "uVisit"
                 ],
                 "summary": "Send check out message",
-                "description": "fiveVariables<br> (sendCheckinMessages, sendCheckoutMessages, sendThanksToVisitorMessages)<br><br>\nvar1 -  senderEmail (unique) <br>\nvar2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)<br>\nvar3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)<br>\nvar4 -  visitorName <br>\nvar5 -  visitRecordId (visitorEmail + checkinTime)",
+                "description": "fiveVariables (sendCheckinMessages, sendCheckoutMessages,\nsendThanksToVisitorMessages)\n\nvar1 -  senderEmail (unique)\n\nvar2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)\n\nvar3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)\n\nvar4 -  visitorName\n\nvar5 -  visitRecordId (visitorEmail + checkinTime)\n",
                 "operationId": "sendCheckoutMessages",
                 "consumes": [
                     "application/json"
@@ -6706,7 +6706,7 @@
                     "uVisit"
                 ],
                 "summary": "Send thank you mail to visitors",
-                "description": "fiveVariables<br> (sendCheckinMessages, sendCheckoutMessages, sendThanksToVisitorMessages)<br><br>\nvar1 -  senderEmail (unique) <br>\nvar2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)<br>\nvar3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)<br>\nvar4 -  visitorName  <br> var5 -  visitRecordId (visitorEmail + checkinTime)",
+                "description": "fiveVariables (sendCheckinMessages, sendCheckoutMessages,\nsendThanksToVisitorMessages)\n\nvar1 -  senderEmail (unique)\n\nvar2 -  recipientsEmail (semicolon separated values of all recipients\nemail / receptionEmail, hostEmail, securityEmail)\n\nvar3 -  recipientsPhone (semicolon separated values of all recipients\nphone / receptionPhone, hostPhone, securityPhone)\n\nvar4 -  visitorName   \n\nvar5 -  visitRecordId (visitorEmail\n+ checkinTime)\n",
                 "operationId": "sendThanksToVisitorMessages",
                 "consumes": [
                     "application/json"
@@ -6767,7 +6767,7 @@
                     "uVisit"
                 ],
                 "summary": "Find the number of visits by day",
-                "description": "fiveVariable<br> (findNumberVisitsCompanyByDay)<br><br>\nvar1 - from date<br>\nvar2 - to date<br>\nvar3 - show duplicate (yes - show/ no - not show)<br>\nvar4 - blank (not use)<br>\nvar5 - blank (not use)",
+                "description": "fiveVariable (findNumberVisitsCompanyByDay)\n\nvar1 - from date\n\nvar2 - to date\n\nvar3 - show duplicate (yes - show/ no - not show)\n\nvar4 - blank (not use)\n\nvar5 - blank (not use)\n",
                 "operationId": "findNumberVisitsCompanyByDay",
                 "consumes": [
                     "application/json"
@@ -6889,7 +6889,7 @@
                     "uVisit"
                 ],
                 "summary": "Find all visitor record in a time period",
-                "description": "fiveVariables<br><br>\nvar1 - from date<br>\nvar2 - to date<br>\nvar3, var4, var5 - blank (not use)",
+                "description": "fiveVariables\n\nvar1 - from date\n\nvar2 - to date\n\nvar3, var4, var5 - blank (not use)\n",
                 "operationId": "findAllVisitorPeriod",
                 "consumes": [
                     "application/json"
@@ -6950,7 +6950,7 @@
                     "uVisit"
                 ],
                 "summary": "Find all visitors between two time periods through API",
-                "description": "fiveVariables<br><br>\nvar1 - from date<br>\nvar2 - to date<br>\nvar3, var4, var5 - blank (not use)",
+                "description": "fiveVariables\n\nvar1 - from date\n\nvar2 - to date\n\nvar3, var4, var5 - blank (not use)\n",
                 "operationId": "findAllVisitorPeriod_API",
                 "consumes": [
                     "application/json"
@@ -7011,7 +7011,7 @@
                     "uVisit"
                 ],
                 "summary": "Find host who has visits in a period of time",
-                "description": "fiveVariables<br><br>\nvar1 - from date<br>\nvar2 - to date<br>\nvar3 - host email (unique)<br>\nvar4, var5 - blank (not use)",
+                "description": "\nfiveVariables\n\nvar1 - from date\n\nvar2 - to date\n\nvar3 - host email (unique)\n\nvar4, var5 - blank (not use)\n",
                 "operationId": "findVisitsHostByDayPeriod",
                 "consumes": [
                     "application/json"
@@ -7072,7 +7072,7 @@
                     "uVisit"
                 ],
                 "summary": "Find host who has visit record (checkin time, checkout time, rate etc)",
-                "description": "fiveVariables<br><br>\nvar1 - from date<br>\nvar2 - to date<br>\nvar3 - host email (unique)<br>\nvar4, var5 - blank (not use)",
+                "description": "fiveVariables\n\nvar1 - from date\n\nvar2 - to date\n\nvar3 - host email (unique)\n\nvar4, var5 - blank (not use)\n",
                 "operationId": "findVisitRecordsHostByDayPeriod",
                 "consumes": [
                     "application/json"
@@ -7133,7 +7133,7 @@
                     "uVisit"
                 ],
                 "summary": "Find twenty hosts who have most visits",
-                "description": "fiveVariables<br><br>\nvar1 - from date<br>\nvar2 - to date<br>\nvar3, var4, var5 - blank (not use)",
+                "description": "\nfiveVariables\n\nvar1 - from date\n\nvar2 - to date\n\nvar3, var4, var5 - blank (not use)\n",
                 "operationId": "findTwentyMostVisitedHostPeriods",
                 "consumes": [
                     "application/json"
@@ -7252,7 +7252,7 @@
                     "uVisit"
                 ],
                 "summary": "Get Badge image URL",
-                "description": "fiveVariables<br><br>\nvar1 - picture<br> \nvar2 - visitor name<br>\nvar3 - company name<br>\nvar4 - email address<br>\nvar5 - qr code",
+                "description": "fiveVariables\n\nvar1 - picture\n\nvar2 - visitor name\n\nvar3 - company name\n\nvar4 - email address\n\nvar5 - qr code\n",
                 "operationId": "getBadgeURL",
                 "consumes": [
                     "application/json"
@@ -7313,7 +7313,7 @@
                     "uVisit"
                 ],
                 "summary": "Get badge PDF file",
-                "description": "fiveVariables<br><br>\nvar1 - picture <br>\nvar2 - visitor name<br>\nvar3 - company name<br>\nvar4 - email addressbr>\nvar5 - qr code",
+                "description": "fiveVariables\n\nvar1 - picture \n\nvar2 - visitor name\n\nvar3 - company name\n\nvar4 - email address\n\nvar5 - qr code\n",
                 "operationId": "gedBadgePDF",
                 "consumes": [
                     "application/json"
@@ -7374,7 +7374,7 @@
                     "uVisit"
                 ],
                 "summary": "Update visit record",
-                "description": "fiveVariables<br><br>\nvar1 - visitor email address <br>\nvar2 - visitor check in time<br>\nvar3 - status(0- not checkout, 1- checkout by admin, 2- checkout by visitor<br>\nvar4 - empty<br>\nvar5 - empty",
+                "description": "fiveVariables\n\nvar1 - visitor email address\n\nvar2 - visitor check in time\n\nvar3 - status(0- not checkout, 1- checkout by admin, 2- checkout by visitor)\n\nvar4 - empty\n\nvar5 - empty\n",
                 "operationId": "updateVisitRecordStatus",
                 "consumes": [
                     "application/json"
@@ -7435,7 +7435,7 @@
                     "uVisit"
                 ],
                 "summary": "Check either NDA is signed",
-                "description": "fiveVariables<br><br>\nvar1 - visitor email address <br>\nvar2 - visitor check in time<br>\nvar3 - status(0- not signed, 1- signed<br>\nvar4 - empty<br>\nvar5 - empty",
+                "description": "fiveVariables\n\nvar1 - visitor email address\n\nvar2 - visitor check in time\n\nvar3 - status(0- not signed, 1- signed)\n\nvar4 - blank (not use)\n\nvar5 - blank (not use )\n",
                 "operationId": "updateVisitRecordNDAChecked",
                 "consumes": [
                     "application/json"
@@ -7557,7 +7557,7 @@
                     "uVisit"
                 ],
                 "summary": "store visitor badge to Mongo DB",
-                "description": "fiveVariables<br><br>\nvar1 - visitor picture name <br>\nvar2 - visitor name<br>\nvar3 - company visitor visits<br>\nvar4 - login username<br>\nvar5 - QR code image",
+                "description": "fiveVariables\n\nvar1 - visitor picture name\n\nvar2 - visitor name\n\nvar3 - company visitor visits\n\nvar4 - login username\n\nvar5 - QR code image\n",
                 "operationId": "getBadge_MondoDB",
                 "consumes": [
                     "application/json"
@@ -7984,7 +7984,7 @@
                     "uEvent"
                 ],
                 "summary": "Add event visitor",
-                "description": "fiveVariables<br><br>\nvar1 - event ID <br>\nvar2 - visitor email address<br>\nvar3 - blank<br>\nvar4 - blank<br>\nvar5 - blank",
+                "description": "fiveVariables\n\nvar1 - event ID\n\nvar2 - visitor email address\n\nvar3 - blank\n\nvar4 - blank\n\nvar5 - blank\n",
                 "operationId": "findEventVisitorByEmail",
                 "consumes": [
                     "application/json"
@@ -8106,7 +8106,7 @@
                     "uEvent"
                 ],
                 "summary": "Find all visitors in a particular event",
-                "description": "fiveVariables<br><br>\nvar1 - event ID <br>\nvar2 - UTC(duration from starting time of the event to now)<br>\nvar3 - blank<br>\nvar4 - blank<br>\nvar5 - blank",
+                "description": "fiveVariables\n\nvar1 - event ID\n\nvar2 - UTC(duration from starting time of the event to now)\n\nvar3 - blank\n\nvar4 - blank\n\nvar5 - blank\n",
                 "operationId": "findAllEeventVisitors",
                 "consumes": [
                     "application/json"

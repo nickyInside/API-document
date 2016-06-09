@@ -251,9 +251,9 @@ paths:
     get:
       tags:
         - uCommon
-      summary: Filter documents
+      summary: Request to get and display pictures
       description: |
-        Filter documents by *id*, *Company name*, *Service name*, *User name*, *Document type*, *File name*, *Extension*, *Picture width*, *Picture height*, *Status*.'
+        Filter documents by **id, Company name, Service name, User name, Document type, File name, Extension, Picture width, Picture height, Status**.
       operationId: displayPicture
       consumes:
         - application/json
@@ -272,7 +272,7 @@ paths:
           type: string
         - in: body
           name: body
-          description: Filter documents
+          description: Request to get and display pictures
           required: true
           schema:
             $ref: '#/definitions/Asset'
@@ -296,7 +296,7 @@ paths:
         - uCommon
       summary: Filter documents
       description: |
-        Filter documents by *id*, *Company name*, *Service name*, *User name*, *Document type*, *File name*, *Extension*, *Picture width*, *Picture height*, *Status*.'
+        Filter documents by **id, Company name, Service name, User name, Document type, File name, Extension, Picture width, Picture height, Status**.
       operationId: queryDocuments
       consumes:
         - application/json
@@ -852,6 +852,7 @@ paths:
           description: Not found
         '500':
           description: Internal server error
+          
   /uman/accountDetails:
     post:
       tags:
@@ -889,6 +890,7 @@ paths:
           description: Not found
         '500':
           description: Internal server error
+          
   /uman/costCenterAdd:
     post:
       tags:
@@ -2488,12 +2490,17 @@ paths:
       tags:
         - uSend
       summary: Delete shipments 
-      description: >
+      description: |
         fiveVariables
+        
         var1 - Sender email 
+        
         var2 - From Date (Unix time stamp)
+        
         var3 - Blank (not use)
+        
         var4 - blank (not use)
+        
         var5 - blank (not use)
       operationId: deleteCPShipment
       consumes:
@@ -2537,11 +2544,16 @@ paths:
         - uSend
       summary: Find Canada Post shipment 
       description: |
-        fiveVariable<br><br>
-        var1 - Destination (DOM,INT,USA)<br>
-        var2 - Date (yyyy-mm-dd)<br>
-        var3 - Blank (not use)<br>
-        var4 - blank (not use)<br>
+        fiveVariable
+        
+        var1 - Destination (DOM,INT,USA)
+        
+        var2 - Date (yyyy-mm-dd)
+        
+        var3 - Blank (not use)
+        
+        var4 - blank (not use)
+        
         var5 - blank (not use)
       operationId: findCPShipmentInfoByGroupDate
       consumes:
@@ -2584,12 +2596,18 @@ paths:
       tags:
         - uSend
       summary: Get Service Provider 
-      description: 'fiveVariable<br><br>
-        var1 - Application name<br>
-        var2 - Service provider name<br>
-        var3 - Blank (not use)<br>
-        var4 - blank (not use)<br>
-        var5 - blank (not use)'
+      description: | 
+        fiveVariable
+        
+        var1 - Application name
+        
+        var2 - Service provider name
+        
+        var3 - Blank (not use)
+        
+        var4 - blank (not use)
+        
+        var5 - blank (not use)
       operationId: getCompanyServiceProviderByName
       consumes:
         - applition/json
@@ -2631,12 +2649,18 @@ paths:
       tags:
         - uSend
       summary: Find Canada Post shipment by period 
-      description: 'fiveVariable<br><br>
-        var1 - From date<br>
-        var2 - To date<br>
-        var3 - Blank (not use)<br>
-        var4 - blank (not use)<br>
-        var5 - blank (not use)'
+      description: |
+        fiveVariable
+        
+        var1 - From date
+        
+        var2 - To date
+        
+        var3 - Blank (not use)
+        
+        var4 - blank (not use)
+        
+        var5 - blank (not use)
       operationId: findCPShipmentsByGroupPeriod
       consumes:
         - applition/json
@@ -2678,12 +2702,18 @@ paths:
       tags:
         - uSend
       summary: Get platform ID 
-      description: 'fiveVariable<br><br>
-        var1 - Company name<br>
-        var2 - Service name<br>
-        var3 - Provider name<br>
-        var4 - blank (not use)<br>
-        var5 - blank (not use)'
+      description: |
+        fiveVariables
+        
+        var1 - Company name
+        
+        var2 - Service name
+        
+        var3 - Provider name
+        
+        var4 - blank (not use)
+        
+        var5 - blank (not use)
       operationId: getPlatformId
       consumes:
         - applition/json
@@ -2726,12 +2756,17 @@ paths:
         - uSend
       summary: Find group of shipping manifest ID 
       description: |
-        'fiveVariables
+        fiveVariables
+        
         var1 - Manifest ID - Country - Date
+        
         var2 - blank (not use)
+        
         var3 - blank (not use)
+        
         var4 - blank (not use)
-        var5 - blank (not use)'
+        
+        var5 - blank (not use)
       operationId: findCPGroupManifestIds
       consumes:
         - applition/json
@@ -2774,12 +2809,17 @@ paths:
         - uSend
       summary: Find Canada Post shipping groups in specific time periods 
       description: |
-        'fiveVariables
+        fiveVariables
+        
         var1 - From date
+        
         var2 - To date
+        
         var3 - blank (not use)
+        
         var4 - blank (not use)
-        var5 - blank (not use)'
+        
+        var5 - blank (not use)
       operationId: findCPGroupPeriod
       consumes:
         - applition/json
@@ -2822,12 +2862,17 @@ paths:
         - uSend
       summary: Get all shipments belongs to a group
       description: |
-        'fiveVariables
+        fiveVariables
+        
         var1 - Group
-        var2 - ID__Desitination__date
+        
+        var2 - ID Desitination date
+        
         var3 - transmit or not transmitted(boolean value)
+        
         var4 - blank (not use)
-        var5 - blank (not use)'
+        
+        var5 - blank (not use)
       operationId: getCPShipments
       consumes:
         - applition/json
@@ -2911,8 +2956,18 @@ paths:
       tags:
         - uSend
       summary: Get all Canada Post manifest ids in the specific period of time
-      description: 'Five Variables
-      var1 - From Date | var2 - To Date | var3 - Blank | var4 - Blank | var5 - blank'
+      description: |
+        Five Variables
+        
+        var1 - From Date
+        
+        var2 - To Date
+        
+        var3 - Blank
+        
+        var4 - Blank
+        
+        var5 - blank
       operationId: getCPManifestIds
       consumes:
         - applition/json
@@ -2954,8 +3009,19 @@ paths:
       tags:
         - uSend
       summary: Get all Canada Post manifest PDF files name
-      description: 'Five Variables
-      var1 - Manifest Id | var2 - Blank | var3 - Blank | var4 - Blank | var5 - blank'
+      description: |
+        Five Variables
+        
+        
+        var1 - Manifest ID
+        
+        var2 - Blank
+        
+        var3 - Blank
+        
+        var4 - Blank
+        
+        var5 - blank
       operationId: getCPManifestPDFName
       consumes:
         - applition/json
@@ -2997,8 +3063,18 @@ paths:
       tags:
         - uSend
       summary: Get all Missing manifest from Canada Post
-      description: 'Five Variables
-      var1 - From Date | var2 - To Date | var3 - Blank | var4 - Blank | var5 - blank'
+      description: |
+        Five Variables
+        
+        var1 - From Date
+        
+        var2 - To Date
+        
+        var3 - Blank
+        
+        var4 - Blank
+        
+        var5 - blank
       operationId: getCPMissingManifests
       consumes:
         - applition/json
@@ -3040,8 +3116,18 @@ paths:
       tags:
         - uSend
       summary: Get all shipment groups from Canada Post
-      description: 'Five Variables
-      var1 - From Date | var2 - To Date | var3 - Blank | var4 - Blank | var5 - blank'
+      description: |
+        Five Variables
+        
+        var1 - From Date
+        
+        var2 - To Date
+        
+        var3 - Blank
+        
+        var4 - Blank
+        
+        var5 - blank
       operationId: getCPGroups
       consumes:
         - applition/json
@@ -3083,8 +3169,18 @@ paths:
       tags:
         - uSend
       summary: Get CP manifest again
-      description: 'Five Variables
-      var1 - Cost center ID | var2 - Company ID__Dest__Date | var3 - Manifest ID | var4 - Blank | var5 - blank'
+      description: |
+        Five Variables
+        
+        var1 - Cost center ID
+        
+        var2 - Company ID Destination Date
+        
+        var3 - Manifest ID
+        
+        var4 - Blank
+        
+        var5 - blank
       operationId: getCPManifestAgain
       consumes:
         - applition/json
@@ -3861,17 +3957,23 @@ paths:
           description: Conflict
         '500':
           description: Internal server error
+          
   /upay/subscribeToPlan:
     post:
       tags:
         - uPay
       summary: Subscribe user to a plan
-      description: |-
-        fiveVariables<br>
-        var1 -  company name<br>
-        var2 -  service name<br>
-        var3 -  subscription periods<br>
-        var4 -  user email address<br>
+      description: |
+        fiveVariables
+        
+        var1 -  company name
+        
+        var2 -  service name
+        
+        var3 -  subscription periods
+        
+        var4 -  user email address
+        
         var5 -  blank (not use)
       operationId: subscribeToPlan
       parameters:
@@ -3909,7 +4011,16 @@ paths:
       tags:
         - uPay
       summary: Authorize credit card information
-      description: "fiveVariables<br>\nvar1 -  client email address<br> \nvar2 -  card number array<br>\nvar3 -  authorization<br>\nvar4, var5 -  blank (not use)"
+      description: |
+        fiveVariables
+        
+        var1 -  client email address
+        
+        var2 -  card number array
+        
+        var3 -  authorization
+        
+        var4, var5 -  blank (not use)
       operationId: authorizeCustomer
       consumes:
         - application/json
@@ -4035,12 +4146,17 @@ paths:
       tags:
         - uPay
       summary: Delete credit card information
-      description: |-
-        fiveVariable<br><br>
-        var1 - First/last name, company neme and email address<br>
-        var2 - Card Lookup id<br>
-        var3 - Customer email<br>
-        var4 - blank (not use)<br>
+      description: |
+        fiveVariable
+        
+        var1 - First/last name, company neme and email address
+        
+        var2 - Card Lookup id
+        
+        var3 - Customer email
+        
+        var4 - blank (not use)
+        
         var5 - blank (not use)
       operationId: deleteCreditCard
       consumes:
@@ -4616,7 +4732,18 @@ paths:
       tags:
         - uVisit
       summary: Send checkin message
-      description: "fiveVariables<br><br>\nvar1 -  senderEmail (unique)<br>\nvar2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)<br>\nvar3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)<br>\nvar4 -  visitorName<br> \nvar5 -  visitRecordId (visitorEmail + checkinTime)"
+      description: |
+        fiveVariables
+        
+        var1 -  senderEmail (unique)
+        
+        var2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)
+        
+        var3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)
+        
+        var4 -  visitorName
+        
+        var5 -  visitRecordId (visitorEmail + checkinTime)
       operationId: sendCheckinMessages
       consumes:
         - application/json
@@ -4657,19 +4784,17 @@ paths:
       tags:
         - uVisit
       summary: Send check out message
-      description: >-
-        fiveVariables<br> (sendCheckinMessages, sendCheckoutMessages,
-        sendThanksToVisitorMessages)<br><br>
+      description: |
+        fiveVariables (sendCheckinMessages, sendCheckoutMessages,
+        sendThanksToVisitorMessages)
 
-        var1 -  senderEmail (unique) <br>
+        var1 -  senderEmail (unique)
 
-        var2 -  recipientsEmail (semicolon separated values of all recipients
-        email / receptionEmail, hostEmail, securityEmail)<br>
+        var2 -  recipientsEmail (semicolon separated values of all recipients email / receptionEmail, hostEmail, securityEmail)
 
-        var3 -  recipientsPhone (semicolon separated values of all recipients
-        phone / receptionPhone, hostPhone, securityPhone)<br>
+        var3 -  recipientsPhone (semicolon separated values of all recipients phone / receptionPhone, hostPhone, securityPhone)
 
-        var4 -  visitorName <br>
+        var4 -  visitorName
 
         var5 -  visitRecordId (visitorEmail + checkinTime)
       operationId: sendCheckoutMessages
@@ -4707,24 +4832,27 @@ paths:
           description: Conflict
         '500':
           description: Internal server error
+          
   /uvisit/sendThanksToVisitorMessages:
     post:
       tags:
         - uVisit
       summary: Send thank you mail to visitors
-      description: >-
-        fiveVariables<br> (sendCheckinMessages, sendCheckoutMessages,
-        sendThanksToVisitorMessages)<br><br>
+      description: |
+        fiveVariables (sendCheckinMessages, sendCheckoutMessages,
+        sendThanksToVisitorMessages)
 
-        var1 -  senderEmail (unique) <br>
+        var1 -  senderEmail (unique)
 
         var2 -  recipientsEmail (semicolon separated values of all recipients
-        email / receptionEmail, hostEmail, securityEmail)<br>
+        email / receptionEmail, hostEmail, securityEmail)
 
         var3 -  recipientsPhone (semicolon separated values of all recipients
-        phone / receptionPhone, hostPhone, securityPhone)<br>
+        phone / receptionPhone, hostPhone, securityPhone)
 
-        var4 -  visitorName  <br> var5 -  visitRecordId (visitorEmail
+        var4 -  visitorName   
+        
+        var5 -  visitRecordId (visitorEmail
         + checkinTime)
       operationId: sendThanksToVisitorMessages
       consumes:
@@ -4761,17 +4889,23 @@ paths:
           description: Conflict
         '500':
           description: Internal server error
+          
   /uvisit/findNumberVisitsCompanyByDay:
     post:
       tags:
         - uVisit
       summary: Find the number of visits by day
-      description: |-
-        fiveVariable<br> (findNumberVisitsCompanyByDay)<br><br>
-        var1 - from date<br>
-        var2 - to date<br>
-        var3 - show duplicate (yes - show/ no - not show)<br>
-        var4 - blank (not use)<br>
+      description: |
+        fiveVariable (findNumberVisitsCompanyByDay)
+        
+        var1 - from date
+        
+        var2 - to date
+        
+        var3 - show duplicate (yes - show/ no - not show)
+        
+        var4 - blank (not use)
+        
         var5 - blank (not use)
       operationId: findNumberVisitsCompanyByDay
       consumes:
@@ -4808,6 +4942,7 @@ paths:
           description: Conflict
         '500':
           description: Internal server error
+          
   /uvisit/setCheckoutTimeVisitRecord:
     post:
       tags:
@@ -4855,10 +4990,13 @@ paths:
       tags:
         - uVisit
       summary: Find all visitor record in a time period
-      description: |-
-        fiveVariables<br><br>
-        var1 - from date<br>
-        var2 - to date<br>
+      description: |
+        fiveVariables
+        
+        var1 - from date
+        
+        var2 - to date
+        
         var3, var4, var5 - blank (not use)
       operationId: findAllVisitorPeriod
       consumes:
@@ -4901,10 +5039,13 @@ paths:
       tags:
         - uVisit
       summary: Find all visitors between two time periods through API
-      description: |-
-        fiveVariables<br><br>
-        var1 - from date<br>
-        var2 - to date<br>
+      description: |
+        fiveVariables
+        
+        var1 - from date
+        
+        var2 - to date
+        
         var3, var4, var5 - blank (not use)
       operationId: findAllVisitorPeriod_API
       consumes:
@@ -4947,11 +5088,16 @@ paths:
       tags:
         - uVisit
       summary: Find host who has visits in a period of time
-      description: |-
-        fiveVariables<br><br>
-        var1 - from date<br>
-        var2 - to date<br>
-        var3 - host email (unique)<br>
+      description: |
+      
+        fiveVariables
+        
+        var1 - from date
+        
+        var2 - to date
+        
+        var3 - host email (unique)
+        
         var4, var5 - blank (not use)
       operationId: findVisitsHostByDayPeriod
       consumes:
@@ -4988,16 +5134,21 @@ paths:
           description: Conflict
         '500':
           description: Internal server error
+          
   /uvisit/findVisitRecordsHostByDayPeriod:
     post:
       tags:
         - uVisit
       summary: 'Find host who has visit record (checkin time, checkout time, rate etc)'
-      description: |-
-        fiveVariables<br><br>
-        var1 - from date<br>
-        var2 - to date<br>
-        var3 - host email (unique)<br>
+      description: |
+        fiveVariables
+        
+        var1 - from date
+        
+        var2 - to date
+        
+        var3 - host email (unique)
+        
         var4, var5 - blank (not use)
       operationId: findVisitRecordsHostByDayPeriod
       consumes:
@@ -5034,15 +5185,20 @@ paths:
           description: Conflict
         '500':
           description: Internal server error
+          
   /uvisit/findTwentyMostVisitedHostPeriods:
     post:
       tags:
         - uVisit
       summary: Find twenty hosts who have most visits
-      description: |-
-        fiveVariables<br><br>
-        var1 - from date<br>
-        var2 - to date<br>
+      description: |
+      
+        fiveVariables
+        
+        var1 - from date
+        
+        var2 - to date
+        
         var3, var4, var5 - blank (not use)
       operationId: findTwentyMostVisitedHostPeriods
       consumes:
@@ -5077,6 +5233,7 @@ paths:
           description: Conflict
         '500':
           description: Internal server error
+          
   /uvisit/findAllVisitorsToday:
     post:
       tags:
@@ -5118,12 +5275,24 @@ paths:
           description: Conflict
         '500':
           description: Internal server error
+          
   /uvisit/getBadgeURL:
     post:
       tags:
         - uVisit
       summary: Get Badge image URL
-      description: "fiveVariables<br><br>\nvar1 - picture<br> \nvar2 - visitor name<br>\nvar3 - company name<br>\nvar4 - email address<br>\nvar5 - qr code"
+      description: |
+        fiveVariables
+        
+        var1 - picture
+        
+        var2 - visitor name
+        
+        var3 - company name
+        
+        var4 - email address
+        
+        var5 - qr code
       operationId: getBadgeURL
       consumes:
         - application/json
@@ -5159,17 +5328,23 @@ paths:
           description: Conflict
         '500':
           description: Internal server error
+          
   /uvisit/getBadgePDF:
     post:
       tags:
         - uVisit
       summary: Get badge PDF file
-      description: |-
-        fiveVariables<br><br>
-        var1 - picture <br>
-        var2 - visitor name<br>
-        var3 - company name<br>
-        var4 - email addressbr>
+      description: |
+        fiveVariables
+        
+        var1 - picture 
+        
+        var2 - visitor name
+        
+        var3 - company name
+        
+        var4 - email address
+        
         var5 - qr code
       operationId: gedBadgePDF
       consumes:
@@ -5212,12 +5387,17 @@ paths:
       tags:
         - uVisit
       summary: Update visit record
-      description:  |-
-        fiveVariables<br><br>
-        var1 - visitor email address <br>
-        var2 - visitor check in time<br>
-        var3 - status(0- not checkout, 1- checkout by admin, 2- checkout by visitor<br>
-        var4 - empty<br>
+      description:  |
+        fiveVariables
+        
+        var1 - visitor email address
+        
+        var2 - visitor check in time
+        
+        var3 - status(0- not checkout, 1- checkout by admin, 2- checkout by visitor)
+        
+        var4 - empty
+        
         var5 - empty
       operationId: updateVisitRecordStatus
       consumes: 
@@ -5260,13 +5440,18 @@ paths:
       tags:
         - uVisit
       summary: Check either NDA is signed
-      description:  |-
-        fiveVariables<br><br>
-        var1 - visitor email address <br>
-        var2 - visitor check in time<br>
-        var3 - status(0- not signed, 1- signed<br>
-        var4 - empty<br>
-        var5 - empty
+      description:  |
+        fiveVariables
+        
+        var1 - visitor email address
+        
+        var2 - visitor check in time
+        
+        var3 - status(0- not signed, 1- signed)
+        
+        var4 - blank (not use)
+        
+        var5 - blank (not use )
       operationId: updateVisitRecordNDAChecked
       consumes: 
         - application/json
@@ -5350,12 +5535,17 @@ paths:
       tags:
         - uVisit
       summary: store visitor badge to Mongo DB
-      description:  |-
-        fiveVariables<br><br>
-        var1 - visitor picture name <br>
-        var2 - visitor name<br>
-        var3 - company visitor visits<br>
-        var4 - login username<br>
+      description:  |
+        fiveVariables
+        
+        var1 - visitor picture name
+        
+        var2 - visitor name
+        
+        var3 - company visitor visits
+        
+        var4 - login username
+        
         var5 - QR code image
       operationId: getBadge_MondoDB
       consumes:
@@ -5650,12 +5840,17 @@ paths:
       tags:
         - uEvent
       summary: Add event visitor
-      description:  |-
-        fiveVariables<br><br>
-        var1 - event ID <br>
-        var2 - visitor email address<br>
-        var3 - blank<br>
-        var4 - blank<br>
+      description:  |
+        fiveVariables
+        
+        var1 - event ID
+        
+        var2 - visitor email address
+        
+        var3 - blank
+        
+        var4 - blank
+        
         var5 - blank
       operationId: findEventVisitorByEmail
       consumes:
@@ -5740,12 +5935,17 @@ paths:
       tags:
         - uEvent
       summary: Find all visitors in a particular event
-      description:  |-
-        fiveVariables<br><br>
-        var1 - event ID <br>
-        var2 - UTC(duration from starting time of the event to now)<br>
-        var3 - blank<br>
-        var4 - blank<br>
+      description:  |
+        fiveVariables
+        
+        var1 - event ID
+      
+        var2 - UTC(duration from starting time of the event to now)
+        
+        var3 - blank
+        
+        var4 - blank
+        
         var5 - blank
       operationId: findAllEeventVisitors
       consumes:
@@ -5783,6 +5983,9 @@ paths:
         '500':
           description: Internal server error
           
+
+
+
 definitions:
   
   uploadResponse:
@@ -5973,6 +6176,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Company'
+  
   Account:
     properties:
       username:
@@ -5987,6 +6191,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Service'
+  
   Person:
     properties:
       firstName:
@@ -6018,6 +6223,7 @@ definitions:
         format: int64
       role:
         type: string
+  
   Service:
     properties:
       serviceId:
@@ -6031,6 +6237,7 @@ definitions:
         type: string
       setting:
         type: string
+  
   Company:
     properties:
       companyId:
@@ -6052,6 +6259,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Address'
+  
   CostCenter:
     properties:
       code:
@@ -6062,6 +6270,7 @@ definitions:
         type: string
       companyName:
         type: string
+  
   ServiceProvider:
     properties:
       serviceId:
@@ -6088,6 +6297,7 @@ definitions:
         type: string
       serviceName:
         type: string
+  
   SubAccount:
     properties:
       Account:
@@ -6098,12 +6308,14 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Username'
+  
   CompanyAccounts:
     properties:
       AccountDetails:
         type: array
         items:
           $ref: '#/definitions/Signup'
+  
   CheckSender:
     properties:
       username:
@@ -6338,6 +6550,7 @@ definitions:
         type: string
       cause:
         type: string
+  
   KPITotal:
     properties:
       id:
@@ -6385,16 +6598,19 @@ definitions:
       percentageInvoice:
         type: integer
         format: int32
+  
   PlansArray:
     properties:
       addPlan:
         type: array
         items:
           $ref: '#/definitions/Plan'
+  
   PlanType:
     properties:
       planType:
         type: string
+  
   PlanService:
     properties:
       companyName:
@@ -6413,6 +6629,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/PlansArrayItem'
+  
   PlansArrayItem:
     properties:
       name:
@@ -6437,6 +6654,7 @@ definitions:
         type: string
       billingEmail:
         type: string
+  
   BillingInfo:
     properties:
       firstName:
@@ -6488,7 +6706,7 @@ definitions:
         type: string
       card_billing_id:
         type: string
-        
+  
   Visitor:
     properties:
       username:
@@ -6499,12 +6717,14 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Person'
+  
   findVisitorsCompany:
     properties:
       company:
         type: string
       location:
         type: string
+  
   VisitorRecord:
     properties:
       companyLocation:
@@ -6515,6 +6735,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/VisitRecord'
+  
   VisitRecord:
     properties:
       visitorEmail:
@@ -6557,12 +6778,14 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/CostCenter'
+  
   PersonBatch:
     properties:
       persons:
         type: array
         items:
           $ref: '#/definitions/Person'
+  
   Location:
     properties:
       locationCompany:
@@ -6607,6 +6830,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Address'
+  
   Address:
     properties:
       unit:
@@ -6632,6 +6856,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Properties'
+          
   Properties:
     properties:
       backgroundImage:

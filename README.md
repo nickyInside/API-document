@@ -107,3 +107,7 @@ Added 9 new requests(post)<br>
 Changed name from "uContent" to "uCommon"<br>
 Modified Responses<br>
 Added 9 new requests(post and get)<br>
+
+<h3>June 9th - Updates</h3>
+
+Modified display<br>
